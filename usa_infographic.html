@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>สหรัฐอเมริกา — อินโฟกราฟิก</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0A1628;
+      --blue:   #1B3A6B;
+      --accent: #3A7BD5;
+      --gold:   #F5A623;
+      --red:    #E63946;
+      --white:  #FFFFFF;
+      --light:  #EEF3FB;
+      --glass:  rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.12);
+    }
+
+    body {
+      background: var(--navy);
+      font-family: 'Outfit', 'Sarabun', sans-serif;
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    /* ────────── HERO ────────── */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, #0A1628 0%, #1B3A6B 50%, #0D2240 100%);
+      padding: 60px 40px 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '★';
+      position: absolute;
+      font-size: 400px;
+      opacity: 0.03;
+      top: -80px; left: -40px;
+      color: var(--gold);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--navy));
+    }
+
+    .flag-stripe {
+      display: flex;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 0 auto 30px;
+      width: 200px;
+    }
+    .flag-stripe span { flex: 1; }
+    .flag-stripe span:nth-child(odd) { background: var(--red); }
+    .flag-stripe span:nth-child(even) { background: var(--white); }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #FFFFFF 0%, #A8C4F0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .hero h2 {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 40px;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat .num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .hero-stat .lbl {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ────────── GRID ────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+
+    .section-title {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .grid-1 { display: grid; grid-template-columns: 1fr; margin-bottom: 20px; }
+
+    @media (max-width: 768px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .hero { padding: 40px 20px 60px; }
+      .hero-stats { gap: 20px; }
+    }
+
+    /* ────────── CARD ────────── */
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(58,123,213,0.2);
+    }
+    .card-title {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    /* ────────── MAP CARD ────────── */
+    .map-svg {
+      width: 100%;
+      height: 240px;
+      background: rgba(58,123,213,0.08);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      border: 1px dashed var(--border);
+    }
+
+    /* ────────── FACTS ────────── */
+    .fact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .fact-row:last-child { border-bottom: none; }
+    .fact-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .fact-key { font-size: 0.7rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; }
+    .fact-val { font-size: 1rem; font-weight: 600; color: var(--white); }
+
+    /* ────────── STAT BUBBLE ────────── */
+    .stat-bubble {
+      text-align: center;
+      padding: 24px 16px;
+    }
+    .stat-bubble .big {
+      font-size: 2.6rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-bubble .unit {
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+    }
+    .stat-bubble .desc {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+
+    /* ────────── BAR CHART ────────── */
+    .bar-list { list-style: none; }
+    .bar-item { margin-bottom: 16px; }
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      margin-bottom: 6px;
+      color: rgba(255,255,255,0.8);
+    }
+    .bar-label span { color: var(--gold); font-weight: 600; }
+    .bar-track {
+      height: 8px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      animation: grow 1.2s ease-out forwards;
+      transform-origin: left;
+    }
+    @keyframes grow {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    /* ────────── ECONOMY ────────── */
+    .economy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 14px;
+    }
+    .economy-item {
+      background: rgba(58,123,213,0.12);
+      border: 1px solid rgba(58,123,213,0.25);
+      border-radius: 14px;
+      padding: 16px 12px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .economy-item:hover { background: rgba(58,123,213,0.25); }
+    .economy-item .eco-icon { font-size: 2rem; margin-bottom: 8px; }
+    .economy-item .eco-val { font-size: 1.1rem; font-weight: 700; color: var(--gold); }
+    .economy-item .eco-lbl { font-size: 0.65rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ────────── TIMELINE ────────── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--gold));
+    }
+    .timeline-item { position: relative; margin-bottom: 24px; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -25px; top: 6px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--navy);
+      box-shadow: 0 0 10px var(--gold);
+    }
+    .timeline-year { font-size: 0.7rem; color: var(--gold); font-weight: 700; letter-spacing: 2px; }
+    .timeline-text { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+
+    /* ────────── POPULATION DONUT ────────── */
+    .donut-wrap {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .donut-svg { flex-shrink: 0; }
+    .donut-legend { flex: 1; min-width: 140px; }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.82rem;
+    }
+    .legend-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ────────── FOOTER ────────── */
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ────────── ACCENT LINE ────────── */
+    .accent-line {
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--accent), var(--gold));
+      border-radius: 2px;
+      margin-bottom: 40px;
+    }
+
+    /* ────────── TAG ────────── */
+    .tag {
+      display: inline-block;
+      background: rgba(245,166,35,0.15);
+      border: 1px solid rgba(245,166,35,0.3);
+      color: var(--gold);
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 0.72rem;
+      margin: 3px;
+    }
+
+    /* Pulse animation for stats */
+    .pulse { animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0.6; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero">
+  <div class="flag-stripe">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span>
+  </div>
+  <div class="hero-badge">🌎 อินโฟกราฟิก 2024</div>
+  <h1>สหรัฐอเมริกา</h1>
+  <h2>United States of America</h2>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num">335M+</div>
+      <div class="lbl">ประชากร</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">50</div>
+      <div class="lbl">มลรัฐ</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">$27.4T</div>
+      <div class="lbl">GDP (USD)</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">9.8M km²</div>
+      <div class="lbl">พื้นที่</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="accent-line"></div>
+
+  <!-- ══════════ ROW 1: ข้อมูลพื้นฐาน + แผนที่ ══════════ -->
+  <div class="section-title">📋 ข้อมูลทั่วไป</div>
+  <div class="grid-2">
+
+    <!-- Facts -->
+    <div class="card">
+      <div class="card-title">ข้อมูลพื้นฐาน</div>
+
+      <div class="fact-row">
+        <div class="fact-icon">🏛️</div>
+        <div>
+          <div class="fact-key">เมืองหลวง</div>
+          <div class="fact-val">วอชิงตัน ดี.ซี.</div>
+        </div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-icon">🌐</div>
+        <div>
+          <div class="fact-key">ภาษาราชการ</div>
+          <div class="fact-val">ภาษาอังกฤษ (โดยพฤตินัย)</div>
+        </div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-icon">💵</div>
+        <div>
+          <div class="fact-key">สกุลเงิน</div>
+          <div class="fact-val">ดอลลาร์สหรัฐ (USD)</div>
+        </div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-icon">⚖️</div>
+        <div>
+          <div class="fact-key">การปกครอง</div>
+          <div class="fact-val">สาธารณรัฐสหพันธ์ / ประชาธิปไตย</div>
+        </div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-icon">🕊️</div>
+        <div>
+          <div class="fact-key">วันประกาศอิสรภาพ</div>
+          <div class="fact-val">4 กรกฎาคม ค.ศ. 1776</div>
+        </div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-icon">🌍</div>
+        <div>
+          <div class="fact-key">ที่ตั้ง</div>
+          <div class="fact-val">ทวีปอเมริกาเหนือ</div>
+        </div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-icon">⏰</div>
+        <div>
+          <div class="fact-key">เขตเวลา</div>
+          <div class="fact-val">UTC-5 ถึง UTC-10 (6 เขต)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map + Geography -->
+    <div class="card">
+      <div class="card-title">ภูมิศาสตร์</div>
+      <div class="map-svg">🗺️</div>
+      <br/>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;">
+        <div class="stat-bubble" style="background:rgba(58,123,213,0.1);border-radius:12px;">
+          <div class="big" style="font-size:1.6rem;">9.8M</div>
+          <div class="unit">km²</div>
+          <div class="desc">พื้นที่รวม</div>
+        </div>
+        <div class="stat-bubble" style="background:rgba(230,57,70,0.1);border-radius:12px;">
+          <div class="big" style="font-size:1.6rem;">#3</div>
+          <div class="unit"></div>
+          <div class="desc">ประเทศใหญ่สุดในโลก</div>
+        </div>
+        <div class="stat-bubble" style="background:rgba(245,166,35,0.1);border-radius:12px;">
+          <div class="big" style="font-size:1.6rem;">50</div>
+          <div class="unit">รัฐ</div>
+          <div class="desc">+ 1 เขตปกครอง</div>
+        </div>
+        <div class="stat-bubble" style="background:rgba(58,123,213,0.1);border-radius:12px;">
+          <div class="big" style="font-size:1.6rem;">6,500+</div>
+          <div class="unit">km</div>
+          <div class="desc">ความยาวชายฝั่ง</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════ ROW 2: เศรษฐกิจ ══════════ -->
+  <div class="section-title">💰 เศรษฐกิจ</div>
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-title">ตัวชี้วัดทางเศรษฐกิจ</div>
+    <div class="economy-grid">
+      <div class="economy-item">
+        <div class="eco-icon">💹</div>
+        <div class="eco-val">$27.4T</div>
+        <div class="eco-lbl">GDP รวม</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">👤</div>
+        <div class="eco-val">$80,412</div>
+        <div class="eco-lbl">GDP ต่อหัว</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">📦</div>
+        <div class="eco-val">$3.05T</div>
+        <div class="eco-lbl">ส่งออก</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">🚢</div>
+        <div class="eco-val">$3.83T</div>
+        <div class="eco-lbl">นำเข้า</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">💳</div>
+        <div class="eco-val">3.7%</div>
+        <div class="eco-lbl">เงินเฟ้อ ปี 23</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">👷</div>
+        <div class="eco-val">3.9%</div>
+        <div class="eco-lbl">การว่างงาน</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">🏦</div>
+        <div class="eco-val">#1</div>
+        <div class="eco-lbl">GDP โลก</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">💡</div>
+        <div class="eco-val">26%</div>
+        <div class="eco-lbl">สัดส่วน GDP โลก</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ ROW 3: ประชากร + เมืองใหญ่ ══════════ -->
+  <div class="section-title">👥 ประชากรและเมือง</div>
+  <div class="grid-2">
+
+    <!-- Population composition -->
+    <div class="card">
+      <div class="card-title">องค์ประกอบประชากร</div>
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="140" height="140" viewBox="0 0 140 140">
+          <circle cx="70" cy="70" r="54" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="22"/>
+          <!-- White 57.6% -->
+          <circle cx="70" cy="70" r="54" fill="none" stroke="#3A7BD5" stroke-width="22"
+                  stroke-dasharray="195 144" stroke-dashoffset="0" transform="rotate(-90 70 70)"/>
+          <!-- Hispanic 18.9% -->
+          <circle cx="70" cy="70" r="54" fill="none" stroke="#F5A623" stroke-width="22"
+                  stroke-dasharray="64 275" stroke-dashoffset="-195" transform="rotate(-90 70 70)"/>
+          <!-- Black 12.6% -->
+          <circle cx="70" cy="70" r="54" fill="none" stroke="#E63946" stroke-width="22"
+                  stroke-dasharray="43 296" stroke-dashoffset="-259" transform="rotate(-90 70 70)"/>
+          <!-- Asian 5.9% -->
+          <circle cx="70" cy="70" r="54" fill="none" stroke="#2ECC71" stroke-width="22"
+                  stroke-dasharray="20 319" stroke-dashoffset="-302" transform="rotate(-90 70 70)"/>
+          <!-- Other -->
+          <circle cx="70" cy="70" r="54" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="22"
+                  stroke-dasharray="17 322" stroke-dashoffset="-322" transform="rotate(-90 70 70)"/>
+          <text x="70" y="65" text-anchor="middle" fill="white" font-size="18" font-weight="900" font-family="Outfit">335M</text>
+          <text x="70" y="82" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="Outfit">TOTAL</text>
+        </svg>
+        <div class="donut-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#3A7BD5"></div>ผิวขาว — 57.8%</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#F5A623"></div>ฮิสแปนิก — 18.9%</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#E63946"></div>ผิวดำ — 12.6%</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#2ECC71"></div>เอเชีย — 5.9%</div>
+          <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.2)"></div>อื่นๆ — 4.8%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Cities -->
+    <div class="card">
+      <div class="card-title">10 เมืองใหญ่ที่สุด (ล้านคน)</div>
+      <ul class="bar-list">
+        <li class="bar-item">
+          <div class="bar-label">นิวยอร์ก <span>8.3M</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-label">ลอสแอนเจลิส <span>3.9M</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:47%"></div></div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-label">ชิคาโก <span>2.7M</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:33%"></div></div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-label">ฮิวสตัน <span>2.3M</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:28%"></div></div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-label">ฟีนิกซ์ <span>1.6M</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:20%"></div></div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-label">ฟิลาเดลเฟีย <span>1.6M</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:19%"></div></div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-label">ซานแอนโตนิโอ <span>1.4M</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:17%"></div></div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ══════════ ROW 4: ประวัติศาสตร์ ══════════ -->
+  <div class="section-title">📜 ประวัติศาสตร์สำคัญ</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">เหตุการณ์สำคัญ</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">ค.ศ. 1776</div>
+          <div class="timeline-text">ประกาศอิสรภาพจากอังกฤษ — 4 กรกฎาคม</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">ค.ศ. 1789</div>
+          <div class="timeline-text">ประธานาธิบดีคนแรก จอร์จ วอชิงตัน เข้ารับตำแหน่ง</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">ค.ศ. 1865</div>
+          <div class="timeline-text">สิ้นสุดสงครามกลางเมือง ยกเลิกทาส (การแก้ไขที่ 13)</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">ค.ศ. 1944</div>
+          <div class="timeline-text">ร่วมสงครามโลกครั้งที่ 2 — D-Day ฝรั่งเศส</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">ค.ศ. 1969</div>
+          <div class="timeline-text">นีล อาร์มสตรอง เหยียบดวงจันทร์ครั้งแรก (Apollo 11)</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">ค.ศ. 2001</div>
+          <div class="timeline-text">เหตุการณ์ 9/11 — บุกอัฟกานิสถาน</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">ค.ศ. 2020</div>
+          <div class="timeline-text">โควิด-19 ระบาด — มีผู้เสียชีวิตสูงสุดในโลก</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">อำนาจและอิทธิพลโลก</div>
+      <br/>
+      <ul class="bar-list">
+        <li class="bar-item">
+          <div class="bar-label">งบประมาณกลาโหม <span>$886B</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-label">ฐานทัพต่างประเทศ <span>750+</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-label">หัวรบนิวเคลียร์ <span>5,550</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:70%"></div></div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-label">ดัชนีอำนาจโลก <span>#1</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+        </li>
+        <li class="bar-item">
+          <div class="bar-label">สิทธิ์ UNSC Veto <span>✓</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+        </li>
+      </ul>
+
+      <br/>
+      <div class="card-title">พันธมิตรสำคัญ</div>
+      <div>
+        <span class="tag">🇬🇧 อังกฤษ</span>
+        <span class="tag">🇩🇪 เยอรมนี</span>
+        <span class="tag">🇯🇵 ญี่ปุ่น</span>
+        <span class="tag">🇫🇷 ฝรั่งเศส</span>
+        <span class="tag">🇰🇷 เกาหลีใต้</span>
+        <span class="tag">🇦🇺 ออสเตรเลีย</span>
+        <span class="tag">🇨🇦 แคนาดา</span>
+        <span class="tag">🇮🇱 อิสราเอล</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ ROW 5: การศึกษา + นวัตกรรม ══════════ -->
+  <div class="section-title">🔬 การศึกษาและนวัตกรรม</div>
+  <div class="grid-3">
+    <div class="card stat-bubble">
+      <div class="eco-icon" style="font-size:2.5rem;margin-bottom:10px;">🎓</div>
+      <div class="big">4,000+</div>
+      <div class="unit">มหาวิทยาลัย</div>
+      <div class="desc">รวม Harvard, MIT, Stanford</div>
+    </div>
+    <div class="card stat-bubble">
+      <div class="eco-icon" style="font-size:2.5rem;margin-bottom:10px;">🏆</div>
+      <div class="big">400+</div>
+      <div class="unit">รางวัลโนเบล</div>
+      <div class="desc">มากที่สุดในโลก</div>
+    </div>
+    <div class="card stat-bubble">
+      <div class="eco-icon" style="font-size:2.5rem;margin-bottom:10px;">🚀</div>
+      <div class="big">NASA</div>
+      <div class="unit">องค์กรอวกาศ</div>
+      <div class="desc">สำรวจอวกาศมาตั้งแต่ปี 1958</div>
+    </div>
+  </div>
+
+  <!-- ══════════ ROW 6: วัฒนธรรม ══════════ -->
+  <div class="section-title">🎭 วัฒนธรรมและสังคม</div>
+  <div class="card" style="margin-bottom:40px;">
+    <div class="card-title">สัญลักษณ์และวัฒนธรรม</div>
+    <div class="economy-grid">
+      <div class="economy-item">
+        <div class="eco-icon">🗽</div>
+        <div class="eco-val">เทพีเสรีภาพ</div>
+        <div class="eco-lbl">สัญลักษณ์ประจำชาติ</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">🦅</div>
+        <div class="eco-val">อินทรีหัวขาว</div>
+        <div class="eco-lbl">นกประจำชาติ</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">🍔</div>
+        <div class="eco-val">Fast Food</div>
+        <div class="eco-lbl">วัฒนธรรมอาหาร</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">🎬</div>
+        <div class="eco-val">Hollywood</div>
+        <div class="eco-lbl">อุตสาหกรรมบันเทิง</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">🏈</div>
+        <div class="eco-val">NFL</div>
+        <div class="eco-lbl">กีฬายอดนิยม</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">🎵</div>
+        <div class="eco-val">Jazz, Hip-Hop</div>
+        <div class="eco-lbl">ดนตรีกำเนิดที่นี่</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">🛒</div>
+        <div class="eco-val">Amazon</div>
+        <div class="eco-lbl">ยักษ์ใหญ่ e-commerce</div>
+      </div>
+      <div class="economy-item">
+        <div class="eco-icon">💻</div>
+        <div class="eco-val">Silicon Valley</div>
+        <div class="eco-lbl">ศูนย์กลางเทคโนโลยี</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  ข้อมูลอ้างอิงจาก World Bank, CIA World Factbook, U.S. Census Bureau — ปี 2023–2024<br/>
+  สร้างโดย Antigravity AI Infographic Expert 🎨
+</footer>
+
+</body>
+</html>
