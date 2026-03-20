@@ -1,781 +1,945 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ทักษะ | ขจรศักดิ์ สิทธิวงศ์</title>
-  <meta name="description" content="ทักษะความสามารถของ ขจรศักดิ์ สิทธิวงศ์ ทั้งด้านเทคนิคและทักษะทางสังคม" />
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ทักษะ | ขจรศักดิ์ สิทธิวงศ์</title>
+    <meta name="description" content="ทักษะความสามารถของ ขจรศักดิ์ สิทธิวงศ์ ทั้งด้านเทคนิคและทักษะทางสังคม" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    :root {
-      --gold:    #ffd700;
-      --blue:    #00d4ff;
-      --blue2:   #0099cc;
-      --orange:  #ff7b00;
-      --orange2: #ff4500;
-      --dark:    #03020a;
-      --card:    rgba(6, 8, 30, 0.78);
-      --border:  rgba(255,255,255,0.08);
-    }
+        :root {
+            --gold: #ffd700;
+            --blue: #00d4ff;
+            --blue2: #0099cc;
+            --orange: #ff7b00;
+            --orange2: #ff4500;
+            --dark: #03020a;
+            --card: rgba(6, 8, 30, 0.78);
+            --border: rgba(255, 255, 255, 0.08);
+        }
 
-    body {
-      background: var(--dark);
-      color: white;
-      font-family: 'Sarabun', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+        body {
+            background: var(--dark);
+            color: white;
+            font-family: 'Sarabun', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    /* ===== CANVAS ===== */
-    #bg-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
+        /* ===== CANVAS ===== */
+        #bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-    /* ===== NAVBAR ===== */
-    .navbar {
-      position: fixed;
-      top: 0; width: 100%;
-      padding: 16px 40px;
-      background: rgba(0,0,0,0.72);
-      backdrop-filter: blur(14px);
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,215,0,0.12);
-    }
-    .nav-brand {
-      position: absolute; left: 40px;
-      color: var(--gold);
-      font-family: 'Kanit', sans-serif;
-      font-weight: 700; font-size: 1.2rem;
-    }
-    .nav-menu { list-style: none; display: flex; gap: 8px; }
-    .nav-menu a {
-      color: rgba(255,255,255,0.75);
-      text-decoration: none;
-      font-weight: 500; font-size: 0.9rem;
-      padding: 7px 14px;
-      border-radius: 6px;
-      transition: all 0.3s;
-    }
-    .nav-menu a:hover { color: white; background: rgba(255,255,255,0.07); }
-    .nav-menu a.active {
-      color: var(--gold);
-      background: rgba(255,215,0,0.12);
-      border: 1px solid rgba(255,215,0,0.35);
-      font-weight: 700;
-    }
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 40px;
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(14px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.12);
+        }
 
-    /* ===== MAIN ===== */
-    main {
-      position: relative;
-      z-index: 10;
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 115px 24px 80px;
-    }
+        .nav-brand {
+            position: absolute;
+            left: 40px;
+            color: var(--gold);
+            font-family: 'Kanit', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
 
-    /* ===== PAGE HEADER ===== */
-    .page-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    .header-icon {
-      font-size: 3.6rem;
-      display: inline-block;
-      animation: iconFloat 3s ease-in-out infinite;
-      filter: drop-shadow(0 0 18px #00d4ff) drop-shadow(0 0 40px #0066ff);
-      margin-bottom: 10px;
-    }
-    @keyframes iconFloat {
-      0%,100% { transform: translateY(0); filter: drop-shadow(0 0 18px #00d4ff) drop-shadow(0 0 40px #0066ff); }
-      50%      { transform: translateY(-8px); filter: drop-shadow(0 0 28px #00d4ff) drop-shadow(0 0 60px #00aaff); }
-    }
-    .page-header h1 {
-      font-family: 'Kanit', sans-serif;
-      font-size: 2.8rem;
-      background: linear-gradient(135deg, #fff 0%, #00d4ff 50%, #ff7b00 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 6px;
-    }
-    .page-header .sub {
-      color: rgba(255,255,255,0.5);
-      font-size: 0.95rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    .divider-line {
-      width: 120px; height: 2px;
-      background: linear-gradient(90deg, transparent, #00d4ff, #ff7b00, transparent);
-      margin: 14px auto 0;
-    }
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 8px;
+        }
 
-    /* ===== TWO-COLUMN GRID ===== */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      align-items: start;
-    }
+        .nav-menu a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 7px 14px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
 
-    /* ===== SKILL PANEL ===== */
-    .skill-panel {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px 28px;
-      backdrop-filter: blur(12px);
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .skill-panel:hover {
-      transform: translateY(-4px);
-    }
-    /* glow corner accent */
-    .skill-panel::before {
-      content: '';
-      position: absolute;
-      top: -40px; left: -40px;
-      width: 150px; height: 150px;
-      border-radius: 50%;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    .panel-tech::before  { background: radial-gradient(circle, rgba(0,212,255,0.18) 0%, transparent 70%); }
-    .panel-soft::before  { background: radial-gradient(circle, rgba(255,123,0,0.18) 0%, transparent 70%); }
-    .skill-panel:hover::before { opacity: 1.5; }
+        .nav-menu a:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.07);
+        }
 
-    /* top border accent */
-    .panel-tech { border-top: 2px solid rgba(0,212,255,0.5); box-shadow: 0 0 40px rgba(0,212,255,0.06); }
-    .panel-soft { border-top: 2px solid rgba(255,123,0,0.5); box-shadow: 0 0 40px rgba(255,123,0,0.06); }
-    .panel-tech:hover { box-shadow: 0 12px 50px rgba(0,212,255,0.15); }
-    .panel-soft:hover { box-shadow: 0 12px 50px rgba(255,123,0,0.15); }
+        .nav-menu a.active {
+            color: var(--gold);
+            background: rgba(255, 215, 0, 0.12);
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            font-weight: 700;
+        }
 
-    /* panel heading */
-    .panel-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 28px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    .panel-head .ph-icon {
-      font-size: 1.8rem;
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .panel-tech .ph-icon { background: rgba(0,212,255,0.12); box-shadow: 0 0 16px rgba(0,212,255,0.2); }
-    .panel-soft .ph-icon { background: rgba(255,123,0,0.12); box-shadow: 0 0 16px rgba(255,123,0,0.2); }
-    .panel-head h2 {
-      font-family: 'Kanit', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-    .panel-tech .panel-head h2 { color: #00d4ff; text-shadow: 0 0 12px rgba(0,212,255,0.5); }
-    .panel-soft .panel-head h2 { color: #ff7b00; text-shadow: 0 0 12px rgba(255,123,0,0.5); }
-    .panel-head .ph-sub {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.45);
-      margin-top: 2px;
-    }
+        /* ===== MAIN ===== */
+        main {
+            position: relative;
+            z-index: 10;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 115px 24px 80px;
+        }
 
-    /* ===== SKILL ITEM ===== */
-    .skill-item { margin-bottom: 22px; }
-    .skill-item:last-child { margin-bottom: 0; }
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
 
-    .skill-label {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-    .skill-name {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-    .skill-name .s-icon { font-size: 1rem; }
-    .skill-pct {
-      font-family: 'Kanit', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-    .panel-tech .skill-pct { color: #00d4ff; }
-    .panel-soft .skill-pct { color: #ff7b00; }
+        .header-icon {
+            font-size: 3.6rem;
+            display: inline-block;
+            animation: iconFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 18px #00d4ff) drop-shadow(0 0 40px #0066ff);
+            margin-bottom: 10px;
+        }
 
-    /* track */
-    .bar-track {
-      height: 10px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.07);
-      position: relative;
-      overflow: visible;
-    }
-    /* fill */
-    .bar-fill {
-      height: 100%;
-      border-radius: 20px;
-      width: 0;
-      transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1);
-      position: relative;
-    }
-    .panel-tech .bar-fill {
-      background: linear-gradient(90deg, #005f99, #00d4ff);
-      box-shadow: 0 0 12px rgba(0,212,255,0.6), 0 0 24px rgba(0,212,255,0.3);
-    }
-    .panel-soft .bar-fill {
-      background: linear-gradient(90deg, #8b3000, #ff7b00);
-      box-shadow: 0 0 12px rgba(255,123,0,0.6), 0 0 24px rgba(255,123,0,0.3);
-    }
-    /* animated shine on fill */
-    .bar-fill::after {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 60%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
-      border-radius: 20px;
-      animation: barShine 2.5s ease infinite;
-      animation-delay: 1.5s;
-    }
-    @keyframes barShine {
-      0%   { left: -100%; }
-      60%  { left: 120%; }
-      100% { left: 120%; }
-    }
-    /* glowing tip dot */
-    .bar-tip {
-      position: absolute;
-      top: 50%; right: 0;
-      transform: translate(50%, -50%);
-      width: 14px; height: 14px;
-      border-radius: 50%;
-      opacity: 0;
-      transition: opacity 0.4s 1.4s;
-    }
-    .bar-fill.loaded + .bar-tip, .bar-fill.loaded ~ .bar-tip { opacity: 1; }
-    .panel-tech .bar-tip {
-      background: #00d4ff;
-      box-shadow: 0 0 8px #00d4ff, 0 0 18px #00aaff;
-    }
-    .panel-soft .bar-tip {
-      background: #ff7b00;
-      box-shadow: 0 0 8px #ff7b00, 0 0 18px #ff4500;
-    }
+        @keyframes iconFloat {
 
-    /* ===== LEVEL TAGS ===== */
-    .skill-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-left: 6px;
-    }
-    .panel-tech .skill-tag { background: rgba(0,212,255,0.12); color: #67e8f9; border: 1px solid rgba(0,212,255,0.25); }
-    .panel-soft .skill-tag { background: rgba(255,123,0,0.12); color: #fdba74; border: 1px solid rgba(255,123,0,0.25); }
+            0%,
+            100% {
+                transform: translateY(0);
+                filter: drop-shadow(0 0 18px #00d4ff) drop-shadow(0 0 40px #0066ff);
+            }
 
-    /* ===== EXTRA BADGES (bottom strip) ===== */
-    .badge-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.07);
-    }
-    .badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 5px 12px;
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.75);
-      transition: all 0.3s;
-    }
-    .badge:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+            50% {
+                transform: translateY(-8px);
+                filter: drop-shadow(0 0 28px #00d4ff) drop-shadow(0 0 60px #00aaff);
+            }
+        }
 
-    /* ===== SUMMARY ROW ===== */
-    .summary-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 36px;
-    }
-    .sum-box {
-      text-align: center;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px 12px;
-      backdrop-filter: blur(10px);
-      transition: 0.3s;
-    }
-    .sum-box:hover { transform: translateY(-4px); border-color: rgba(255,215,0,0.25); }
-    .sum-box .s-val {
-      font-family: 'Kanit', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #00d4ff, #ff7b00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .sum-box .s-lbl { color: rgba(255,255,255,0.55); font-size: 0.82rem; margin-top: 4px; }
+        .page-header h1 {
+            font-family: 'Kanit', sans-serif;
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #fff 0%, #00d4ff 50%, #ff7b00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px;
+        }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 720px) {
-      .skills-grid { grid-template-columns: 1fr; }
-      .summary-row { grid-template-columns: repeat(2, 1fr); }
-      .nav-brand { display: none; }
-    }
-  </style>
+        .page-header .sub {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .divider-line {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00d4ff, #ff7b00, transparent);
+            margin: 14px auto 0;
+        }
+
+        /* ===== TWO-COLUMN GRID ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        /* ===== SKILL PANEL ===== */
+        .skill-panel {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px 28px;
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-panel:hover {
+            transform: translateY(-4px);
+        }
+
+        /* glow corner accent */
+        .skill-panel::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: -40px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .panel-tech::before {
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.18) 0%, transparent 70%);
+        }
+
+        .panel-soft::before {
+            background: radial-gradient(circle, rgba(255, 123, 0, 0.18) 0%, transparent 70%);
+        }
+
+        .skill-panel:hover::before {
+            opacity: 1.5;
+        }
+
+        /* top border accent */
+        .panel-tech {
+            border-top: 2px solid rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.06);
+        }
+
+        .panel-soft {
+            border-top: 2px solid rgba(255, 123, 0, 0.5);
+            box-shadow: 0 0 40px rgba(255, 123, 0, 0.06);
+        }
+
+        .panel-tech:hover {
+            box-shadow: 0 12px 50px rgba(0, 212, 255, 0.15);
+        }
+
+        .panel-soft:hover {
+            box-shadow: 0 12px 50px rgba(255, 123, 0, 0.15);
+        }
+
+        /* panel heading */
+        .panel-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .panel-head .ph-icon {
+            font-size: 1.8rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .panel-tech .ph-icon {
+            background: rgba(0, 212, 255, 0.12);
+            box-shadow: 0 0 16px rgba(0, 212, 255, 0.2);
+        }
+
+        .panel-soft .ph-icon {
+            background: rgba(255, 123, 0, 0.12);
+            box-shadow: 0 0 16px rgba(255, 123, 0, 0.2);
+        }
+
+        .panel-head h2 {
+            font-family: 'Kanit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .panel-tech .panel-head h2 {
+            color: #00d4ff;
+            text-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
+        }
+
+        .panel-soft .panel-head h2 {
+            color: #ff7b00;
+            text-shadow: 0 0 12px rgba(255, 123, 0, 0.5);
+        }
+
+        .panel-head .ph-sub {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.45);
+            margin-top: 2px;
+        }
+
+        /* ===== SKILL ITEM ===== */
+        .skill-item {
+            margin-bottom: 22px;
+        }
+
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .skill-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .skill-name .s-icon {
+            font-size: 1rem;
+        }
+
+        .skill-pct {
+            font-family: 'Kanit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .panel-tech .skill-pct {
+            color: #00d4ff;
+        }
+
+        .panel-soft .skill-pct {
+            color: #ff7b00;
+        }
+
+        /* track */
+        .bar-track {
+            height: 10px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.07);
+            position: relative;
+            overflow: visible;
+        }
+
+        /* fill */
+        .bar-fill {
+            height: 100%;
+            border-radius: 20px;
+            width: 0;
+            transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+        }
+
+        .panel-tech .bar-fill {
+            background: linear-gradient(90deg, #005f99, #00d4ff);
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.6), 0 0 24px rgba(0, 212, 255, 0.3);
+        }
+
+        .panel-soft .bar-fill {
+            background: linear-gradient(90deg, #8b3000, #ff7b00);
+            box-shadow: 0 0 12px rgba(255, 123, 0, 0.6), 0 0 24px rgba(255, 123, 0, 0.3);
+        }
+
+        /* animated shine on fill */
+        .bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            border-radius: 20px;
+            animation: barShine 2.5s ease infinite;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes barShine {
+            0% {
+                left: -100%;
+            }
+
+            60% {
+                left: 120%;
+            }
+
+            100% {
+                left: 120%;
+            }
+        }
+
+        /* glowing tip dot */
+        .bar-tip {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(50%, -50%);
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.4s 1.4s;
+        }
+
+        .bar-fill.loaded+.bar-tip,
+        .bar-fill.loaded~.bar-tip {
+            opacity: 1;
+        }
+
+        .panel-tech .bar-tip {
+            background: #00d4ff;
+            box-shadow: 0 0 8px #00d4ff, 0 0 18px #00aaff;
+        }
+
+        .panel-soft .bar-tip {
+            background: #ff7b00;
+            box-shadow: 0 0 8px #ff7b00, 0 0 18px #ff4500;
+        }
+
+        /* ===== LEVEL TAGS ===== */
+        .skill-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-left: 6px;
+        }
+
+        .panel-tech .skill-tag {
+            background: rgba(0, 212, 255, 0.12);
+            color: #67e8f9;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+        }
+
+        .panel-soft .skill-tag {
+            background: rgba(255, 123, 0, 0.12);
+            color: #fdba74;
+            border: 1px solid rgba(255, 123, 0, 0.25);
+        }
+
+        /* ===== EXTRA BADGES (bottom strip) ===== */
+        .badge-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.75);
+            transition: all 0.3s;
+        }
+
+        .badge:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* ===== SUMMARY ROW ===== */
+        .summary-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 36px;
+        }
+
+        .sum-box {
+            text-align: center;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 12px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .sum-box:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 215, 0, 0.25);
+        }
+
+        .sum-box .s-val {
+            font-family: 'Kanit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #ff7b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sum-box .s-lbl {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.82rem;
+            margin-top: 4px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 720px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-brand {
+                display: none;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <canvas id="bg-canvas"></canvas>
+    <canvas id="bg-canvas"></canvas>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-brand">✦ KS</div>
-    <ul class="nav-menu">
-      <li><a href="index.html">หน้าแรก</a></li>
-      <li><a href="about.html">ประวัติ</a></li>
-      <li><a href="education.html">การศึกษา</a></li>
-      <li><a href="skills.html" class="active">ทักษะ</a></li>
-      <li><a href="#">Simulations</a></li>
-      <li><a href="#">Biomass</a></li>
-      <li><a href="#">ติดต่อ</a></li>
-    </ul>
-  </nav>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-brand">✦ KS</div>
+        <ul class="nav-menu">
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="about.html">ประวัติ</a></li>
+            <li><a href="education.html">การศึกษา</a></li>
+            <li><a href="skills.html" class="active">ทักษะ</a></li>
+            <li><a href="#">Simulations</a></li>
+            <li><a href="#">Biomass</a></li>
+            <li><a href="#">ติดต่อ</a></li>
+        </ul>
+    </nav>
 
-  <main>
+    <main>
 
-    <!-- HEADER -->
-    <div class="page-header">
-      <div class="header-icon">⚡</div>
-      <h1>ทักษะความสามารถ</h1>
-      <p class="sub">Skills &amp; Expertise</p>
-      <div class="divider-line"></div>
-    </div>
-
-    <!-- TWO-COLUMN SKILLS -->
-    <div class="skills-grid">
-
-      <!-- LEFT: TECHNICAL SKILLS -->
-      <div class="skill-panel panel-tech">
-        <div class="panel-head">
-          <div class="ph-icon">🧪</div>
-          <div>
-            <h2>ทักษะทางเทคนิค</h2>
-            <div class="ph-sub">Technical Skills</div>
-          </div>
+        <!-- HEADER -->
+        <div class="page-header">
+            <div class="header-icon">⚡</div>
+            <h1>ทักษะความสามารถ</h1>
+            <p class="sub">Skills &amp; Expertise</p>
+            <div class="divider-line"></div>
         </div>
 
-        <!-- Python -->
-        <div class="skill-item">
-          <div class="skill-label">
-            <span class="skill-name">
-              <span class="s-icon">🐍</span> Python
-              <span class="skill-tag">Intermediate</span>
-            </span>
-            <span class="skill-pct" data-pct="72">0%</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" data-width="72"></div>
-            <div class="bar-tip"></div>
-          </div>
+        <!-- TWO-COLUMN SKILLS -->
+        <div class="skills-grid">
+
+            <!-- LEFT: TECHNICAL SKILLS -->
+            <div class="skill-panel panel-tech">
+                <div class="panel-head">
+                    <div class="ph-icon">🧪</div>
+                    <div>
+                        <h2>ทักษะทางเทคนิค</h2>
+                        <div class="ph-sub">Technical Skills</div>
+                    </div>
+                </div>
+
+                <!-- Python -->
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span class="skill-name">
+                            <span class="s-icon">🐍</span> Python
+                            <span class="skill-tag">Intermediate</span>
+                        </span>
+                        <span class="skill-pct" data-pct="72">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" data-width="72"></div>
+                        <div class="bar-tip"></div>
+                    </div>
+                </div>
+
+                <!-- Physics Simulations -->
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span class="skill-name">
+                            <span class="s-icon">🔭</span> Physics Simulations
+                            <span class="skill-tag">Intermediate</span>
+                        </span>
+                        <span class="skill-pct" data-pct="70">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" data-width="70"></div>
+                        <div class="bar-tip"></div>
+                    </div>
+                </div>
+
+                <!-- GeoGebra -->
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span class="skill-name">
+                            <span class="s-icon">📐</span> GeoGebra
+                            <span class="skill-tag">Advanced</span>
+                        </span>
+                        <span class="skill-pct" data-pct="82">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" data-width="82"></div>
+                        <div class="bar-tip"></div>
+                    </div>
+                </div>
+
+                <!-- Microsoft Office -->
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span class="skill-name">
+                            <span class="s-icon">📊</span> Microsoft Office
+                            <span class="skill-tag">Advanced</span>
+                        </span>
+                        <span class="skill-pct" data-pct="85">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" data-width="85"></div>
+                        <div class="bar-tip"></div>
+                    </div>
+                </div>
+
+                <!-- HTML/CSS -->
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span class="skill-name">
+                            <span class="s-icon">🌐</span> HTML / CSS
+                            <span class="skill-tag">Beginner+</span>
+                        </span>
+                        <span class="skill-pct" data-pct="55">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" data-width="55"></div>
+                        <div class="bar-tip"></div>
+                    </div>
+                </div>
+
+                <!-- English (CEFR B1) -->
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span class="skill-name">
+                            <span class="s-icon">🌐</span> ภาษาอังกฤษ (CEFR B1)
+                            <span class="skill-tag">B1</span>
+                        </span>
+                        <span class="skill-pct" data-pct="60">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" data-width="60"></div>
+                        <div class="bar-tip"></div>
+                    </div>
+                </div>
+
+                <!-- Tool badges -->
+                <div class="badge-strip">
+                    <span class="badge">🐍 Python</span>
+                    <span class="badge">📐 GeoGebra</span>
+                    <span class="badge">🧮 PHET Simulations</span>
+                    <span class="badge">📊 Excel</span>
+                    <span class="badge">🌐 HTML/CSS</span>
+                </div>
+            </div>
+
+            <!-- RIGHT: SOFT SKILLS -->
+            <div class="skill-panel panel-soft">
+                <div class="panel-head">
+                    <div class="ph-icon">🌟</div>
+                    <div>
+                        <h2>ทักษะทางสังคม</h2>
+                        <div class="ph-sub">Soft Skills</div>
+                    </div>
+                </div>
+
+                <!-- Teaching -->
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span class="skill-name">
+                            <span class="s-icon">🎓</span> การสอน (Teaching)
+                            <span class="skill-tag">Advanced</span>
+                        </span>
+                        <span class="skill-pct" data-pct="88">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" data-width="88"></div>
+                        <div class="bar-tip"></div>
+                    </div>
+                </div>
+
+                <!-- Communication -->
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span class="skill-name">
+                            <span class="s-icon">💬</span> การสื่อสาร (Communication)
+                            <span class="skill-tag">Advanced</span>
+                        </span>
+                        <span class="skill-pct" data-pct="85">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" data-width="85"></div>
+                        <div class="bar-tip"></div>
+                    </div>
+                </div>
+
+                <!-- Teamwork -->
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span class="skill-name">
+                            <span class="s-icon">🤝</span> การทำงานเป็นทีม
+                            <span class="skill-tag">Advanced</span>
+                        </span>
+                        <span class="skill-pct" data-pct="87">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" data-width="87"></div>
+                        <div class="bar-tip"></div>
+                    </div>
+                </div>
+
+                <!-- Problem Solving -->
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span class="skill-name">
+                            <span class="s-icon">🧩</span> การแก้ปัญหา (Problem Solving)
+                            <span class="skill-tag">Advanced</span>
+                        </span>
+                        <span class="skill-pct" data-pct="83">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" data-width="83"></div>
+                        <div class="bar-tip"></div>
+                    </div>
+                </div>
+
+                <!-- Creativity -->
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span class="skill-name">
+                            <span class="s-icon">🎨</span> ความคิดสร้างสรรค์
+                            <span class="skill-tag">Advanced</span>
+                        </span>
+                        <span class="skill-pct" data-pct="80">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" data-width="80"></div>
+                        <div class="bar-tip"></div>
+                    </div>
+                </div>
+
+                <!-- Adaptability -->
+                <div class="skill-item">
+                    <div class="skill-label">
+                        <span class="skill-name">
+                            <span class="s-icon">🔄</span> การปรับตัว (Adaptability)
+                            <span class="skill-tag">Advanced</span>
+                        </span>
+                        <span class="skill-pct" data-pct="84">0%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" data-width="84"></div>
+                        <div class="bar-tip"></div>
+                    </div>
+                </div>
+
+                <!-- Soft skill badges -->
+                <div class="badge-strip">
+                    <span class="badge">🎓 Teaching</span>
+                    <span class="badge">💬 Communication</span>
+                    <span class="badge">🤝 Teamwork</span>
+                    <span class="badge">🧩 Problem Solving</span>
+                    <span class="badge">🎨 Creative</span>
+                </div>
+            </div>
+
+        </div><!-- end skills-grid -->
+
+        <!-- SUMMARY ROW -->
+        <div class="summary-row">
+            <div class="sum-box">
+                <div class="s-val">4+</div>
+                <div class="s-lbl">ปีประสบการณ์สอน</div>
+            </div>
+            <div class="sum-box">
+                <div class="s-val">6</div>
+                <div class="s-lbl">เครื่องมือด้านเทคนิค</div>
+            </div>
+            <div class="sum-box">
+                <div class="s-val">B1</div>
+                <div class="s-lbl">ระดับภาษาอังกฤษ CEFR</div>
+            </div>
+            <div class="sum-box">
+                <div class="s-val">4</div>
+                <div class="s-lbl">โรงเรียนที่ฝึกสอน</div>
+            </div>
         </div>
 
-        <!-- Physics Simulations -->
-        <div class="skill-item">
-          <div class="skill-label">
-            <span class="skill-name">
-              <span class="s-icon">🔭</span> Physics Simulations
-              <span class="skill-tag">Intermediate</span>
-            </span>
-            <span class="skill-pct" data-pct="70">0%</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" data-width="70"></div>
-            <div class="bar-tip"></div>
-          </div>
-        </div>
+    </main>
 
-        <!-- GeoGebra -->
-        <div class="skill-item">
-          <div class="skill-label">
-            <span class="skill-name">
-              <span class="s-icon">📐</span> GeoGebra
-              <span class="skill-tag">Advanced</span>
-            </span>
-            <span class="skill-pct" data-pct="82">0%</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" data-width="82"></div>
-            <div class="bar-tip"></div>
-          </div>
-        </div>
+    <script>
+        /* ===== STARFIELD + CONSTELLATION + METEORS ===== */
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
 
-        <!-- Microsoft Office -->
-        <div class="skill-item">
-          <div class="skill-label">
-            <span class="skill-name">
-              <span class="s-icon">📊</span> Microsoft Office
-              <span class="skill-tag">Advanced</span>
-            </span>
-            <span class="skill-pct" data-pct="85">0%</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" data-width="85"></div>
-            <div class="bar-tip"></div>
-          </div>
-        </div>
+        function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+        resize();
+        window.addEventListener('resize', () => { resize(); initScene(); });
 
-        <!-- HTML/CSS -->
-        <div class="skill-item">
-          <div class="skill-label">
-            <span class="skill-name">
-              <span class="s-icon">🌐</span> HTML / CSS
-              <span class="skill-tag">Beginner+</span>
-            </span>
-            <span class="skill-pct" data-pct="55">0%</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" data-width="55"></div>
-            <div class="bar-tip"></div>
-          </div>
-        </div>
+        let stars = [], lines = [], meteors = [];
 
-        <!-- English (CEFR B1) -->
-        <div class="skill-item">
-          <div class="skill-label">
-            <span class="skill-name">
-              <span class="s-icon">🌐</span> ภาษาอังกฤษ (CEFR B1)
-              <span class="skill-tag">B1</span>
-            </span>
-            <span class="skill-pct" data-pct="60">0%</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" data-width="60"></div>
-            <div class="bar-tip"></div>
-          </div>
-        </div>
+        function initScene() {
+            const W = canvas.width, H = canvas.height;
+            const count = Math.floor(W * H / 3000);
+            stars = Array.from({ length: count }, () => ({
+                x: Math.random() * W, y: Math.random() * H,
+                r: Math.random() * 1.6 + 0.3,
+                a: Math.random() * 0.7 + 0.2,
+                da: (Math.random() * 0.008 + 0.002) * (Math.random() > 0.5 ? 1 : -1),
+                blue: Math.random() < 0.12,
+                orange: Math.random() < 0.06,
+            }));
 
-        <!-- Tool badges -->
-        <div class="badge-strip">
-          <span class="badge">🐍 Python</span>
-          <span class="badge">📐 GeoGebra</span>
-          <span class="badge">🧮 PHET Simulations</span>
-          <span class="badge">📊 Excel</span>
-          <span class="badge">🌐 HTML/CSS</span>
-        </div>
-      </div>
+            // constellation lines – connect nearby pairs
+            lines = [];
+            const pts = stars.filter(() => Math.random() < 0.08);
+            pts.forEach((a, i) => {
+                pts.forEach((b, j) => {
+                    if (j <= i) return;
+                    const dx = a.x - b.x, dy = a.y - b.y;
+                    const d = Math.sqrt(dx * dx + dy * dy);
+                    if (d < 160) lines.push({ a, b, a0: Math.random() * 0.15 + 0.05 });
+                });
+            });
+        }
+        initScene();
 
-      <!-- RIGHT: SOFT SKILLS -->
-      <div class="skill-panel panel-soft">
-        <div class="panel-head">
-          <div class="ph-icon">🌟</div>
-          <div>
-            <h2>ทักษะทางสังคม</h2>
-            <div class="ph-sub">Soft Skills</div>
-          </div>
-        </div>
+        function spawnMeteor() {
+            const W = canvas.width, H = canvas.height;
+            meteors.push({
+                x: Math.random() * W * 0.7,
+                y: Math.random() * H * 0.3,
+                len: Math.random() * 180 + 80,
+                spd: Math.random() * 8 + 6,
+                a: 1,
+                w: Math.random() * 1.5 + 0.5,
+                blue: Math.random() < 0.5,
+            });
+        }
+        setInterval(spawnMeteor, 1800);
 
-        <!-- Teaching -->
-        <div class="skill-item">
-          <div class="skill-label">
-            <span class="skill-name">
-              <span class="s-icon">🎓</span> การสอน (Teaching)
-              <span class="skill-tag">Advanced</span>
-            </span>
-            <span class="skill-pct" data-pct="88">0%</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" data-width="88"></div>
-            <div class="bar-tip"></div>
-          </div>
-        </div>
+        function draw() {
+            const W = canvas.width, H = canvas.height;
+            // bg gradient
+            const g = ctx.createLinearGradient(0, 0, W, H);
+            g.addColorStop(0, '#04010f');
+            g.addColorStop(0.5, '#060120');
+            g.addColorStop(1, '#020115');
+            ctx.fillStyle = g;
+            ctx.fillRect(0, 0, W, H);
 
-        <!-- Communication -->
-        <div class="skill-item">
-          <div class="skill-label">
-            <span class="skill-name">
-              <span class="s-icon">💬</span> การสื่อสาร (Communication)
-              <span class="skill-tag">Advanced</span>
-            </span>
-            <span class="skill-pct" data-pct="85">0%</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" data-width="85"></div>
-            <div class="bar-tip"></div>
-          </div>
-        </div>
+            // nebula glow
+            [
+                { x: W * 0.1, y: H * 0.2, r: 300, c: '0,120,255' },
+                { x: W * 0.9, y: H * 0.8, r: 260, c: '200,80,0' },
+                { x: W * 0.5, y: H * 0.5, r: 220, c: '60,0,120' },
+            ].forEach(n => {
+                const ng = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
+                ng.addColorStop(0, `rgba(${n.c},0.08)`);
+                ng.addColorStop(1, `rgba(${n.c},0)`);
+                ctx.fillStyle = ng; ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
+            });
 
-        <!-- Teamwork -->
-        <div class="skill-item">
-          <div class="skill-label">
-            <span class="skill-name">
-              <span class="s-icon">🤝</span> การทำงานเป็นทีม
-              <span class="skill-tag">Advanced</span>
-            </span>
-            <span class="skill-pct" data-pct="87">0%</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" data-width="87"></div>
-            <div class="bar-tip"></div>
-          </div>
-        </div>
+            // constellation lines
+            lines.forEach(l => {
+                ctx.beginPath();
+                ctx.moveTo(l.a.x, l.a.y);
+                ctx.lineTo(l.b.x, l.b.y);
+                ctx.strokeStyle = `rgba(0,200,255,${l.a0})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+            });
 
-        <!-- Problem Solving -->
-        <div class="skill-item">
-          <div class="skill-label">
-            <span class="skill-name">
-              <span class="s-icon">🧩</span> การแก้ปัญหา (Problem Solving)
-              <span class="skill-tag">Advanced</span>
-            </span>
-            <span class="skill-pct" data-pct="83">0%</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" data-width="83"></div>
-            <div class="bar-tip"></div>
-          </div>
-        </div>
+            // stars
+            stars.forEach(s => {
+                s.a += s.da;
+                if (s.a > 0.95 || s.a < 0.15) s.da *= -1;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = s.blue ? `rgba(0,200,255,${s.a})`
+                    : s.orange ? `rgba(255,140,0,${s.a})`
+                        : `rgba(255,255,255,${s.a})`;
+                ctx.fill();
+            });
 
-        <!-- Creativity -->
-        <div class="skill-item">
-          <div class="skill-label">
-            <span class="skill-name">
-              <span class="s-icon">🎨</span> ความคิดสร้างสรรค์
-              <span class="skill-tag">Advanced</span>
-            </span>
-            <span class="skill-pct" data-pct="80">0%</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" data-width="80"></div>
-            <div class="bar-tip"></div>
-          </div>
-        </div>
+            // meteors
+            meteors.forEach((m, i) => {
+                const c = m.blue ? '0,212,255' : '255,123,0';
+                const mg = ctx.createLinearGradient(m.x, m.y, m.x + m.len, m.y + m.len * 0.5);
+                mg.addColorStop(0, `rgba(${c},0)`);
+                mg.addColorStop(1, `rgba(${c},${m.a})`);
+                ctx.strokeStyle = mg;
+                ctx.lineWidth = m.w;
+                ctx.beginPath();
+                ctx.moveTo(m.x, m.y);
+                ctx.lineTo(m.x + m.len, m.y + m.len * 0.5);
+                ctx.stroke();
 
-        <!-- Adaptability -->
-        <div class="skill-item">
-          <div class="skill-label">
-            <span class="skill-name">
-              <span class="s-icon">🔄</span> การปรับตัว (Adaptability)
-              <span class="skill-tag">Advanced</span>
-            </span>
-            <span class="skill-pct" data-pct="84">0%</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill" data-width="84"></div>
-            <div class="bar-tip"></div>
-          </div>
-        </div>
+                m.x += m.spd * 1.8;
+                m.y += m.spd * 0.9;
+                m.a -= 0.018;
+                if (m.a <= 0) meteors.splice(i, 1);
+            });
 
-        <!-- Soft skill badges -->
-        <div class="badge-strip">
-          <span class="badge">🎓 Teaching</span>
-          <span class="badge">💬 Communication</span>
-          <span class="badge">🤝 Teamwork</span>
-          <span class="badge">🧩 Problem Solving</span>
-          <span class="badge">🎨 Creative</span>
-        </div>
-      </div>
+            requestAnimationFrame(draw);
+        }
+        draw();
 
-    </div><!-- end skills-grid -->
+        /* ===== PROGRESS BAR ANIMATION (IntersectionObserver) ===== */
+        function animatePct(el, target, fill) {
+            let cur = 0;
+            const step = () => {
+                const pctEl = el.querySelector('.skill-pct');
+                const w = parseFloat(fill.style.width) || 0;
+                cur = Math.min(target, cur + target / 60);
+                if (pctEl) pctEl.textContent = Math.round(cur) + '%';
+                if (cur < target) requestAnimationFrame(step);
+                else { if (pctEl) pctEl.textContent = target + '%'; }
+            };
+            requestAnimationFrame(step);
+        }
 
-    <!-- SUMMARY ROW -->
-    <div class="summary-row">
-      <div class="sum-box">
-        <div class="s-val">4+</div>
-        <div class="s-lbl">ปีประสบการณ์สอน</div>
-      </div>
-      <div class="sum-box">
-        <div class="s-val">6</div>
-        <div class="s-lbl">เครื่องมือด้านเทคนิค</div>
-      </div>
-      <div class="sum-box">
-        <div class="s-val">B1</div>
-        <div class="s-lbl">ระดับภาษาอังกฤษ CEFR</div>
-      </div>
-      <div class="sum-box">
-        <div class="s-val">4</div>
-        <div class="s-lbl">โรงเรียนที่ฝึกสอน</div>
-      </div>
-    </div>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const panel = entry.target;
+                panel.querySelectorAll('.skill-item').forEach((item, idx) => {
+                    const fill = item.querySelector('.bar-fill');
+                    const tip = item.querySelector('.bar-tip');
+                    const pct = parseInt(fill.dataset.width);
+                    setTimeout(() => {
+                        fill.style.width = pct + '%';
+                        fill.classList.add('loaded');
+                        if (tip) { setTimeout(() => tip.style.opacity = '1', 1400); }
+                        animatePct(item, pct, fill);
+                    }, idx * 120);
+                });
+                observer.unobserve(panel);
+            });
+        }, { threshold: 0.15 });
 
-  </main>
-
-  <script>
-    /* ===== STARFIELD + CONSTELLATION + METEORS ===== */
-    const canvas = document.getElementById('bg-canvas');
-    const ctx    = canvas.getContext('2d');
-
-    function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
-    resize();
-    window.addEventListener('resize', () => { resize(); initScene(); });
-
-    let stars = [], lines = [], meteors = [];
-
-    function initScene() {
-      const W = canvas.width, H = canvas.height;
-      const count = Math.floor(W * H / 3000);
-      stars = Array.from({ length: count }, () => ({
-        x: Math.random() * W, y: Math.random() * H,
-        r: Math.random() * 1.6 + 0.3,
-        a: Math.random() * 0.7 + 0.2,
-        da: (Math.random() * 0.008 + 0.002) * (Math.random() > 0.5 ? 1 : -1),
-        blue: Math.random() < 0.12,
-        orange: Math.random() < 0.06,
-      }));
-
-      // constellation lines – connect nearby pairs
-      lines = [];
-      const pts = stars.filter(() => Math.random() < 0.08);
-      pts.forEach((a, i) => {
-        pts.forEach((b, j) => {
-          if (j <= i) return;
-          const dx = a.x - b.x, dy = a.y - b.y;
-          const d = Math.sqrt(dx*dx + dy*dy);
-          if (d < 160) lines.push({ a, b, a0: Math.random() * 0.15 + 0.05 });
-        });
-      });
-    }
-    initScene();
-
-    function spawnMeteor() {
-      const W = canvas.width, H = canvas.height;
-      meteors.push({
-        x: Math.random() * W * 0.7,
-        y: Math.random() * H * 0.3,
-        len: Math.random() * 180 + 80,
-        spd: Math.random() * 8 + 6,
-        a: 1,
-        w: Math.random() * 1.5 + 0.5,
-        blue: Math.random() < 0.5,
-      });
-    }
-    setInterval(spawnMeteor, 1800);
-
-    function draw() {
-      const W = canvas.width, H = canvas.height;
-      // bg gradient
-      const g = ctx.createLinearGradient(0, 0, W, H);
-      g.addColorStop(0, '#04010f');
-      g.addColorStop(0.5, '#060120');
-      g.addColorStop(1, '#020115');
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, W, H);
-
-      // nebula glow
-      [
-        { x: W*0.1, y: H*0.2, r: 300, c: '0,120,255' },
-        { x: W*0.9, y: H*0.8, r: 260, c: '200,80,0' },
-        { x: W*0.5, y: H*0.5, r: 220, c: '60,0,120' },
-      ].forEach(n => {
-        const ng = ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r);
-        ng.addColorStop(0, `rgba(${n.c},0.08)`);
-        ng.addColorStop(1, `rgba(${n.c},0)`);
-        ctx.fillStyle = ng; ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fill();
-      });
-
-      // constellation lines
-      lines.forEach(l => {
-        ctx.beginPath();
-        ctx.moveTo(l.a.x, l.a.y);
-        ctx.lineTo(l.b.x, l.b.y);
-        ctx.strokeStyle = `rgba(0,200,255,${l.a0})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      });
-
-      // stars
-      stars.forEach(s => {
-        s.a += s.da;
-        if (s.a > 0.95 || s.a < 0.15) s.da *= -1;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-        ctx.fillStyle = s.blue   ? `rgba(0,200,255,${s.a})`
-                      : s.orange ? `rgba(255,140,0,${s.a})`
-                      : `rgba(255,255,255,${s.a})`;
-        ctx.fill();
-      });
-
-      // meteors
-      meteors.forEach((m, i) => {
-        const c = m.blue ? '0,212,255' : '255,123,0';
-        const mg = ctx.createLinearGradient(m.x, m.y, m.x + m.len, m.y + m.len * 0.5);
-        mg.addColorStop(0, `rgba(${c},0)`);
-        mg.addColorStop(1, `rgba(${c},${m.a})`);
-        ctx.strokeStyle = mg;
-        ctx.lineWidth = m.w;
-        ctx.beginPath();
-        ctx.moveTo(m.x, m.y);
-        ctx.lineTo(m.x + m.len, m.y + m.len * 0.5);
-        ctx.stroke();
-
-        m.x += m.spd * 1.8;
-        m.y += m.spd * 0.9;
-        m.a -= 0.018;
-        if (m.a <= 0) meteors.splice(i, 1);
-      });
-
-      requestAnimationFrame(draw);
-    }
-    draw();
-
-    /* ===== PROGRESS BAR ANIMATION (IntersectionObserver) ===== */
-    function animatePct(el, target, fill) {
-      let cur = 0;
-      const step = () => {
-        const pctEl = el.querySelector('.skill-pct');
-        const w = parseFloat(fill.style.width) || 0;
-        cur = Math.min(target, cur + target / 60);
-        if (pctEl) pctEl.textContent = Math.round(cur) + '%';
-        if (cur < target) requestAnimationFrame(step);
-        else { if(pctEl) pctEl.textContent = target + '%'; }
-      };
-      requestAnimationFrame(step);
-    }
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const panel = entry.target;
-        panel.querySelectorAll('.skill-item').forEach((item, idx) => {
-          const fill = item.querySelector('.bar-fill');
-          const tip  = item.querySelector('.bar-tip');
-          const pct  = parseInt(fill.dataset.width);
-          setTimeout(() => {
-            fill.style.width = pct + '%';
-            fill.classList.add('loaded');
-            if (tip) { setTimeout(() => tip.style.opacity = '1', 1400); }
-            animatePct(item, pct, fill);
-          }, idx * 120);
-        });
-        observer.unobserve(panel);
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.skill-panel').forEach(p => observer.observe(p));
-  </script>
+        document.querySelectorAll('.skill-panel').forEach(p => observer.observe(p));
+    </script>
 </body>
+
 </html>
