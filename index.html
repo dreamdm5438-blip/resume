@@ -9,7 +9,7 @@
     href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600&display=swap"
     rel="stylesheet" />
   <style>
-    /* ธีมจักรวาลสีม่วงทองที่คุณชอบ */
+    /* ===== NEW GALAXY STYLES ===== */
     *,
     *::before,
     *::after {
@@ -24,24 +24,47 @@
       color: white;
       font-family: 'Sarabun', sans-serif;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      overflow: hidden;
+      /* ป้องกันแถบเลื่อนขณะดาววิ่ง */
+    }
+
+    /* Nebula Background เหมือนหน้า About */
+    .nebula-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 90% 70% at 15% 25%, rgba(123, 47, 190, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 55% at 85% 15%, rgba(6, 182, 212, 0.15) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 100% at 50% 50%, #03020a 0%, #060614 100%);
+    }
+
+    #starfield {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
     }
 
     .navbar {
       position: fixed;
       top: 0;
       width: 100%;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
+      padding: 20px 40px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(15px);
       z-index: 1000;
       display: flex;
       justify-content: center;
       border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    .nav-brand {
+      position: absolute;
+      left: 40px;
+      color: #ffd700;
+      font-family: 'Kanit', sans-serif;
+      font-weight: 600;
     }
 
     .nav-menu {
@@ -51,18 +74,31 @@
     }
 
     .nav-menu a {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
       font-size: 0.9rem;
-      padding: 8px 15px;
+      padding: 8px 12px;
       transition: 0.3s;
     }
 
-    .nav-brand {
-      position: absolute;
-      left: 40px;
+    .nav-menu a:hover {
       color: #ffd700;
-      font-weight: bold;
+    }
+
+    .nav-menu a.active {
+      color: #ffd700;
+      border-bottom: 2px solid #ffd700;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 10;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
     .profile-img-wrap {
@@ -72,7 +108,8 @@
       padding: 5px;
       background: linear-gradient(135deg, #ffd700, #ffaa00);
       box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      position: relative;
     }
 
     .profile-img {
@@ -85,40 +122,56 @@
 
     h1 {
       font-family: 'Kanit', sans-serif;
-      font-size: 3rem;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
       color: white;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     }
 
     .subtitle {
       font-size: 1.1rem;
       opacity: 0.9;
-      margin: 10px 0 25px;
+      margin-bottom: 30px;
+      letter-spacing: 0.5px;
     }
 
     .btn {
-      padding: 12px 40px;
+      padding: 14px 45px;
       background: #ffaa00;
       color: #03020a;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
+      font-family: 'Kanit', sans-serif;
       transition: 0.3s;
-      box-shadow: 0 5px 15px rgba(255, 170, 0, 0.4);
+      box-shadow: 0 5px 20px rgba(255, 170, 0, 0.4);
     }
 
     .btn:hover {
       background: #ffd700;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 30px;
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 2px;
     }
   </style>
 </head>
 
 <body>
+
+  <div class="nebula-bg"></div>
+  <canvas id="starfield"></canvas>
+
   <nav class="navbar">
     <div class="nav-brand">✦ KS</div>
     <ul class="nav-menu">
-      <li><a href="index.html" style="border-bottom: 2px solid #ffd700;">Home</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="education.html">Education</a></li>
       <li><a href="#">Skills</a></li>
@@ -127,12 +180,24 @@
       <li><a href="#">Contact</a></li>
     </ul>
   </nav>
-  <div class="profile-img-wrap">
-    <img src="profile_photo.jpg" alt="ขจรศักดิ์" class="profile-img" />
-  </div>
-  <h1>ขจรศักดิ์ สิทธิวงศ์</h1>
-  <p class="subtitle">นักศึกษาคณะครุศาสตร์ สาขาวิชาเอกฟิสิกส์ ชั้นปีที่ 4 มรภ.อุตรดิตถ์</p>
-  <a href="about.html" class="btn">สำรวจผลงาน</a>
-</body>
 
-</html>
+  <main class="hero">
+    <div class="profile-img-wrap">
+      <img src="profile_photo.jpg" alt="ขจรศักดิ์" class="profile-img" />
+    </div>
+    <h1>ขจรศักดิ์ สิทธิวงศ์</h1>
+    <p class="subtitle">นักศึกษาคณะครุศาสตร์ สาขาวิชาเอกฟิสิกส์ ชั้นปีที่ 4 มรภ.อุตรดิตถ์</p>
+    <a href="about.html" class="btn">สำรวจผลงาน</a>
+    <div class="scroll-hint">SCROLL ▼</div>
+  </main>
+
+  <script>
+    // Starfield Animation เหมือนหน้า About
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    function initStars(n = 200) {
+      stars = Array.from({ length: n }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() *
