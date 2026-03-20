@@ -9,6 +9,7 @@
     href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600&display=swap"
     rel="stylesheet" />
   <style>
+    /* ธีมจักรวาลสีม่วงทองที่คุณชอบ */
     *,
     *::before,
     *::after {
@@ -22,12 +23,11 @@
       background: #03020a;
       color: white;
       font-family: 'Sarabun', sans-serif;
-      overflow-x: hidden;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
       text-align: center;
     }
 
@@ -35,8 +35,8 @@
       position: fixed;
       top: 0;
       width: 100%;
-      padding: 20px 40px;
-      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(10px);
       z-index: 1000;
       display: flex;
@@ -44,52 +44,25 @@
       border-bottom: 1px solid rgba(255, 215, 0, 0.1);
     }
 
-    .nav-brand {
-      position: absolute;
-      left: 40px;
-      color: #ffd700;
-      font-family: 'Kanit', sans-serif;
-      font-weight: 600;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-    }
-
     .nav-menu {
       list-style: none;
       display: flex;
       gap: 20px;
-      align-items: center;
     }
 
     .nav-menu a {
       color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
-      font-weight: 500;
       font-size: 0.9rem;
       padding: 8px 15px;
-      border-radius: 5px;
       transition: 0.3s;
     }
 
-    .nav-menu a:hover {
-      color: white;
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .nav-menu a.active {
-      color: white;
-      background: rgba(255, 215, 0, 0.1);
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      font-weight: 600;
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      margin-top: 80px;
+    .nav-brand {
+      position: absolute;
+      left: 40px;
+      color: #ffd700;
+      font-weight: bold;
     }
 
     .profile-img-wrap {
@@ -98,7 +71,8 @@
       border-radius: 50%;
       padding: 5px;
       background: linear-gradient(135deg, #ffd700, #ffaa00);
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+      margin-bottom: 20px;
     }
 
     .profile-img {
@@ -113,37 +87,28 @@
       font-family: 'Kanit', sans-serif;
       font-size: 3rem;
       color: white;
-      margin: 15px 0 5px;
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
     }
 
     .subtitle {
       font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.9);
-      max-width: 600px;
-      line-height: 1.6;
+      opacity: 0.9;
+      margin: 10px 0 25px;
     }
 
     .btn {
-      margin-top: 25px;
       padding: 12px 40px;
       background: #ffaa00;
       color: #03020a;
       border-radius: 50px;
-      cursor: pointer;
-      transition: 0.3s;
       text-decoration: none;
-      font-family: 'Kanit', sans-serif;
       font-weight: 600;
-      font-size: 1rem;
-      border: none;
+      transition: 0.3s;
       box-shadow: 0 5px 15px rgba(255, 170, 0, 0.4);
-      display: inline-block;
     }
 
     .btn:hover {
       background: #ffd700;
-      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
       transform: translateY(-2px);
     }
   </style>
@@ -151,24 +116,23 @@
 
 <body>
   <nav class="navbar">
-    <div class="nav-brand"><span>✦</span> KS</div>
+    <div class="nav-brand">✦ KS</div>
     <ul class="nav-menu">
-      <li><a href="index.html" class="active">หน้าแรก</a></li>
-      <li><a href="about.html">ประวัติ</a></li>
-      <li><a href="education.html">การศึกษา</a></li>
-      <li><a href="#">ทักษะ</a></li>
-      <li><a href="#">กิจกรรม</a></li>
-      <li><a href="#">ติดต่อ</a></li>
+      <li><a href="index.html" style="border-bottom: 2px solid #ffd700;">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="#">Skills</a></li>
+      <li><a href="#">Simulations</a></li>
+      <li><a href="#">Biomass</a></li>
+      <li><a href="#">Contact</a></li>
     </ul>
   </nav>
-  <main class="hero">
-    <div class="profile-img-wrap">
-      <img src="profile_photo.jpg" alt="ขจรศักดิ์ สิทธิวงศ์" class="profile-img" />
-    </div>
-    <h1>ขจรศักดิ์ สิทธิวงศ์</h1>
-    <p class="subtitle">นักศึกษาคณะครุศาสตร์ สาขาวิชาเอกฟิสิกส์ ชั้นปีที่ 4 มหาวิทยาลัยราชภัฏอุตรดิตถ์</p>
-    <a href="about.html" class="btn">สำรวจผลงาน</a>
-  </main>
+  <div class="profile-img-wrap">
+    <img src="profile_photo.jpg" alt="ขจรศักดิ์" class="profile-img" />
+  </div>
+  <h1>ขจรศักดิ์ สิทธิวงศ์</h1>
+  <p class="subtitle">นักศึกษาคณะครุศาสตร์ สาขาวิชาเอกฟิสิกส์ ชั้นปีที่ 4 มรภ.อุตรดิตถ์</p>
+  <a href="about.html" class="btn">สำรวจผลงาน</a>
 </body>
 
 </html>
