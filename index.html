@@ -9,7 +9,6 @@
     href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600&display=swap"
     rel="stylesheet" />
   <style>
-    /* สไตล์ธีมจักรวาลอันสวยงามของคุณ */
     *,
     *::before,
     *::after {
@@ -32,7 +31,6 @@
       text-align: center;
     }
 
-    /* สไตล์แถบเมนูบน (Navbar) */
     .navbar {
       position: fixed;
       top: 0;
@@ -55,11 +53,6 @@
       font-size: 1.2rem;
       display: flex;
       align-items: center;
-    }
-
-    .nav-brand span {
-      color: #ffd700;
-      margin-right: 5px;
     }
 
     .nav-menu {
@@ -91,7 +84,6 @@
       font-weight: 600;
     }
 
-    /* สไตล์เนื้อหาหลัก (Hero Section) */
     .hero {
       display: flex;
       flex-direction: column;
@@ -132,7 +124,6 @@
       line-height: 1.6;
     }
 
-    /* ปุ่ม 'สำรวจผลงาน' สีส้มสุดเท่ */
     .btn {
       margin-top: 25px;
       padding: 12px 40px;
@@ -147,6 +138,7 @@
       font-size: 1rem;
       border: none;
       box-shadow: 0 5px 15px rgba(255, 170, 0, 0.4);
+      display: inline-block;
     }
 
     .btn:hover {
@@ -154,69 +146,29 @@
       box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
       transform: translateY(-2px);
     }
-
-    .scroll-down {
-      margin-top: 50px;
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .scroll-down span {
-      display: block;
-      margin-top: 5px;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-
-      0%,
-      20%,
-      50%,
-      80%,
-      100% {
-        transform: translateY(0);
-      }
-
-      40% {
-        transform: translateY(-5px);
-      }
-
-      60% {
-        transform: translateY(-3px);
-      }
-    }
   </style>
 </head>
 
 <body>
-
   <nav class="navbar">
     <div class="nav-brand"><span>✦</span> KS</div>
     <ul class="nav-menu">
       <li><a href="index.html" class="active">หน้าแรก</a></li>
       <li><a href="about.html">ประวัติ</a></li>
-      <li><a href="#">การศึกษา</a></li>
+      <li><a href="education.html">การศึกษา</a></li>
       <li><a href="#">ทักษะ</a></li>
       <li><a href="#">กิจกรรม</a></li>
       <li><a href="#">ติดต่อ</a></li>
     </ul>
   </nav>
-
   <main class="hero">
     <div class="profile-img-wrap">
       <img src="profile_photo.jpg" alt="ขจรศักดิ์ สิทธิวงศ์" class="profile-img" />
     </div>
-
     <h1>ขจรศักดิ์ สิทธิวงศ์</h1>
     <p class="subtitle">นักศึกษาคณะครุศาสตร์ สาขาวิชาเอกฟิสิกส์ ชั้นปีที่ 4 มหาวิทยาลัยราชภัฏอุตรดิตถ์</p>
-
     <a href="about.html" class="btn">สำรวจผลงาน</a>
-
-    <div class="scroll-down">SCROLL <span>▼</span></div>
   </main>
-
 </body>
 
 </html>
