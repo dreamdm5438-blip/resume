@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>เกี่ยวกับฉัน | ขจรศักดิ์ สิทธิวงศ์</title>
-  <meta name="description" content="ประวัติส่วนตัวของ ขจรศักดิ์ สิทธิวงศ์ นักศึกษาคณะครุศาสตร์ สาขาวิชาเอกฟิสิกส์ มหาวิทยาลัยราชภัฏอุตรดิตถ์" />
+  <meta name="description"
+    content="ประวัติส่วนตัวของ ขจรศักดิ์ สิทธิวงศ์ นักศึกษาคณะครุศาสตร์ สาขาวิชาเอกฟิสิกส์ มหาวิทยาลัยราชภัฏอุตรดิตถ์" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Kanit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 
   <style>
     /* ===== RESET & BASE ===== */
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     :root {
       --gold: #FFD700;
       --gold-light: #FFE87C;
-      --gold-glow: rgba(255,215,0,0.55);
+      --gold-glow: rgba(255, 215, 0, 0.55);
       --purple: #7B2FBE;
       --purple-light: #A855F7;
       --blue: #1E40AF;
       --cyan: #06B6D4;
-      --glass: rgba(255,255,255,0.05);
-      --glass-border: rgba(255,255,255,0.12);
-      --glass-gold-border: rgba(255,215,0,0.25);
-      --nav-glass: rgba(5,3,20,0.58);
+      --glass: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-gold-border: rgba(255, 215, 0, 0.25);
+      --nav-glass: rgba(5, 3, 20, 0.58);
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Sarabun', 'Kanit', sans-serif;
@@ -43,18 +55,26 @@
       inset: 0;
       z-index: 0;
       background:
-        radial-gradient(ellipse 90% 70% at 15% 25%,  rgba(123,47,190,0.30) 0%, transparent 60%),
-        radial-gradient(ellipse 70% 55% at 85% 15%,  rgba(6,182,212,0.18)  0%, transparent 55%),
-        radial-gradient(ellipse 60% 50% at 70% 75%,  rgba(30,64,175,0.25)  0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 30% 80%,  rgba(168,85,247,0.18) 0%, transparent 55%),
-        radial-gradient(ellipse 100% 100% at 50% 50%, rgba(8,8,40,0.95)    0%, #060614 100%);
+        radial-gradient(ellipse 90% 70% at 15% 25%, rgba(123, 47, 190, 0.30) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 55% at 85% 15%, rgba(6, 182, 212, 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 70% 75%, rgba(30, 64, 175, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 30% 80%, rgba(168, 85, 247, 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 100% at 50% 50%, rgba(8, 8, 40, 0.95) 0%, #060614 100%);
       animation: nebulaDrift 18s ease-in-out infinite alternate;
     }
 
     @keyframes nebulaDrift {
-      0%   { filter: brightness(1)    hue-rotate(0deg);  }
-      50%  { filter: brightness(1.08) hue-rotate(6deg);  }
-      100% { filter: brightness(0.96) hue-rotate(-4deg); }
+      0% {
+        filter: brightness(1) hue-rotate(0deg);
+      }
+
+      50% {
+        filter: brightness(1.08) hue-rotate(6deg);
+      }
+
+      100% {
+        filter: brightness(0.96) hue-rotate(-4deg);
+      }
     }
 
     /* Starfield canvas */
@@ -68,7 +88,9 @@
     /* ===== NAVBAR ===== */
     .navbar {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
       padding: 14px 40px;
       display: flex;
@@ -77,8 +99,8 @@
       background: var(--nav-glass);
       backdrop-filter: blur(22px) saturate(180%);
       -webkit-backdrop-filter: blur(22px) saturate(180%);
-      border-bottom: 1px solid rgba(255,215,0,0.15);
-      box-shadow: 0 2px 30px rgba(0,0,0,0.6);
+      border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+      box-shadow: 0 2px 30px rgba(0, 0, 0, 0.6);
     }
 
     .nav-brand {
@@ -93,7 +115,12 @@
       white-space: nowrap;
     }
 
-    .nav-menu { display:flex; gap:6px; list-style:none; align-items:center; }
+    .nav-menu {
+      display: flex;
+      gap: 6px;
+      list-style: none;
+      align-items: center;
+    }
 
     .nav-menu li a {
       display: inline-block;
@@ -101,23 +128,23 @@
       font-family: 'Kanit', sans-serif;
       font-size: 0.95rem;
       font-weight: 500;
-      color: rgba(255,255,255,0.85);
+      color: rgba(255, 255, 255, 0.85);
       text-decoration: none;
       border-radius: 8px;
       border: 1px solid transparent;
       letter-spacing: 0.5px;
-      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-      background: rgba(255,255,255,0.03);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(255, 255, 255, 0.03);
       white-space: nowrap;
     }
 
     .nav-menu li a:hover,
     .nav-menu li a.active {
       color: var(--gold-light);
-      border-color: rgba(255,215,0,0.45);
-      background: rgba(255,215,0,0.07);
-      text-shadow: 0 0 8px var(--gold), 0 0 20px rgba(255,215,0,0.5);
-      box-shadow: 0 0 15px rgba(255,215,0,0.2), inset 0 0 12px rgba(255,215,0,0.05);
+      border-color: rgba(255, 215, 0, 0.45);
+      background: rgba(255, 215, 0, 0.07);
+      text-shadow: 0 0 8px var(--gold), 0 0 20px rgba(255, 215, 0, 0.5);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2), inset 0 0 12px rgba(255, 215, 0, 0.05);
       transform: translateY(-1px);
     }
 
@@ -138,13 +165,13 @@
       text-align: center;
       color: var(--gold);
       margin-bottom: 8px;
-      text-shadow: 0 0 12px var(--gold), 0 0 30px rgba(255,215,0,0.4);
+      text-shadow: 0 0 12px var(--gold), 0 0 30px rgba(255, 215, 0, 0.4);
       letter-spacing: 2px;
     }
 
     .section-subtitle {
       font-size: 1rem;
-      color: rgba(200,180,255,0.75);
+      color: rgba(200, 180, 255, 0.75);
       text-align: center;
       margin-bottom: 60px;
       letter-spacing: 1px;
@@ -164,14 +191,17 @@
       flex: 1;
       max-width: 120px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.6));
+      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6));
     }
 
     .title-underline::after {
-      background: linear-gradient(90deg, rgba(255,215,0,0.6), transparent);
+      background: linear-gradient(90deg, rgba(255, 215, 0, 0.6), transparent);
     }
 
-    .title-star { color: var(--gold); font-size: 1.2rem; }
+    .title-star {
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
 
     /* ===== ABOUT GRID ===== */
     .about-grid {
@@ -184,14 +214,14 @@
 
     /* Profile Card */
     .profile-card {
-      background: rgba(123,47,190,0.12);
-      border: 1px solid rgba(168,85,247,0.3);
+      background: rgba(123, 47, 190, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.3);
       border-radius: 24px;
       padding: 32px 24px;
       text-align: center;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 8px 40px rgba(123,47,190,0.2), inset 0 1px 0 rgba(255,255,255,0.06);
+      box-shadow: 0 8px 40px rgba(123, 47, 190, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06);
       position: relative;
       overflow: hidden;
     }
@@ -199,9 +229,11 @@
     .profile-card::before {
       content: '';
       position: absolute;
-      top: -60px; left: -60px;
-      width: 180px; height: 180px;
-      background: radial-gradient(circle, rgba(168,85,247,0.2) 0%, transparent 70%);
+      top: -60px;
+      left: -60px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -231,7 +263,9 @@
     }
 
     @keyframes spinGlow {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     .profile-img {
@@ -251,13 +285,13 @@
       font-size: 1.2rem;
       font-weight: 600;
       color: var(--gold);
-      text-shadow: 0 0 10px rgba(255,215,0,0.5);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
       margin-bottom: 6px;
     }
 
     .profile-role {
       font-size: 0.85rem;
-      color: rgba(200,180,255,0.8);
+      color: rgba(200, 180, 255, 0.8);
       line-height: 1.6;
       margin-bottom: 24px;
     }
@@ -271,8 +305,8 @@
     }
 
     .stat-chip {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       padding: 10px 8px;
       text-align: center;
@@ -287,7 +321,7 @@
 
     .stat-label {
       font-size: 0.72rem;
-      color: rgba(200,180,255,0.7);
+      color: rgba(200, 180, 255, 0.7);
       margin-top: 2px;
     }
 
@@ -299,7 +333,7 @@
       padding: 36px;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
 
     .card-heading {
@@ -317,8 +351,8 @@
       width: 36px;
       height: 36px;
       border-radius: 10px;
-      background: linear-gradient(135deg, rgba(168,85,247,0.4), rgba(6,182,212,0.3));
-      border: 1px solid rgba(168,85,247,0.4);
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.4), rgba(6, 182, 212, 0.3));
+      border: 1px solid rgba(168, 85, 247, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -327,7 +361,11 @@
     }
 
     /* Info rows */
-    .info-list { display: flex; flex-direction: column; gap: 14px; }
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
 
     .info-row {
       display: flex;
@@ -335,14 +373,14 @@
       align-items: flex-start;
       padding: 14px 16px;
       border-radius: 12px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       transition: border-color 0.3s, background 0.3s;
     }
 
     .info-row:hover {
-      background: rgba(168,85,247,0.07);
-      border-color: rgba(168,85,247,0.25);
+      background: rgba(168, 85, 247, 0.07);
+      border-color: rgba(168, 85, 247, 0.25);
     }
 
     .info-icon {
@@ -355,7 +393,7 @@
 
     .info-label {
       font-size: 0.78rem;
-      color: rgba(168,85,247,0.85);
+      color: rgba(168, 85, 247, 0.85);
       letter-spacing: 1px;
       text-transform: uppercase;
       font-weight: 600;
@@ -364,14 +402,14 @@
 
     .info-value {
       font-size: 1rem;
-      color: rgba(255,255,255,0.90);
+      color: rgba(255, 255, 255, 0.90);
       line-height: 1.5;
     }
 
     /* ===== DIVIDER ===== */
     .divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(168,85,247,0.4), rgba(6,182,212,0.4), transparent);
+      background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.4), rgba(6, 182, 212, 0.4), transparent);
       margin: 16px 0 28px;
     }
 
@@ -388,12 +426,12 @@
     }
 
     .interest-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 18px;
       padding: 24px 16px;
       text-align: center;
-      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: default;
       position: relative;
       overflow: hidden;
@@ -410,12 +448,14 @@
 
     .interest-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(168,85,247,0.5);
-      box-shadow: 0 12px 40px rgba(123,47,190,0.3);
-      background: rgba(123,47,190,0.12);
+      border-color: rgba(168, 85, 247, 0.5);
+      box-shadow: 0 12px 40px rgba(123, 47, 190, 0.3);
+      background: rgba(123, 47, 190, 0.12);
     }
 
-    .interest-card:hover::before { opacity: 1; }
+    .interest-card:hover::before {
+      opacity: 1;
+    }
 
     .interest-emoji {
       font-size: 2.4rem;
@@ -438,7 +478,7 @@
 
     .interest-desc {
       font-size: 0.8rem;
-      color: rgba(200,180,255,0.7);
+      color: rgba(200, 180, 255, 0.7);
       line-height: 1.5;
     }
 
@@ -446,7 +486,7 @@
     .quote-block {
       margin-top: 50px;
       padding: 30px 40px;
-      background: rgba(123,47,190,0.1);
+      background: rgba(123, 47, 190, 0.1);
       border-left: 3px solid var(--purple-light);
       border-radius: 0 16px 16px 0;
       position: relative;
@@ -458,7 +498,7 @@
       top: -20px;
       left: 20px;
       font-size: 6rem;
-      color: rgba(168,85,247,0.2);
+      color: rgba(168, 85, 247, 0.2);
       font-family: Georgia, serif;
       line-height: 1;
     }
@@ -466,7 +506,7 @@
     .quote-text {
       font-size: 1.1rem;
       font-style: italic;
-      color: rgba(255,255,255,0.85);
+      color: rgba(255, 255, 255, 0.85);
       line-height: 1.8;
       margin-bottom: 12px;
     }
@@ -475,24 +515,57 @@
       font-family: 'Kanit', sans-serif;
       font-size: 0.9rem;
       color: var(--gold);
-      text-shadow: 0 0 8px rgba(255,215,0,0.4);
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
     }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 860px) {
-      .about-grid { grid-template-columns: 1fr; }
-      .profile-card { max-width: 340px; margin: 0 auto; }
-      .nav-brand { display: none; }
-      .navbar { padding: 12px 10px; }
-      .nav-menu li a { padding: 8px 12px; font-size: 0.82rem; }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        max-width: 340px;
+        margin: 0 auto;
+      }
+
+      .nav-brand {
+        display: none;
+      }
+
+      .navbar {
+        padding: 12px 10px;
+      }
+
+      .nav-menu li a {
+        padding: 8px 12px;
+        font-size: 0.82rem;
+      }
     }
 
     @media (max-width: 600px) {
-      .interests-grid { grid-template-columns: repeat(2, 1fr); }
-      .nav-menu { gap: 2px; flex-wrap: wrap; justify-content: center; }
-      .nav-menu li a { padding: 7px 9px; font-size: 0.76rem; }
-      .story-card { padding: 24px 18px; }
-      .quote-block { padding: 22px 24px; }
+      .interests-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-menu {
+        gap: 2px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-menu li a {
+        padding: 7px 9px;
+        font-size: 0.76rem;
+      }
+
+      .story-card {
+        padding: 24px 18px;
+      }
+
+      .quote-block {
+        padding: 22px 24px;
+      }
     }
 
     /* Fade-in animation */
@@ -501,12 +574,14 @@
       transform: translateY(30px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
+
     .fade-up.visible {
       opacity: 1;
       transform: translateY(0);
     }
   </style>
 </head>
+
 <body>
 
   <!-- Nebula Background -->
@@ -520,7 +595,7 @@
       <li><a href="index.html" id="nav-home">Home</a></li>
       <li><a href="about.html" class="active" id="nav-about">About</a></li>
       <li><a href="education.html" id="nav-education">Education</a></li>
-      <li><a href="#" id="nav-skills">Skills</a></li>
+      <li><a href="skills.html" id="nav-skills">Skills</a></li>
       <li><a href="#" id="nav-simulations">Simulations</a></li>
       <li><a href="#" id="nav-biomass">Biomass</a></li>
       <li><a href="#" id="nav-contact">Contact</a></li>
@@ -549,8 +624,8 @@
         </div>
         <div class="profile-name">นายขจรศักดิ์ สิทธิวงศ์</div>
         <div class="profile-role">
-          นักศึกษาคณะครุศาสตร์<br/>
-          สาขาวิทยาศาสตร์ (เอกฟิสิกส์)<br/>
+          นักศึกษาคณะครุศาสตร์<br />
+          สาขาวิทยาศาสตร์ (เอกฟิสิกส์)<br />
           ม.ราชภัฏอุตรดิตถ์
         </div>
 
@@ -613,7 +688,7 @@
             <span class="info-icon">🎓</span>
             <div class="info-content">
               <div class="info-label">กำลังศึกษา</div>
-              <div class="info-value">คณะครุศาสตร์ สาขาวิทยาศาสตร์ (เอกฟิสิกส์)<br/>
+              <div class="info-value">คณะครุศาสตร์ สาขาวิทยาศาสตร์ (เอกฟิสิกส์)<br />
                 มหาวิทยาลัยราชภัฏอุตรดิตถ์ ชั้นปีที่ 4</div>
             </div>
           </div>
@@ -647,31 +722,31 @@
           <div class="interest-card">
             <span class="interest-emoji">📷</span>
             <div class="interest-title">ถ่ายภาพ</div>
-            <div class="interest-desc">จับภูมิทัศน์และ<br/>ช่วงเวลาสวยงาม</div>
+            <div class="interest-desc">จับภูมิทัศน์และ<br />ช่วงเวลาสวยงาม</div>
           </div>
 
           <div class="interest-card">
             <span class="interest-emoji">🏋️</span>
             <div class="interest-title">ฟิตเนส</div>
-            <div class="interest-desc">ออกกำลังกายเพื่อ<br/>ความแข็งแรง</div>
+            <div class="interest-desc">ออกกำลังกายเพื่อ<br />ความแข็งแรง</div>
           </div>
 
           <div class="interest-card">
             <span class="interest-emoji">🎬</span>
             <div class="interest-title">ดูหนัง & ซีรี่ย์</div>
-            <div class="interest-desc">เรื่องราวที่สร้าง<br/>แรงบันดาลใจ</div>
+            <div class="interest-desc">เรื่องราวที่สร้าง<br />แรงบันดาลใจ</div>
           </div>
 
           <div class="interest-card">
             <span class="interest-emoji">🎮</span>
             <div class="interest-title">เล่นเกม</div>
-            <div class="interest-desc">ผจญภัยในโลก<br/>เสมือนจริง</div>
+            <div class="interest-desc">ผจญภัยในโลก<br />เสมือนจริง</div>
           </div>
 
           <div class="interest-card">
             <span class="interest-emoji">🎵</span>
             <div class="interest-title">ร้องเพลง</div>
-            <div class="interest-desc">ปล่อยอารมณ์<br/>ผ่านท่วงทำนอง</div>
+            <div class="interest-desc">ปล่อยอารมณ์<br />ผ่านท่วงทำนอง</div>
           </div>
 
         </div>
@@ -697,19 +772,19 @@
     let stars = [];
 
     function resize() {
-      canvas.width  = window.innerWidth;
+      canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
 
     function initStars(n = 220) {
-      stars = Array.from({length: n}, () => {
+      stars = Array.from({ length: n }, () => {
         const r = Math.random();
         return {
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          r: r < 0.6 ? 0.4 + Math.random()*0.7 : r < 0.9 ? 0.9 + Math.random()*1.0 : 1.5 + Math.random()*1.2,
-          a: 0.2 + Math.random()*0.6,
-          spd: 0.002 + Math.random()*0.005,
+          r: r < 0.6 ? 0.4 + Math.random() * 0.7 : r < 0.9 ? 0.9 + Math.random() * 1.0 : 1.5 + Math.random() * 1.2,
+          a: 0.2 + Math.random() * 0.6,
+          spd: 0.002 + Math.random() * 0.005,
           phase: Math.random() * Math.PI * 2,
           purple: Math.random() < 0.15,
         };
@@ -721,7 +796,7 @@
       for (const s of stars) {
         const tw = s.a * (0.5 + 0.5 * Math.sin(t * s.spd * 60 + s.phase));
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fillStyle = s.purple
           ? `rgba(168,85,247,${tw})`
           : `rgba(255,255,255,${tw})`;
@@ -744,4 +819,5 @@
     });
   </script>
 </body>
+
 </html>

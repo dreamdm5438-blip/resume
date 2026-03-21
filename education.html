@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>การศึกษา | ขจรศักดิ์ สิทธิวงศ์</title>
-  <meta name="description" content="ประวัติการศึกษาและประสบการณ์สอนของ ขจรศักดิ์ สิทธิวงศ์ นักศึกษาครุศาสตร์ สาขาฟิสิกส์" />
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta name="description"
+    content="ประวัติการศึกษาและประสบการณ์สอนของ ขจรศักดิ์ สิทธิวงศ์ นักศึกษาครุศาสตร์ สาขาฟิสิกส์" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600;700&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --gold: #ffd700;
@@ -49,30 +59,38 @@
       width: 340px;
       height: 340px;
     }
+
     .planet-main .sphere {
       width: 220px;
       height: 220px;
       border-radius: 50%;
       background: radial-gradient(circle at 35% 35%, #a78bfa, #4c1d95 55%, #1e0045);
-      box-shadow: 0 0 60px rgba(139, 92, 246, 0.6), inset -20px -10px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 0 60px rgba(139, 92, 246, 0.6), inset -20px -10px 40px rgba(0, 0, 0, 0.5);
       position: absolute;
-      top: 60px; left: 60px;
+      top: 60px;
+      left: 60px;
     }
+
     .planet-main .ring {
-      width: 340px; height: 100px;
+      width: 340px;
+      height: 100px;
       border-radius: 50%;
       border: 18px solid rgba(196, 160, 255, 0.35);
-      box-shadow: 0 0 25px rgba(196,160,255,0.2);
+      box-shadow: 0 0 25px rgba(196, 160, 255, 0.2);
       position: absolute;
-      top: 118px; left: 0;
+      top: 118px;
+      left: 0;
       transform: rotateX(72deg);
     }
+
     .planet-main .ring2 {
-      width: 290px; height: 80px;
+      width: 290px;
+      height: 80px;
       border-radius: 50%;
       border: 8px solid rgba(255, 215, 0, 0.18);
       position: absolute;
-      top: 128px; left: 25px;
+      top: 128px;
+      left: 25px;
       transform: rotateX(72deg);
     }
 
@@ -83,22 +101,27 @@
       width: 200px;
       height: 200px;
     }
+
     .planet-small .sphere {
       width: 130px;
       height: 130px;
       border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #67e8f9, #0284c7 55%, #082f49);
-      box-shadow: 0 0 40px rgba(14, 165, 233, 0.5), inset -10px -8px 25px rgba(0,0,0,0.5);
+      box-shadow: 0 0 40px rgba(14, 165, 233, 0.5), inset -10px -8px 25px rgba(0, 0, 0, 0.5);
       position: absolute;
-      top: 35px; left: 35px;
+      top: 35px;
+      left: 35px;
     }
+
     .planet-small .ring {
-      width: 200px; height: 55px;
+      width: 200px;
+      height: 55px;
       border-radius: 50%;
       border: 10px solid rgba(103, 232, 249, 0.3);
-      box-shadow: 0 0 18px rgba(103,232,249,0.15);
+      box-shadow: 0 0 18px rgba(103, 232, 249, 0.15);
       position: absolute;
-      top: 71px; left: 0;
+      top: 71px;
+      left: 0;
       transform: rotateX(68deg);
     }
 
@@ -109,18 +132,23 @@
       width: 70px;
       height: 70px;
     }
+
     .planet-tiny .sphere {
-      width: 50px; height: 50px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: radial-gradient(circle at 35% 35%, #fb923c, #9a3412 60%, #1c0700);
-      box-shadow: 0 0 20px rgba(251,146,60,0.5);
-      position: absolute; top:10px; left:10px;
+      box-shadow: 0 0 20px rgba(251, 146, 60, 0.5);
+      position: absolute;
+      top: 10px;
+      left: 10px;
     }
 
     /* ===== NAVBAR ===== */
     .navbar {
       position: fixed;
-      top: 0; width: 100%;
+      top: 0;
+      width: 100%;
       padding: 18px 40px;
       background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(12px);
@@ -130,27 +158,43 @@
       align-items: center;
       border-bottom: 1px solid rgba(255, 215, 0, 0.12);
     }
+
     .nav-brand {
-      position: absolute; left: 40px;
+      position: absolute;
+      left: 40px;
       color: var(--gold);
       font-family: 'Kanit', sans-serif;
-      font-weight: 700; font-size: 1.2rem;
+      font-weight: 700;
+      font-size: 1.2rem;
       letter-spacing: 1px;
     }
-    .nav-menu { list-style: none; display: flex; gap: 8px; align-items: center; }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
     .nav-menu a {
-      color: rgba(255,255,255,0.75);
+      color: rgba(255, 255, 255, 0.75);
       text-decoration: none;
-      font-weight: 500; font-size: 0.9rem;
+      font-weight: 500;
+      font-size: 0.9rem;
       padding: 7px 14px;
       border-radius: 6px;
       transition: all 0.3s;
     }
-    .nav-menu a:hover { color: white; background: rgba(255,255,255,0.07); }
+
+    .nav-menu a:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
     .nav-menu a.active {
       color: var(--gold);
-      background: rgba(255,215,0,0.12);
-      border: 1px solid rgba(255,215,0,0.35);
+      background: rgba(255, 215, 0, 0.12);
+      border: 1px solid rgba(255, 215, 0, 0.35);
       font-weight: 700;
     }
 
@@ -168,6 +212,7 @@
       text-align: center;
       margin-bottom: 60px;
     }
+
     .cap-icon {
       font-size: 4rem;
       display: inline-block;
@@ -175,10 +220,19 @@
       animation: glowPulse 2.5s ease-in-out infinite;
       margin-bottom: 12px;
     }
+
     @keyframes glowPulse {
-      0%,100% { filter: drop-shadow(0 0 14px #ffd700) drop-shadow(0 0 30px #ffaa00); }
-      50%      { filter: drop-shadow(0 0 28px #ffd700) drop-shadow(0 0 55px #ffaa00) drop-shadow(0 0 10px white); }
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 14px #ffd700) drop-shadow(0 0 30px #ffaa00);
+      }
+
+      50% {
+        filter: drop-shadow(0 0 28px #ffd700) drop-shadow(0 0 55px #ffaa00) drop-shadow(0 0 10px white);
+      }
     }
+
     .page-header h1 {
       font-family: 'Kanit', sans-serif;
       font-size: 2.8rem;
@@ -189,14 +243,17 @@
       text-shadow: none;
       margin-bottom: 6px;
     }
+
     .page-header .sub {
-      color: rgba(255,255,255,0.6);
+      color: rgba(255, 255, 255, 0.6);
       font-size: 1rem;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
+
     .divider {
-      width: 100px; height: 2px;
+      width: 100px;
+      height: 2px;
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
       margin: 16px auto 0;
     }
@@ -208,35 +265,44 @@
       gap: 12px;
       margin: 0 0 30px 0;
     }
-    .section-title .icon { font-size: 1.6rem; }
+
+    .section-title .icon {
+      font-size: 1.6rem;
+    }
+
     .section-title h2 {
       font-family: 'Kanit', sans-serif;
       font-size: 1.4rem;
       color: var(--gold);
-      text-shadow: 0 0 12px rgba(255,215,0,0.4);
+      text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
     }
+
     .section-title::after {
       content: '';
       flex: 1;
       height: 1px;
-      background: linear-gradient(90deg, rgba(255,215,0,0.4), transparent);
+      background: linear-gradient(90deg, rgba(255, 215, 0, 0.4), transparent);
     }
 
     /* ===== TIMELINE ===== */
-    .timeline-section { margin-bottom: 60px; }
+    .timeline-section {
+      margin-bottom: 60px;
+    }
 
     .timeline {
       position: relative;
       padding-left: 0;
     }
+
     /* vertical line */
     .timeline::before {
       content: '';
       position: absolute;
       left: 28px;
-      top: 0; bottom: 0;
+      top: 0;
+      bottom: 0;
       width: 2px;
-      background: linear-gradient(180deg, var(--gold) 0%, rgba(255,215,0,0.15) 100%);
+      background: linear-gradient(180deg, var(--gold) 0%, rgba(255, 215, 0, 0.15) 100%);
     }
 
     .timeline-item {
@@ -246,18 +312,49 @@
       margin-bottom: 28px;
       animation: fadeSlideIn 0.6s ease both;
     }
-    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
-    .timeline-item:nth-child(6) { animation-delay: 0.6s; }
-    .timeline-item:nth-child(7) { animation-delay: 0.7s; }
-    .timeline-item:nth-child(8) { animation-delay: 0.8s; }
+
+    .timeline-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .timeline-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .timeline-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .timeline-item:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .timeline-item:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .timeline-item:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    .timeline-item:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+
+    .timeline-item:nth-child(8) {
+      animation-delay: 0.8s;
+    }
 
     @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to   { opacity: 1; transform: translateX(0); }
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     /* dot */
@@ -269,29 +366,40 @@
       align-items: flex-start;
       padding-top: 18px;
     }
+
     .tl-dot .dot {
-      width: 16px; height: 16px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       border: 2px solid var(--gold);
       background: var(--dark);
-      box-shadow: 0 0 10px rgba(255,215,0,0.5);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
       transition: transform 0.3s;
     }
+
     .timeline-item:hover .dot {
       transform: scale(1.4);
       background: var(--gold);
-      box-shadow: 0 0 20px rgba(255,215,0,0.8);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
     }
 
     /* current / special dot */
     .tl-dot .dot.current {
       background: var(--gold);
-      box-shadow: 0 0 18px rgba(255,215,0,0.9), 0 0 35px rgba(255,170,0,0.5);
+      box-shadow: 0 0 18px rgba(255, 215, 0, 0.9), 0 0 35px rgba(255, 170, 0, 0.5);
       animation: dotPulse 1.8s ease infinite;
     }
+
     @keyframes dotPulse {
-      0%,100% { box-shadow: 0 0 18px rgba(255,215,0,0.9), 0 0 35px rgba(255,170,0,0.5); }
-      50%      { box-shadow: 0 0 28px rgba(255,215,0,1), 0 0 55px rgba(255,170,0,0.8); }
+
+      0%,
+      100% {
+        box-shadow: 0 0 18px rgba(255, 215, 0, 0.9), 0 0 35px rgba(255, 170, 0, 0.5);
+      }
+
+      50% {
+        box-shadow: 0 0 28px rgba(255, 215, 0, 1), 0 0 55px rgba(255, 170, 0, 0.8);
+      }
     }
 
     /* card */
@@ -306,40 +414,51 @@
       position: relative;
       overflow: hidden;
     }
+
     .tl-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0;
-      width: 4px; height: 100%;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
       background: linear-gradient(180deg, var(--gold), var(--gold-light));
       border-radius: 4px 0 0 4px;
       opacity: 0.7;
     }
+
     .tl-card:hover {
-      border-color: rgba(255,215,0,0.4);
+      border-color: rgba(255, 215, 0, 0.4);
       transform: translateX(6px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(255,215,0,0.08);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.08);
     }
 
     /* special cards */
     .tl-card.current-card {
-      border-color: rgba(255,215,0,0.45);
+      border-color: rgba(255, 215, 0, 0.45);
       background: rgba(20, 14, 50, 0.85);
     }
-    .tl-card.current-card::before { opacity: 1; }
 
-    .tl-card.cert-card { border-color: rgba(167,139,250,0.35); }
+    .tl-card.current-card::before {
+      opacity: 1;
+    }
+
+    .tl-card.cert-card {
+      border-color: rgba(167, 139, 250, 0.35);
+    }
+
     .tl-card.cert-card::before {
       background: linear-gradient(180deg, #a78bfa, #7c3aed);
     }
+
     .tl-card.teach-card::before {
       background: linear-gradient(180deg, #67e8f9, #0284c7);
     }
 
     .year-badge {
       display: inline-block;
-      background: rgba(255,215,0,0.12);
-      border: 1px solid rgba(255,215,0,0.3);
+      background: rgba(255, 215, 0, 0.12);
+      border: 1px solid rgba(255, 215, 0, 0.3);
       color: var(--gold);
       font-size: 0.78rem;
       font-weight: 700;
@@ -348,16 +467,35 @@
       margin-bottom: 8px;
       letter-spacing: 0.5px;
     }
+
     .year-badge.now {
-      background: rgba(255,215,0,0.25);
+      background: rgba(255, 215, 0, 0.25);
       animation: badgePulse 2s ease infinite;
     }
+
     @keyframes badgePulse {
-      0%,100% { box-shadow: 0 0 8px rgba(255,215,0,0.3); }
-      50%      { box-shadow: 0 0 18px rgba(255,215,0,0.7); }
+
+      0%,
+      100% {
+        box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 0 18px rgba(255, 215, 0, 0.7);
+      }
     }
-    .year-badge.teach { background: rgba(103,232,249,0.12); border-color: rgba(103,232,249,0.3); color: #67e8f9; }
-    .year-badge.cert  { background: rgba(167,139,250,0.12); border-color: rgba(167,139,250,0.3); color: #c4b5fd; }
+
+    .year-badge.teach {
+      background: rgba(103, 232, 249, 0.12);
+      border-color: rgba(103, 232, 249, 0.3);
+      color: #67e8f9;
+    }
+
+    .year-badge.cert {
+      background: rgba(167, 139, 250, 0.12);
+      border-color: rgba(167, 139, 250, 0.3);
+      color: #c4b5fd;
+    }
 
     .tl-card h3 {
       font-family: 'Kanit', sans-serif;
@@ -366,40 +504,58 @@
       margin-bottom: 4px;
       line-height: 1.4;
     }
+
     .tl-card .school {
-      color: rgba(255,255,255,0.7);
+      color: rgba(255, 255, 255, 0.7);
       font-size: 0.9rem;
       line-height: 1.5;
     }
+
     .tl-card .degree-tag {
       display: inline-block;
       margin-top: 8px;
       padding: 4px 12px;
       border-radius: 8px;
-      background: rgba(255,215,0,0.1);
-      border: 1px solid rgba(255,215,0,0.25);
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.25);
       color: var(--gold);
       font-size: 0.82rem;
     }
+
     .tl-card .cert-list {
       margin-top: 10px;
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
+
     .cert-item {
       display: flex;
       align-items: center;
       gap: 10px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255, 255, 255, 0.04);
       border-radius: 8px;
       padding: 8px 12px;
       font-size: 0.9rem;
     }
-    .cert-item .ci-icon { font-size: 1.1rem; }
-    .cert-item .ci-info { flex: 1; }
-    .cert-item .ci-name { color: white; font-weight: 600; }
-    .cert-item .ci-detail { color: rgba(255,255,255,0.55); font-size: 0.8rem; }
+
+    .cert-item .ci-icon {
+      font-size: 1.1rem;
+    }
+
+    .cert-item .ci-info {
+      flex: 1;
+    }
+
+    .cert-item .ci-name {
+      color: white;
+      font-weight: 600;
+    }
+
+    .cert-item .ci-detail {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.8rem;
+    }
 
     /* ===== STATS STRIP ===== */
     .stats-strip {
@@ -408,6 +564,7 @@
       gap: 16px;
       margin-top: 50px;
     }
+
     .stat-box {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -417,18 +574,29 @@
       backdrop-filter: blur(10px);
       transition: 0.3s;
     }
-    .stat-box:hover { border-color: rgba(255,215,0,0.4); transform: translateY(-4px); }
+
+    .stat-box:hover {
+      border-color: rgba(255, 215, 0, 0.4);
+      transform: translateY(-4px);
+    }
+
     .stat-box .s-num {
       font-family: 'Kanit', sans-serif;
       font-size: 2.2rem;
       color: var(--gold);
-      text-shadow: 0 0 16px rgba(255,215,0,0.5);
+      text-shadow: 0 0 16px rgba(255, 215, 0, 0.5);
     }
-    .stat-box .s-label { color: rgba(255,255,255,0.65); font-size: 0.85rem; margin-top: 4px; }
+
+    .stat-box .s-label {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
 
     /* ===== STAR CANVAS SCRIPT (inline) ===== */
   </style>
 </head>
+
 <body>
 
   <!-- ANIMATED STAR CANVAS -->
@@ -448,15 +616,14 @@
     <div class="sphere"></div>
   </div>
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-brand">✦ KS</div>
     <ul class="nav-menu">
       <li><a href="index.html">หน้าแรก</a></li>
       <li><a href="about.html">ประวัติ</a></li>
       <li><a href="education.html" class="active">การศึกษา</a></li>
-      <li><a href="#">ทักษะ</a></li>
-      <li><a href="simulations.html">Simulations</a></li>
+      <li><a href="skills.html">ทักษะ</a></li>
+      <li><a href="#">Simulations</a></li>
       <li><a href="#">Biomass</a></li>
       <li><a href="#">ติดต่อ</a></li>
     </ul>
@@ -484,11 +651,13 @@
 
         <!-- ปริญญาตรี (กำลังศึกษา) – ปัจจุบัน -->
         <div class="timeline-item">
-          <div class="tl-dot"><div class="dot current"></div></div>
+          <div class="tl-dot">
+            <div class="dot current"></div>
+          </div>
           <div class="tl-card current-card">
             <span class="year-badge now">2565 – ปัจจุบัน ✦</span>
             <h3>ปริญญาตรี | ระดับอุดมศึกษา</h3>
-            <p class="school">คณะครุศาสตร์ สาขาวิชาวิทยาศาสตร์ (เอกฟิสิกส์)<br/>
+            <p class="school">คณะครุศาสตร์ สาขาวิชาวิทยาศาสตร์ (เอกฟิสิกส์)<br />
               <strong>มหาวิทยาลัยราชภัฏอุตรดิตถ์</strong>
             </p>
             <span class="degree-tag">🎓 ครุศาสตรบัณฑิต (ค.บ.) — คาดว่าจะจบ มีนาคม 2569</span>
@@ -497,7 +666,9 @@
 
         <!-- มัธยมปลาย -->
         <div class="timeline-item">
-          <div class="tl-dot"><div class="dot"></div></div>
+          <div class="tl-dot">
+            <div class="dot"></div>
+          </div>
           <div class="tl-card">
             <span class="year-badge">2562 – 2564</span>
             <h3>ระดับมัธยมศึกษาตอนปลาย (ม.4–ม.6)</h3>
@@ -507,7 +678,9 @@
 
         <!-- มัธยมต้น -->
         <div class="timeline-item">
-          <div class="tl-dot"><div class="dot"></div></div>
+          <div class="tl-dot">
+            <div class="dot"></div>
+          </div>
           <div class="tl-card">
             <span class="year-badge">2559 – 2561</span>
             <h3>ระดับมัธยมศึกษาตอนต้น (ม.1–ม.3)</h3>
@@ -517,7 +690,9 @@
 
         <!-- ประถมศึกษา -->
         <div class="timeline-item">
-          <div class="tl-dot"><div class="dot"></div></div>
+          <div class="tl-dot">
+            <div class="dot"></div>
+          </div>
           <div class="tl-card">
             <span class="year-badge">2553 – 2558</span>
             <h3>ระดับประถมศึกษา</h3>
@@ -538,7 +713,9 @@
       <div class="timeline">
 
         <div class="timeline-item">
-          <div class="tl-dot"><div class="dot current"></div></div>
+          <div class="tl-dot">
+            <div class="dot current"></div>
+          </div>
           <div class="tl-card teach-card">
             <span class="year-badge teach">2568</span>
             <h3>ฝึกประสบการณ์สอน</h3>
@@ -547,7 +724,9 @@
         </div>
 
         <div class="timeline-item">
-          <div class="tl-dot"><div class="dot"></div></div>
+          <div class="tl-dot">
+            <div class="dot"></div>
+          </div>
           <div class="tl-card teach-card">
             <span class="year-badge teach">2567</span>
             <h3>ฝึกประสบการณ์สอน</h3>
@@ -556,7 +735,9 @@
         </div>
 
         <div class="timeline-item">
-          <div class="tl-dot"><div class="dot"></div></div>
+          <div class="tl-dot">
+            <div class="dot"></div>
+          </div>
           <div class="tl-card teach-card">
             <span class="year-badge teach">2566</span>
             <h3>ฝึกประสบการณ์สอน</h3>
@@ -565,7 +746,9 @@
         </div>
 
         <div class="timeline-item">
-          <div class="tl-dot"><div class="dot"></div></div>
+          <div class="tl-dot">
+            <div class="dot"></div>
+          </div>
           <div class="tl-card teach-card">
             <span class="year-badge teach">2565</span>
             <h3>ฝึกประสบการณ์สอน</h3>
@@ -585,7 +768,9 @@
 
       <div class="timeline">
         <div class="timeline-item">
-          <div class="tl-dot"><div class="dot" style="border-color:#a78bfa;box-shadow:0 0 10px rgba(167,139,250,0.5);"></div></div>
+          <div class="tl-dot">
+            <div class="dot" style="border-color:#a78bfa;box-shadow:0 0 10px rgba(167,139,250,0.5);"></div>
+          </div>
           <div class="tl-card cert-card">
             <span class="year-badge cert">2568</span>
             <h3>เกียรติบัตรและใบรับรองความสามารถ</h3>
@@ -594,14 +779,16 @@
                 <span class="ci-icon">🌐</span>
                 <div class="ci-info">
                   <div class="ci-name">ผลการทดสอบภาษาอังกฤษ CEFR ระดับ B1</div>
-                  <div class="ci-detail">งานวิเทศสัมพันธ์และพัฒนาภาษาต่างประเทศ มหาวิทยาลัยราชภัฏอุตรดิตถ์ — 9 กันยายน 2568</div>
+                  <div class="ci-detail">งานวิเทศสัมพันธ์และพัฒนาภาษาต่างประเทศ มหาวิทยาลัยราชภัฏอุตรดิตถ์ — 9 กันยายน
+                    2568</div>
                 </div>
               </div>
               <div class="cert-item">
                 <span class="ci-icon">💻</span>
                 <div class="ci-info">
                   <div class="ci-name">การทดสอบทักษะดิจิทัล ระดับปริญญาตรี</div>
-                  <div class="ci-detail">มาตรฐานการศึกษาและสมรรถนะด้านดิจิทัล มหาวิทยาลัยราชภัฏอุตรดิตถ์ — 1 สิงหาคม 2568</div>
+                  <div class="ci-detail">มาตรฐานการศึกษาและสมรรถนะด้านดิจิทัล มหาวิทยาลัยราชภัฏอุตรดิตถ์ — 1 สิงหาคม
+                    2568</div>
                 </div>
               </div>
             </div>
@@ -635,7 +822,7 @@
     let stars = [];
 
     function resize() {
-      canvas.width  = window.innerWidth;
+      canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
     resize();
@@ -680,17 +867,17 @@
 
       // nebula glow blobs
       const nb = [
-        { x: canvas.width*0.15, y: canvas.height*0.3, r: 250, c: '120,40,220' },
-        { x: canvas.width*0.85, y: canvas.height*0.7, r: 200, c: '0,100,200' },
-        { x: canvas.width*0.5,  y: canvas.height*0.55, r: 180, c: '30,0,80' },
+        { x: canvas.width * 0.15, y: canvas.height * 0.3, r: 250, c: '120,40,220' },
+        { x: canvas.width * 0.85, y: canvas.height * 0.7, r: 200, c: '0,100,200' },
+        { x: canvas.width * 0.5, y: canvas.height * 0.55, r: 180, c: '30,0,80' },
       ];
       nb.forEach(n => {
-        const g = ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r);
+        const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
         g.addColorStop(0, `rgba(${n.c},0.07)`);
         g.addColorStop(1, `rgba(${n.c},0)`);
         ctx.fillStyle = g;
         ctx.beginPath();
-        ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
         ctx.fill();
       });
 
@@ -699,4 +886,5 @@
     animStars();
   </script>
 </body>
+
 </html>
