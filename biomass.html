@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biomass Energy Report | ขจรศักดิ์ สิทธิวงศ์</title>
+  <meta name="description" content="รายงานผลงานวิจัยพลังงานชีวมวลของ ขจรศักดิ์ สิทธิวงศ์" />
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --emerald:  #00e676;
+      --emerald2: #69f0ae;
+      --gold:     #ffd700;
+      --cyan:     #00e5ff;
+      --dark:     #010d05;
+      --card:     rgba(2, 20, 10, 0.85);
+      --border:   rgba(0, 230, 118, 0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: white;
+      font-family: 'Sarabun', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== CANVAS BG ===== */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ===== FLOATING EQUATIONS ===== */
+    .eq-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .eq {
+      position: absolute;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.82rem;
+      color: rgba(0, 230, 118, 0.10);
+      white-space: nowrap;
+      animation: floatEq linear infinite;
+      user-select: none;
+    }
+    @keyframes floatEq {
+      0%   { transform: translateY(100vh) rotate(-4deg); opacity: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 1; }
+      100% { transform: translateY(-120px) rotate(-4deg); opacity: 0; }
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0; width: 100%;
+      padding: 16px 40px;
+      background: rgba(0, 8, 3, 0.80);
+      backdrop-filter: blur(14px);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid rgba(0, 230, 118, 0.14);
+    }
+    .nav-brand {
+      position: absolute; left: 40px;
+      color: var(--gold);
+      font-family: 'Kanit', sans-serif;
+      font-weight: 700; font-size: 1.2rem;
+    }
+    .nav-menu { list-style: none; display: flex; gap: 8px; }
+    .nav-menu a {
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      font-weight: 500; font-size: 0.88rem;
+      padding: 7px 13px;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+    .nav-menu a:hover { color: white; background: rgba(255,255,255,0.07); }
+    .nav-menu a.active {
+      color: var(--emerald);
+      background: rgba(0,230,118,0.10);
+      border: 1px solid rgba(0,230,118,0.3);
+      font-weight: 700;
+    }
+
+    /* ===== MAIN ===== */
+    main {
+      position: relative;
+      z-index: 10;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 115px 24px 80px;
+    }
+
+    /* ===== PAGE HEADER ===== */
+    .page-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .header-icon {
+      font-size: 3.8rem;
+      display: inline-block;
+      animation: iconPulse 2.8s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px #00e676);
+      margin-bottom: 12px;
+    }
+    @keyframes iconPulse {
+      0%,100% { filter: drop-shadow(0 0 16px #00e676) drop-shadow(0 0 35px #00a854); transform: scale(1); }
+      50%      { filter: drop-shadow(0 0 30px #69f0ae) drop-shadow(0 0 60px #00e676); transform: scale(1.06); }
+    }
+    .page-header h1 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, #fff 0%, #69f0ae 40%, #ffd700 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+    }
+    .page-header .sub {
+      color: rgba(0,230,118,0.65);
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    .divider-sci {
+      width: 160px; height: 2px;
+      background: linear-gradient(90deg, transparent, #00e676, #ffd700, transparent);
+      margin: 14px auto 0;
+    }
+
+    /* ===== SECTION LABEL ===== */
+    .sec-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .sec-label h2 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 1.3rem;
+      color: var(--emerald);
+      text-shadow: 0 0 14px rgba(0,230,118,0.5);
+      white-space: nowrap;
+    }
+    .sec-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(0,230,118,0.4), transparent);
+    }
+
+    /* ===== OVERVIEW CARD ===== */
+    .overview-card {
+      background: var(--card);
+      border: 1px solid rgba(0,230,118,0.2);
+      border-top: 2px solid var(--emerald);
+      border-radius: 20px;
+      padding: 32px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 50px rgba(0,230,118,0.07);
+      margin-bottom: 40px;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .overview-card:hover {
+      box-shadow: 0 12px 60px rgba(0,230,118,0.14);
+      transform: translateY(-3px);
+    }
+
+    /* ===== MOLECULE / GLOBE INFOGRAPHIC ===== */
+    .infographic-row {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .globe-wrap {
+      flex-shrink: 0;
+      width: 140px;
+      height: 140px;
+      position: relative;
+    }
+    .globe {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 32%, #69f0ae, #00a854 55%, #00251a);
+      box-shadow: 0 0 50px rgba(0,230,118,0.5), inset -14px -10px 30px rgba(0,0,0,0.5);
+      position: absolute;
+      top: 10px; left: 10px;
+      animation: globeSpin 8s linear infinite;
+    }
+    @keyframes globeSpin {
+      0%,100% { box-shadow: 0 0 50px rgba(0,230,118,0.5), inset -14px -10px 30px rgba(0,0,0,0.5); }
+      50%      { box-shadow: 0 0 80px rgba(105,240,174,0.7), inset -14px -10px 30px rgba(0,0,0,0.5); }
+    }
+    .leaf-icon {
+      position: absolute;
+      font-size: 1.8rem;
+      top: 38px; left: 38px;
+      animation: leafFloat 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 8px #00e676);
+    }
+    @keyframes leafFloat {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-5px); }
+    }
+
+    /* floating molecules */
+    .mol-orbit {
+      position: absolute;
+      inset: 0;
+      animation: orbitSpin 6s linear infinite;
+    }
+    .mol-dot {
+      position: absolute;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--emerald2);
+      box-shadow: 0 0 10px var(--emerald);
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+    }
+    .mol-orbit2 {
+      position: absolute;
+      inset: -10px;
+      animation: orbitSpin 9s linear infinite reverse;
+    }
+    .mol-dot2 {
+      position: absolute;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 8px var(--gold);
+      bottom: 0; right: 10px;
+    }
+    @keyframes orbitSpin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .overview-text { flex: 1; color: rgba(255,255,255,0.85); line-height: 1.85; font-size: 0.97rem; }
+    .overview-text p { margin-bottom: 12px; }
+    .overview-text p:last-child { margin-bottom: 0; }
+    .hl {
+      display: inline-block;
+      background: rgba(0,230,118,0.08);
+      border: 1px solid rgba(0,230,118,0.22);
+      border-radius: 6px;
+      padding: 1px 8px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--emerald2);
+      margin: 0 2px;
+    }
+    .hl.gold { background: rgba(255,215,0,0.08); border-color: rgba(255,215,0,0.22); color: var(--gold); }
+
+    /* ===== PROCESS CARDS ===== */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+    .proc-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px 20px;
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .proc-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      border-radius: 4px 0 0 4px;
+    }
+    .proc-card.thermal::before { background: linear-gradient(180deg, #ff7043, #ff5722); }
+    .proc-card.bio::before    { background: linear-gradient(180deg, #00e676, #00c853); }
+    .proc-card.chem::before   { background: linear-gradient(180deg, #ffd700, #ffa000); }
+    .proc-card:hover { transform: translateY(-5px); border-color: rgba(0,230,118,0.28); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .proc-icon { font-size: 2rem; margin-bottom: 12px; }
+    .proc-card h3 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: white;
+    }
+    .proc-card p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.65; }
+    .proc-tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    .proc-tag.thermal { background: rgba(255,112,67,0.12); border: 1px solid rgba(255,112,67,0.3); color: #ff7043; }
+    .proc-tag.bio     { background: rgba(0,230,118,0.10); border: 1px solid rgba(0,230,118,0.3); color: var(--emerald2); }
+    .proc-tag.chem    { background: rgba(255,215,0,0.10); border: 1px solid rgba(255,215,0,0.3); color: var(--gold); }
+
+    /* ===== BIOMASS FLOW (arrow diagram) ===== */
+    .flow-wrap {
+      background: rgba(0,15,5,0.8);
+      border: 1px solid rgba(0,230,118,0.15);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 40px;
+      overflow-x: auto;
+    }
+    .flow-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: rgba(0,230,118,0.6);
+      margin-bottom: 16px;
+    }
+    .flow-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: nowrap;
+      min-width: 560px;
+    }
+    .flow-node {
+      background: rgba(0,230,118,0.08);
+      border: 1px solid rgba(0,230,118,0.25);
+      border-radius: 12px;
+      padding: 14px 16px;
+      text-align: center;
+      min-width: 110px;
+      transition: 0.3s;
+    }
+    .flow-node:hover { background: rgba(0,230,118,0.16); transform: translateY(-3px); }
+    .flow-node .fn-icon { font-size: 1.6rem; }
+    .flow-node .fn-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.85);
+      margin-top: 6px;
+      font-family: 'Kanit', sans-serif;
+    }
+    .flow-node .fn-sub {
+      font-size: 0.68rem;
+      color: rgba(0,230,118,0.6);
+      font-family: 'Share Tech Mono', monospace;
+      margin-top: 2px;
+    }
+    .flow-arrow {
+      color: rgba(0,230,118,0.5);
+      font-size: 1.5rem;
+      padding: 0 6px;
+      flex-shrink: 0;
+    }
+
+    /* ===== STAT STRIP ===== */
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+    .stat-box {
+      background: rgba(0,230,118,0.05);
+      border: 1px solid rgba(0,230,118,0.18);
+      border-radius: 14px;
+      padding: 18px 12px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .stat-box:hover { background: rgba(0,230,118,0.1); transform: translateY(-3px); }
+    .stat-val {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--emerald2);
+    }
+    .stat-lbl { font-size: 0.77rem; color: rgba(255,255,255,0.5); margin-top: 5px; line-height: 1.4; }
+
+    /* ===== ECONOMY / SAFETY SECTION ===== */
+    .info-card {
+      background: var(--card);
+      border: 1px solid rgba(0,230,118,0.15);
+      border-radius: 18px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+    }
+    .info-card:hover { box-shadow: 0 8px 40px rgba(0,230,118,0.08); transform: translateY(-2px); }
+    .info-card h3 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 1.1rem;
+      color: var(--emerald2);
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .info-card p { color: rgba(255,255,255,0.82); font-size: 0.93rem; line-height: 1.8; }
+    .check-list {
+      list-style: none;
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .check-list li {
+      color: rgba(255,255,255,0.78);
+      font-size: 0.9rem;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .check-list li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--emerald);
+      font-size: 0.7rem;
+      top: 3px;
+    }
+
+    /* ===== CONCLUSION ===== */
+    .conclusion-block {
+      background: rgba(0,230,118,0.04);
+      border: 1px solid rgba(0,230,118,0.18);
+      border-left: 3px solid var(--emerald);
+      border-radius: 0 14px 14px 0;
+      padding: 22px 28px;
+      margin-bottom: 32px;
+    }
+    .conclusion-block h4 {
+      font-family: 'Kanit', sans-serif;
+      color: var(--emerald2);
+      font-size: 1rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(0,230,118,0.4);
+    }
+    .conclusion-block p { color: rgba(255,255,255,0.82); font-size: 0.92rem; line-height: 1.75; }
+
+    /* ===== DOWNLOAD SECTION ===== */
+    .download-section {
+      text-align: center;
+      padding: 40px 24px;
+      background: rgba(0,20,8,0.7);
+      border: 1px solid rgba(0,230,118,0.18);
+      border-radius: 20px;
+      margin-top: 16px;
+      backdrop-filter: blur(12px);
+    }
+    .download-section h3 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 1.3rem;
+      color: white;
+      margin-bottom: 8px;
+    }
+    .download-section p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.88rem;
+      margin-bottom: 24px;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-family: 'Kanit', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      background: linear-gradient(135deg, #00a854, #00e676);
+      color: #001a0a;
+      box-shadow: 0 4px 30px rgba(0,230,118,0.45), 0 0 60px rgba(0,230,118,0.15);
+      transition: all 0.35s;
+      animation: btnGlow 2.5s ease-in-out infinite;
+    }
+    @keyframes btnGlow {
+      0%,100% { box-shadow: 0 4px 30px rgba(0,230,118,0.45), 0 0 60px rgba(0,230,118,0.15); }
+      50%      { box-shadow: 0 6px 50px rgba(0,230,118,0.7), 0 0 90px rgba(0,230,118,0.3); }
+    }
+    .btn-download:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 60px rgba(0,230,118,0.65);
+    }
+    .btn-embed {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-family: 'Kanit', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      background: transparent;
+      border: 1px solid rgba(0,230,118,0.4);
+      color: var(--emerald2);
+      margin-left: 14px;
+      transition: all 0.3s;
+    }
+    .btn-embed:hover { background: rgba(0,230,118,0.08); transform: translateY(-2px); }
+
+    /* ===== PDF EMBED ===== */
+    .pdf-wrap {
+      margin-top: 28px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(0,230,118,0.22);
+      box-shadow: 0 0 30px rgba(0,230,118,0.06);
+    }
+    .pdf-topbar {
+      background: rgba(0,230,118,0.08);
+      padding: 10px 16px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: rgba(0,230,118,0.75);
+      border-bottom: 1px solid rgba(0,230,118,0.15);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 760px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .stat-strip    { grid-template-columns: repeat(2, 1fr); }
+      .infographic-row { flex-direction: column; }
+      .nav-brand { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- FLOATING EQUATIONS -->
+  <div class="eq-layer" id="eq-layer"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">✦ KS</div>
+    <ul class="nav-menu">
+      <li><a href="index.html">หน้าแรก</a></li>
+      <li><a href="about.html">ประวัติ</a></li>
+      <li><a href="education.html">การศึกษา</a></li>
+      <li><a href="skills.html">ทักษะ</a></li>
+      <li><a href="simulations.html">Simulations</a></li>
+      <li><a href="biomass.html" class="active">Biomass</a></li>
+      <li><a href="#">ติดต่อ</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="header-icon">🌿</div>
+      <h1>รายงานผลงานวิจัยพลังงาน</h1>
+      <p class="sub">Biomass Energy Research Report</p>
+      <div class="divider-sci"></div>
+    </div>
+
+    <!-- ===== OVERVIEW ===== -->
+    <div class="sec-label">
+      <span style="font-size:1.4rem">🌍</span>
+      <h2>พลังงานชีวมวล: พลังงานสะอาดเพื่อเศรษฐกิจยั่งยืน</h2>
+    </div>
+
+    <div class="overview-card">
+      <div class="infographic-row">
+        <!-- Globe + Molecule -->
+        <div class="globe-wrap">
+          <div class="globe"></div>
+          <div class="leaf-icon">🍃</div>
+          <div class="mol-orbit"><div class="mol-dot"></div></div>
+          <div class="mol-orbit2"><div class="mol-dot2"></div></div>
+        </div>
+        <div class="overview-text">
+          <p>พลังงานชีวมวล (<span class="hl">Biomass Energy</span>) คือ พลังงานจากสารอินทรีย์ที่ได้จากพืช สัตว์ และวัสดุเหลือทิ้งทางการเกษตร ในประเทศไทย พลังงานชนิดนี้มีบทบาทสำคัญในการสร้างความมั่นคงทางพลังงาน และขับเคลื่อนเศรษฐกิจแบบ <span class="hl gold">BCG Economy</span> (Bio-Circular-Green)</p>
+          <p>พร้อมช่วยลดปัญหาฝุ่น <span class="hl">PM2.5</span> จากการเผาเศษวัสดุในที่โล่ง โดยมีจุดเด่นสำคัญคือ เป็นพลังงานหมุนเวียนที่สามารถผลิตไฟฟ้าได้ <strong>ตลอดเวลา</strong> แตกต่างจากพลังงานลมหรือแสงอาทิตย์ที่ขึ้นกับสภาพอากาศ</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STAT STRIP ===== -->
+    <div class="stat-strip" style="margin-bottom:50px;">
+      <div class="stat-box">
+        <div class="stat-val">~30%</div>
+        <div class="stat-lbl">สัดส่วนพลังงานหมุนเวียน<br/>จากชีวมวลในไทย</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">BCG</div>
+        <div class="stat-lbl">นโยบายเศรษฐกิจ<br/>ที่ชีวมวลเป็นส่วนหลัก</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">3</div>
+        <div class="stat-lbl">กระบวนการหลัก<br/>เปลี่ยนชีวมวลเป็นพลังงาน</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">CO₂</div>
+        <div class="stat-lbl">Carbon Neutral<br/>เมื่อจัดการอย่างยั่งยืน</div>
+      </div>
+    </div>
+
+    <!-- ===== BIOMASS FLOW ===== -->
+    <div class="sec-label">
+      <span style="font-size:1.4rem">🔄</span>
+      <h2>กระบวนการ Biomass → Energy</h2>
+    </div>
+
+    <div class="flow-wrap" style="margin-bottom:50px;">
+      <div class="flow-label">📊 Biomass-to-Energy Conversion Pathway</div>
+      <div class="flow-row">
+        <div class="flow-node">
+          <div class="fn-icon">🌾</div>
+          <div class="fn-label">วัตถุดิบชีวมวล</div>
+          <div class="fn-sub">Biomass Feed</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="fn-icon">⚙️</div>
+          <div class="fn-label">กระบวนการแปรรูป</div>
+          <div class="fn-sub">Conversion</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="fn-icon">⚡</div>
+          <div class="fn-label">ไฟฟ้า / ความร้อน</div>
+          <div class="fn-sub">Heat & Power</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="fn-icon">🏭</div>
+          <div class="fn-label">การใช้งาน</div>
+          <div class="fn-sub">End Use</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node" style="border-color:rgba(0,230,118,0.4);background:rgba(0,230,118,0.1);">
+          <div class="fn-icon">♻️</div>
+          <div class="fn-label">ยั่งยืน</div>
+          <div class="fn-sub">Sustainable</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 3 PROCESSES ===== -->
+    <div class="sec-label">
+      <span style="font-size:1.4rem">🔬</span>
+      <h2>กระบวนการเปลี่ยนรูปพลังงาน</h2>
+    </div>
+
+    <div class="process-grid" style="margin-bottom:50px;">
+      <!-- Thermal -->
+      <div class="proc-card thermal">
+        <div class="proc-icon">🔥</div>
+        <h3>กระบวนการทางความร้อน</h3>
+        <p>การเผาไหม้โดยตรง (Combustion) เพื่อผลิตไฟฟ้า หรือผ่านการผลิตแก๊สสังเคราะห์ (Gasification) และน้ำมันไบโอครู้ด (Pyrolysis)</p>
+        <span class="proc-tag thermal">Thermochemical</span>
+      </div>
+      <!-- Bio -->
+      <div class="proc-card bio">
+        <div class="proc-icon">🧫</div>
+        <h3>กระบวนการทางชีวเคมี</h3>
+        <p>ใช้จุลินทรีย์หมักพืชน้ำตาล/แป้งให้เป็น <strong>เอทานอล</strong> หรือย่อยสลายของเสียในที่อับอากาศเพื่อผลิต <strong>ก๊าซชีวภาพ (Biogas)</strong></p>
+        <span class="proc-tag bio">Biochemical</span>
+      </div>
+      <!-- Chem -->
+      <div class="proc-card chem">
+        <div class="proc-icon">⚗️</div>
+        <h3>กระบวนการทางเคมีกายภาพ</h3>
+        <p>การผลิต <strong>ไบโอดีเซล</strong> จากน้ำมันพืช หรือการอัดเม็ดชีวมวล (<strong>Pellets</strong>) เพื่อเพิ่มความหนาแน่นพลังงาน</p>
+        <span class="proc-tag chem">Physicochemical</span>
+      </div>
+    </div>
+
+    <!-- ===== ECONOMY & SAFETY ===== -->
+    <div class="sec-label" style="margin-top:10px;">
+      <span style="font-size:1.4rem">📊</span>
+      <h2>ความคุ้มค่าและผลกระทบเชิงเศรษฐศาสตร์</h2>
+    </div>
+
+    <div class="info-card">
+      <h3>💰 ผลประโยชน์ทางเศรษฐกิจ</h3>
+      <p>พลังงานชีวมวลช่วยสร้างรายได้ให้เกษตรกร กระจายความเจริญสู่ท้องถิ่น และลดการนำเข้าเชื้อเพลิงฟอสซิล แม้จะมีต้นทุนการผลิตระดับปานกลาง แต่ถือว่าคุ้มค่าในระยะยาวเมื่อพิจารณาถึงประโยชน์ทางเศรษฐกิจมหภาค</p>
+    </div>
+
+    <div class="info-card">
+      <h3>🛡️ มาตรการความปลอดภัยและสิ่งแวดล้อม</h3>
+      <p>การดำเนินงานต้องควบคู่ไปกับมาตรการที่เข้มงวด เพื่อการอยู่ร่วมกับชุมชนอย่างยั่งยืน:</p>
+      <ul class="check-list">
+        <li>ใช้เทคโนโลยีกรองฝุ่นและดักจับก๊าซพิษ</li>
+        <li>การจัดการน้ำเสียและขี้เถ้าอย่างถูกต้องตามมาตรฐาน</li>
+        <li>เปิดให้ชุมชนมีส่วนร่วมและตรวจสอบข้อมูลการปล่อยมลพิษได้อย่างโปร่งใส</li>
+        <li>ติดตามและรายงานผลกระทบสิ่งแวดล้อมอย่างต่อเนื่อง</li>
+      </ul>
+    </div>
+
+    <!-- ===== CONCLUSION ===== -->
+    <div class="conclusion-block">
+      <h4>🌿 สรุปภาพรวม</h4>
+      <p>พลังงานชีวมวลเป็นทางเลือกที่มีศักยภาพสูงสำหรับประเทศไทย โดยเฉพาะในฐานะ <strong>พลังงานฐาน (Baseload)</strong> ที่เสถียร เมื่อบริหารจัดการร่วมกับมาตรการสิ่งแวดล้อมที่เหมาะสม จะช่วยขับเคลื่อนเศรษฐกิจ BCG สร้างรายได้ชุมชน และลดการพึ่งพาเชื้อเพลิงฟอสซิลได้อย่างยั่งยืน</p>
+    </div>
+
+    <!-- ===== DOWNLOAD ===== -->
+    <div class="download-section">
+      <h3>📄 รายงานฉบับเต็ม</h3>
+      <p>ดาวน์โหลดรายงานวิจัยพลังงานชีวมวลฉบับสมบูรณ์ในรูปแบบ PDF</p>
+      <a href="พลังงานชีวมว222.pdf" target="_blank" download class="btn-download">
+        <span>⬇️</span> ดาวน์โหลดรายงานฉบับเต็ม (PDF)
+      </a>
+      <a href="พลังงานชีวมว222.pdf" target="_blank" class="btn-embed">
+        <span>👁️</span> เปิดอ่านออนไลน์
+      </a>
+
+      <!-- PDF EMBED -->
+      <div class="pdf-wrap">
+        <div class="pdf-topbar">📄 พลังงานชีวมว222.pdf — รายงานวิจัยพลังงานชีวมวล</div>
+        <iframe
+          src="พลังงานชีวมว222.pdf"
+          width="100%"
+          height="620px"
+          style="display:block; background:#fff;"
+          title="รายงานพลังงานชีวมวล">
+          <p style="color:#fff;padding:20px;">เบราว์เซอร์ไม่รองรับ PDF — <a href="พลังงานชีวมว222.pdf" style="color:#00e676;">คลิกที่นี่เพื่อดาวน์โหลด</a></p>
+        </iframe>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    /* ===== SPACE BG (Emerald + Gold Nebula) ===== */
+    const bgCanvas = document.getElementById('bg-canvas');
+    const bgCtx    = bgCanvas.getContext('2d');
+    let stars = [], meteors = [], gridNodes = [];
+
+    function resizeBg() { bgCanvas.width = innerWidth; bgCanvas.height = innerHeight; }
+    resizeBg();
+    window.addEventListener('resize', () => { resizeBg(); initBg(); });
+
+    function initBg() {
+      const W = bgCanvas.width, H = bgCanvas.height;
+      const count = Math.floor(W * H / 3500);
+      stars = Array.from({ length: count }, () => ({
+        x: Math.random() * W, y: Math.random() * H,
+        r: Math.random() * 1.5 + 0.3,
+        a: Math.random() * 0.7 + 0.2,
+        da: (Math.random() * 0.006 + 0.002) * (Math.random() > 0.5 ? 1 : -1),
+        emerald: Math.random() < 0.12,
+        gold: Math.random() < 0.06,
+      }));
+      gridNodes = [];
+      const cols = Math.floor(W / 90), rows = Math.floor(H / 90);
+      for (let r = 0; r <= rows; r++) for (let c = 0; c <= cols; c++) {
+        gridNodes.push({
+          x: c * 90 + (Math.random() - 0.5) * 40,
+          y: r * 90 + (Math.random() - 0.5) * 40,
+        });
+      }
+    }
+    initBg();
+
+    function spawnMeteor() {
+      meteors.push({
+        x: Math.random() * bgCanvas.width * 0.8,
+        y: Math.random() * bgCanvas.height * 0.3,
+        len: Math.random() * 140 + 60,
+        spd: Math.random() * 7 + 4,
+        a: 1,
+        w: Math.random() * 1.2 + 0.4,
+        emerald: Math.random() < 0.6,
+      });
+    }
+    setInterval(spawnMeteor, 2800);
+
+    function drawBg() {
+      const W = bgCanvas.width, H = bgCanvas.height;
+      const g = bgCtx.createLinearGradient(0, 0, W, H);
+      g.addColorStop(0, '#010d05');
+      g.addColorStop(0.5, '#020f07');
+      g.addColorStop(1, '#010805');
+      bgCtx.fillStyle = g;
+      bgCtx.fillRect(0, 0, W, H);
+
+      // emerald + gold nebulas
+      [
+        { x: W*0.15, y: H*0.25, r: 300, c: '0,180,80' },
+        { x: W*0.82, y: H*0.6,  r: 260, c: '80,160,0' },
+        { x: W*0.5,  y: H*0.85, r: 220, c: '200,160,0' },
+        { x: W*0.35, y: H*0.55, r: 180, c: '0,100,50' },
+      ].forEach(n => {
+        const ng = bgCtx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r);
+        ng.addColorStop(0, `rgba(${n.c},0.10)`);
+        ng.addColorStop(1, `rgba(${n.c},0)`);
+        bgCtx.fillStyle = ng; bgCtx.beginPath(); bgCtx.arc(n.x,n.y,n.r,0,Math.PI*2); bgCtx.fill();
+      });
+
+      // grid network
+      for (let i = 0; i < gridNodes.length; i++) {
+        for (let j = i+1; j < gridNodes.length; j++) {
+          const a = gridNodes[i], b = gridNodes[j];
+          const dx = a.x-b.x, dy = a.y-b.y;
+          const d = Math.sqrt(dx*dx+dy*dy);
+          if (d < 110) {
+            bgCtx.beginPath(); bgCtx.moveTo(a.x,a.y); bgCtx.lineTo(b.x,b.y);
+            bgCtx.strokeStyle = `rgba(0,200,80,${0.045*(1-d/110)})`;
+            bgCtx.lineWidth = 0.5; bgCtx.stroke();
+          }
+        }
+      }
+
+      // stars
+      stars.forEach(s => {
+        s.a += s.da;
+        if (s.a > 0.95 || s.a < 0.15) s.da *= -1;
+        bgCtx.beginPath(); bgCtx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+        bgCtx.fillStyle = s.gold
+          ? `rgba(255,215,0,${s.a})`
+          : s.emerald
+          ? `rgba(0,230,118,${s.a})`
+          : `rgba(255,255,255,${s.a})`;
+        bgCtx.fill();
+      });
+
+      // meteors
+      meteors.forEach((m, i) => {
+        const color = m.emerald ? '0,230,118' : '255,215,0';
+        const mg = bgCtx.createLinearGradient(m.x, m.y, m.x+m.len, m.y+m.len*0.45);
+        mg.addColorStop(0, `rgba(${color},0)`);
+        mg.addColorStop(1, `rgba(${color},${m.a})`);
+        bgCtx.strokeStyle = mg; bgCtx.lineWidth = m.w;
+        bgCtx.beginPath(); bgCtx.moveTo(m.x, m.y); bgCtx.lineTo(m.x+m.len, m.y+m.len*0.45); bgCtx.stroke();
+        m.x += m.spd * 1.8; m.y += m.spd * 0.8; m.a -= 0.022;
+        if (m.a <= 0) meteors.splice(i, 1);
+      });
+
+      requestAnimationFrame(drawBg);
+    }
+    drawBg();
+
+    /* ===== FLOATING EQUATIONS ===== */
+    const eqs = [
+      'CH₄ + 2O₂ → CO₂ + 2H₂O', 'C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂',
+      'Biomass + O₂ → CO₂ + H₂O + Energy', 'HHV = Q_gross',
+      'η_boiler = Q_useful / Q_fuel', 'LHV = HHV - 2442·w',
+      'CO₂_neutral ≈ 0', 'Gasification: C + H₂O → CO + H₂',
+      'Biogas: CH₄ ~60%', 'BCG Economy', 'PM2.5 ↓', 'CO₂/kWh ↓',
+    ];
+    const eqLayer = document.getElementById('eq-layer');
+    eqs.forEach((eq, i) => {
+      const el = document.createElement('div');
+      el.className = 'eq';
+      el.textContent = eq;
+      const left = 4 + Math.random() * 88;
+      const dur  = 20 + Math.random() * 22;
+      const del  = Math.random() * -22;
+      el.style.cssText = `left:${left}%;animation-duration:${dur}s;animation-delay:${del}s`;
+      eqLayer.appendChild(el);
+    });
+  </script>
+
+</body>
+</html>

@@ -6,22 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Physics Simulations | ขจรศักดิ์ สิทธิวงศ์</title>
   <meta name="description" content="โปรเจกต์วิจัยและการจำลองทางฟิสิกส์ของ ขจรศักดิ์ สิทธิวงศ์" />
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
-      --gold:   #ffd700;
-      --cyan:   #00e5ff;
-      --green:  #39ff14;
+      --gold: #ffd700;
+      --cyan: #00e5ff;
+      --green: #39ff14;
       --orange: #ff7b00;
       --purple: #a855f7;
-      --dark:   #020810;
-      --card:   rgba(4, 12, 35, 0.82);
+      --dark: #020810;
+      --card: rgba(4, 12, 35, 0.82);
       --border: rgba(0, 229, 255, 0.12);
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background: var(--dark);
@@ -47,6 +57,7 @@
       pointer-events: none;
       overflow: hidden;
     }
+
     .eq {
       position: absolute;
       font-family: 'Share Tech Mono', monospace;
@@ -56,19 +67,34 @@
       animation: floatEq linear infinite;
       user-select: none;
     }
+
     @keyframes floatEq {
-      0%   { transform: translateY(100vh) rotate(-5deg); opacity: 0; }
-      5%   { opacity: 1; }
-      95%  { opacity: 1; }
-      100% { transform: translateY(-120px) rotate(-5deg); opacity: 0; }
+      0% {
+        transform: translateY(100vh) rotate(-5deg);
+        opacity: 0;
+      }
+
+      5% {
+        opacity: 1;
+      }
+
+      95% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-120px) rotate(-5deg);
+        opacity: 0;
+      }
     }
 
     /* ===== NAVBAR ===== */
     .navbar {
       position: fixed;
-      top: 0; width: 100%;
+      top: 0;
+      width: 100%;
       padding: 16px 40px;
-      background: rgba(0,0,0,0.75);
+      background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(14px);
       z-index: 1000;
       display: flex;
@@ -76,26 +102,41 @@
       align-items: center;
       border-bottom: 1px solid rgba(0, 229, 255, 0.12);
     }
+
     .nav-brand {
-      position: absolute; left: 40px;
+      position: absolute;
+      left: 40px;
       color: var(--gold);
       font-family: 'Kanit', sans-serif;
-      font-weight: 700; font-size: 1.2rem;
+      font-weight: 700;
+      font-size: 1.2rem;
     }
-    .nav-menu { list-style: none; display: flex; gap: 8px; }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 8px;
+    }
+
     .nav-menu a {
-      color: rgba(255,255,255,0.72);
+      color: rgba(255, 255, 255, 0.72);
       text-decoration: none;
-      font-weight: 500; font-size: 0.88rem;
+      font-weight: 500;
+      font-size: 0.88rem;
       padding: 7px 13px;
       border-radius: 6px;
       transition: all 0.3s;
     }
-    .nav-menu a:hover { color: white; background: rgba(255,255,255,0.07); }
+
+    .nav-menu a:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
     .nav-menu a.active {
       color: var(--cyan);
-      background: rgba(0,229,255,0.10);
-      border: 1px solid rgba(0,229,255,0.3);
+      background: rgba(0, 229, 255, 0.10);
+      border: 1px solid rgba(0, 229, 255, 0.3);
       font-weight: 700;
     }
 
@@ -113,6 +154,7 @@
       text-align: center;
       margin-bottom: 64px;
     }
+
     .header-icon {
       font-size: 3.8rem;
       display: inline-block;
@@ -120,10 +162,21 @@
       filter: drop-shadow(0 0 20px #00e5ff);
       margin-bottom: 12px;
     }
+
     @keyframes iconPulse {
-      0%,100% { filter: drop-shadow(0 0 16px #00e5ff) drop-shadow(0 0 35px #0077ff); transform: scale(1); }
-      50%      { filter: drop-shadow(0 0 30px #00e5ff) drop-shadow(0 0 60px #00aaff); transform: scale(1.06); }
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 16px #00e5ff) drop-shadow(0 0 35px #0077ff);
+        transform: scale(1);
+      }
+
+      50% {
+        filter: drop-shadow(0 0 30px #00e5ff) drop-shadow(0 0 60px #00aaff);
+        transform: scale(1.06);
+      }
     }
+
     .page-header h1 {
       font-family: 'Kanit', sans-serif;
       font-size: 2.8rem;
@@ -133,15 +186,18 @@
       background-clip: text;
       margin-bottom: 6px;
     }
+
     .page-header .sub {
-      color: rgba(0,229,255,0.6);
+      color: rgba(0, 229, 255, 0.6);
       font-size: 0.9rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       font-family: 'Share Tech Mono', monospace;
     }
+
     .divider-sci {
-      width: 140px; height: 2px;
+      width: 140px;
+      height: 2px;
       background: linear-gradient(90deg, transparent, #00e5ff, #a855f7, transparent);
       margin: 14px auto 0;
     }
@@ -153,33 +209,36 @@
       gap: 12px;
       margin-bottom: 28px;
     }
+
     .sec-label h2 {
       font-family: 'Kanit', sans-serif;
       font-size: 1.3rem;
       color: var(--cyan);
-      text-shadow: 0 0 14px rgba(0,229,255,0.5);
+      text-shadow: 0 0 14px rgba(0, 229, 255, 0.5);
     }
+
     .sec-label::after {
       content: '';
       flex: 1;
       height: 1px;
-      background: linear-gradient(90deg, rgba(0,229,255,0.4), transparent);
+      background: linear-gradient(90deg, rgba(0, 229, 255, 0.4), transparent);
     }
 
     /* ===== PROJECT CARD (FEATURED) ===== */
     .featured-card {
       background: var(--card);
-      border: 1px solid rgba(0,229,255,0.2);
+      border: 1px solid rgba(0, 229, 255, 0.2);
       border-top: 2px solid var(--cyan);
       border-radius: 20px;
       padding: 32px;
       backdrop-filter: blur(12px);
-      box-shadow: 0 0 40px rgba(0,229,255,0.06);
+      box-shadow: 0 0 40px rgba(0, 229, 255, 0.06);
       margin-bottom: 28px;
       transition: box-shadow 0.3s, transform 0.3s;
     }
+
     .featured-card:hover {
-      box-shadow: 0 12px 50px rgba(0,229,255,0.14);
+      box-shadow: 0 12px 50px rgba(0, 229, 255, 0.14);
       transform: translateY(-3px);
     }
 
@@ -191,21 +250,37 @@
       margin-bottom: 20px;
       flex-wrap: wrap;
     }
+
     .card-tag {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(0,229,255,0.1);
-      border: 1px solid rgba(0,229,255,0.25);
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid rgba(0, 229, 255, 0.25);
       border-radius: 20px;
       padding: 4px 12px;
       font-size: 0.78rem;
       color: var(--cyan);
       font-family: 'Share Tech Mono', monospace;
     }
-    .card-tag.orange { background: rgba(255,123,0,0.1); border-color: rgba(255,123,0,0.3); color: var(--orange); }
-    .card-tag.purple { background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.3); color: var(--purple); }
-    .card-tag.green  { background: rgba(57,255,20,0.08); border-color: rgba(57,255,20,0.25); color: var(--green); }
+
+    .card-tag.orange {
+      background: rgba(255, 123, 0, 0.1);
+      border-color: rgba(255, 123, 0, 0.3);
+      color: var(--orange);
+    }
+
+    .card-tag.purple {
+      background: rgba(168, 85, 247, 0.1);
+      border-color: rgba(168, 85, 247, 0.3);
+      color: var(--purple);
+    }
+
+    .card-tag.green {
+      background: rgba(57, 255, 20, 0.08);
+      border-color: rgba(57, 255, 20, 0.25);
+      color: var(--green);
+    }
 
     .card-title {
       font-family: 'Kanit', sans-serif;
@@ -213,60 +288,77 @@
       font-weight: 700;
       color: white;
       margin-bottom: 6px;
-      text-shadow: 0 0 10px rgba(0,229,255,0.2);
+      text-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
     }
+
     .card-sub {
       font-size: 0.88rem;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255, 255, 255, 0.55);
       font-family: 'Share Tech Mono', monospace;
     }
 
     /* ===== SPRING SIMULATION GRAPH (CSS-only) ===== */
     .spring-demo {
-      background: rgba(0,5,20,0.8);
-      border: 1px solid rgba(0,229,255,0.15);
+      background: rgba(0, 5, 20, 0.8);
+      border: 1px solid rgba(0, 229, 255, 0.15);
       border-radius: 14px;
       padding: 20px;
       margin: 20px 0;
       position: relative;
       overflow: hidden;
     }
+
     .spring-demo-label {
       font-family: 'Share Tech Mono', monospace;
       font-size: 0.75rem;
-      color: rgba(0,229,255,0.6);
+      color: rgba(0, 229, 255, 0.6);
       margin-bottom: 12px;
     }
+
     #spring-canvas {
       width: 100%;
       height: 160px;
       display: block;
     }
+
     .axis-label-y {
       position: absolute;
-      left: 8px; top: 50%;
+      left: 8px;
+      top: 50%;
       transform: rotate(-90deg) translateX(50%);
       font-size: 0.65rem;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255, 255, 255, 0.3);
       font-family: 'Share Tech Mono', monospace;
       white-space: nowrap;
     }
+
     .axis-label-x {
       text-align: right;
       font-size: 0.65rem;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255, 255, 255, 0.3);
       font-family: 'Share Tech Mono', monospace;
       margin-top: 4px;
     }
 
     /* ===== CARD BODY TEXT ===== */
-    .card-body { color: rgba(255,255,255,0.82); font-size: 0.95rem; line-height: 1.8; }
-    .card-body p { margin-bottom: 12px; }
-    .card-body p:last-child { margin-bottom: 0; }
+    .card-body {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .card-body p {
+      margin-bottom: 12px;
+    }
+
+    .card-body p:last-child {
+      margin-bottom: 0;
+    }
+
     .highlight-val {
       display: inline-block;
-      background: rgba(0,229,255,0.08);
-      border: 1px solid rgba(0,229,255,0.2);
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.2);
       border-radius: 6px;
       padding: 1px 8px;
       font-family: 'Share Tech Mono', monospace;
@@ -274,8 +366,18 @@
       color: var(--cyan);
       margin: 0 2px;
     }
-    .highlight-val.orange { background: rgba(255,123,0,0.08); border-color: rgba(255,123,0,0.2); color: var(--orange); }
-    .highlight-val.green  { background: rgba(57,255,20,0.06); border-color: rgba(57,255,20,0.2); color: #7fff00; }
+
+    .highlight-val.orange {
+      background: rgba(255, 123, 0, 0.08);
+      border-color: rgba(255, 123, 0, 0.2);
+      color: var(--orange);
+    }
+
+    .highlight-val.green {
+      background: rgba(57, 255, 20, 0.06);
+      border-color: rgba(57, 255, 20, 0.2);
+      color: #7fff00;
+    }
 
     /* ===== DATA TABLE ===== */
     .data-table-wrap {
@@ -283,15 +385,18 @@
       margin: 20px 0;
       border-radius: 12px;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.88rem;
     }
+
     thead tr {
-      background: rgba(0,229,255,0.1);
-      border-bottom: 1px solid rgba(0,229,255,0.2);
+      background: rgba(0, 229, 255, 0.1);
+      border-bottom: 1px solid rgba(0, 229, 255, 0.2);
     }
+
     thead th {
       padding: 12px 16px;
       text-align: left;
@@ -301,20 +406,30 @@
       font-size: 0.85rem;
       letter-spacing: 0.5px;
     }
+
     tbody tr {
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       transition: background 0.2s;
     }
-    tbody tr:hover { background: rgba(0,229,255,0.04); }
+
+    tbody tr:hover {
+      background: rgba(0, 229, 255, 0.04);
+    }
+
     tbody td {
       padding: 11px 16px;
-      color: rgba(255,255,255,0.82);
+      color: rgba(255, 255, 255, 0.82);
     }
+
     tbody td.val {
       font-family: 'Share Tech Mono', monospace;
       color: var(--cyan);
     }
-    tbody td.val-orange { font-family: 'Share Tech Mono', monospace; color: var(--orange); }
+
+    tbody td.val-orange {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--orange);
+    }
 
     /* ===== SUMMARY BADGES ===== */
     .result-strip {
@@ -323,25 +438,47 @@
       gap: 14px;
       margin: 22px 0;
     }
+
     .res-box {
-      background: rgba(0,229,255,0.06);
-      border: 1px solid rgba(0,229,255,0.2);
+      background: rgba(0, 229, 255, 0.06);
+      border: 1px solid rgba(0, 229, 255, 0.2);
       border-radius: 12px;
       padding: 16px 12px;
       text-align: center;
       transition: 0.3s;
     }
-    .res-box:hover { background: rgba(0,229,255,0.1); transform: translateY(-3px); }
-    .res-box.orange { background: rgba(255,123,0,0.06); border-color: rgba(255,123,0,0.2); }
-    .res-box.orange:hover { background: rgba(255,123,0,0.12); }
+
+    .res-box:hover {
+      background: rgba(0, 229, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .res-box.orange {
+      background: rgba(255, 123, 0, 0.06);
+      border-color: rgba(255, 123, 0, 0.2);
+    }
+
+    .res-box.orange:hover {
+      background: rgba(255, 123, 0, 0.12);
+    }
+
     .res-val {
       font-family: 'Share Tech Mono', monospace;
       font-size: 1.3rem;
       font-weight: 700;
       color: var(--cyan);
     }
-    .res-box.orange .res-val { color: var(--orange); }
-    .res-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 5px; line-height: 1.4; }
+
+    .res-box.orange .res-val {
+      color: var(--orange);
+    }
+
+    .res-lbl {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 5px;
+      line-height: 1.4;
+    }
 
     /* ===== PDF / GITHUB BUTTONS ===== */
     .btn-row {
@@ -350,6 +487,7 @@
       margin-top: 24px;
       flex-wrap: wrap;
     }
+
     .btn-sci {
       display: inline-flex;
       align-items: center;
@@ -364,31 +502,37 @@
       border: none;
       cursor: pointer;
     }
+
     .btn-pdf {
       background: linear-gradient(135deg, #0077cc, #00e5ff);
       color: #000;
-      box-shadow: 0 4px 20px rgba(0,229,255,0.3);
+      box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
     }
+
     .btn-pdf:hover {
-      box-shadow: 0 6px 30px rgba(0,229,255,0.5);
+      box-shadow: 0 6px 30px rgba(0, 229, 255, 0.5);
       transform: translateY(-2px);
     }
+
     .btn-github {
       background: linear-gradient(135deg, #8b3000, #ff7b00);
       color: white;
-      box-shadow: 0 4px 20px rgba(255,123,0,0.3);
+      box-shadow: 0 4px 20px rgba(255, 123, 0, 0.3);
     }
+
     .btn-github:hover {
-      box-shadow: 0 6px 30px rgba(255,123,0,0.5);
+      box-shadow: 0 6px 30px rgba(255, 123, 0, 0.5);
       transform: translateY(-2px);
     }
+
     .btn-outline {
       background: transparent;
-      border: 1px solid rgba(0,229,255,0.4);
+      border: 1px solid rgba(0, 229, 255, 0.4);
       color: var(--cyan);
     }
+
     .btn-outline:hover {
-      background: rgba(0,229,255,0.08);
+      background: rgba(0, 229, 255, 0.08);
       transform: translateY(-2px);
     }
 
@@ -399,6 +543,7 @@
       gap: 18px;
       margin-bottom: 60px;
     }
+
     .mini-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -409,44 +554,90 @@
       position: relative;
       overflow: hidden;
     }
+
     .mini-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0;
-      width: 4px; height: 100%;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
       border-radius: 4px 0 0 4px;
     }
-    .mini-card.c1::before { background: linear-gradient(180deg, #00e5ff, #0077ff); }
-    .mini-card.c2::before { background: linear-gradient(180deg, #a855f7, #7c3aed); }
-    .mini-card:hover { transform: translateY(-4px); border-color: rgba(0,229,255,0.25); box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
-    .mini-card h3 { font-family: 'Kanit', sans-serif; font-size: 1rem; margin-bottom: 6px; color: white; }
-    .mini-card p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
-    .mini-card .mc-icon { font-size: 1.6rem; margin-bottom: 10px; }
+
+    .mini-card.c1::before {
+      background: linear-gradient(180deg, #00e5ff, #0077ff);
+    }
+
+    .mini-card.c2::before {
+      background: linear-gradient(180deg, #a855f7, #7c3aed);
+    }
+
+    .mini-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 229, 255, 0.25);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .mini-card h3 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: white;
+    }
+
+    .mini-card p {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    .mini-card .mc-icon {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
 
     /* ===== CONCLUSION BLOCK ===== */
     .conclusion-block {
-      background: rgba(57,255,20,0.04);
-      border: 1px solid rgba(57,255,20,0.15);
+      background: rgba(57, 255, 20, 0.04);
+      border: 1px solid rgba(57, 255, 20, 0.15);
       border-left: 3px solid var(--green);
       border-radius: 0 14px 14px 0;
       padding: 20px 24px;
       margin: 22px 0;
     }
+
     .conclusion-block h4 {
       font-family: 'Kanit', sans-serif;
       color: var(--green);
       font-size: 0.95rem;
       margin-bottom: 8px;
-      text-shadow: 0 0 10px rgba(57,255,20,0.4);
+      text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
     }
-    .conclusion-block p { color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.7; }
+
+    .conclusion-block p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 720px) {
-      .projects-grid { grid-template-columns: 1fr; }
-      .result-strip { grid-template-columns: repeat(2, 1fr); }
-      .nav-brand { display: none; }
-      .card-top { flex-direction: column; }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-brand {
+        display: none;
+      }
+
+      .card-top {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -467,7 +658,7 @@
       <li><a href="education.html">การศึกษา</a></li>
       <li><a href="skills.html">ทักษะ</a></li>
       <li><a href="simulations.html" class="active">Simulations</a></li>
-      <li><a href="#">Biomass</a></li>
+      <li><a href="biomass.html">Biomass</a></li>
       <li><a href="#">ติดต่อ</a></li>
     </ul>
   </nav>
@@ -512,8 +703,12 @@
       </div>
 
       <div class="card-body" style="margin-top:16px;">
-        <p>โปรเจกต์นี้พัฒนาโปรแกรม Python เพื่อจำลองการแกว่งของมวลบนสปริง (Spring-Mass System) โดยใช้ระเบียบวิธีเชิงตัวเลข <span class="highlight-val">Runge-Kutta 4th Order (RK4)</span> สำหรับแก้สมการเชิงอนุพันธ์</p>
-        <p>พารามิเตอร์ที่ใช้ในการจำลอง: มวล <span class="highlight-val">m = 1.0 kg</span> ค่าคงตัวสปริง <span class="highlight-val">k = 10.0 N/m</span> สัมประสิทธิ์หน่วง <span class="highlight-val orange">b = 0.5 N·s/m</span></p>
+        <p>โปรเจกต์นี้พัฒนาโปรแกรม Python เพื่อจำลองการแกว่งของมวลบนสปริง (Spring-Mass System)
+          โดยใช้ระเบียบวิธีเชิงตัวเลข <span class="highlight-val">Runge-Kutta 4th Order (RK4)</span>
+          สำหรับแก้สมการเชิงอนุพันธ์</p>
+        <p>พารามิเตอร์ที่ใช้ในการจำลอง: มวล <span class="highlight-val">m = 1.0 kg</span> ค่าคงตัวสปริง <span
+            class="highlight-val">k = 10.0 N/m</span> สัมประสิทธิ์หน่วง <span class="highlight-val orange">b = 0.5
+            N·s/m</span></p>
       </div>
 
       <div class="btn-row">
@@ -552,15 +747,15 @@
       <div class="result-strip">
         <div class="res-box">
           <div class="res-val">6,699.28</div>
-          <div class="res-lbl">ค่าความร้อนสูง (HHV)<br/>cal/g</div>
+          <div class="res-lbl">ค่าความร้อนสูง (HHV)<br />cal/g</div>
         </div>
         <div class="res-box orange">
           <div class="res-val" style="color:var(--orange);">5,149.61</div>
-          <div class="res-lbl">ค่าความร้อนต่ำ (LHV)<br/>cal/g</div>
+          <div class="res-lbl">ค่าความร้อนต่ำ (LHV)<br />cal/g</div>
         </div>
         <div class="res-box">
           <div class="res-val">4.95%</div>
-          <div class="res-lbl">ปริมาณความชื้น<br/>(Moisture Content)</div>
+          <div class="res-lbl">ปริมาณความชื้น<br />(Moisture Content)</div>
         </div>
       </div>
 
@@ -612,22 +807,40 @@
 
       <!-- REPORT SUMMARY -->
       <div class="card-body">
-        <p>เมล็ดงา (<em>Sesamum indicum</em>) เป็นวัสดุชีวมวลที่มีศักยภาพสูงในการพัฒนาเป็นเชื้อเพลิงทางเลือกสำหรับอุตสาหกรรมพลังงานสะอาด จากการศึกษาพบว่าองค์ประกอบทางเคมีของเมล็ดงามีไขมันพืช (Lipids) สูงถึงร้อยละ <span class="highlight-val">45–55</span> ส่งผลให้ค่าพลังงานความร้อนสูงกว่าวัสดุเหลือทิ้งทางการเกษตรทั่วไปถึงร้อยละ <span class="highlight-val orange">30–40</span></p>
-        <p>จากการทดลองด้วยระเบิดแคลอรีมิเตอร์ (Bomb Calorimeter) พบว่าเมล็ดงามีค่าความร้อนสูง (HHV) เฉลี่ยอยู่ที่ <span class="highlight-val">6,699.28 cal/g</span> ซึ่งใกล้เคียงกับถ่านหินคุณภาพปานกลาง และมีค่าความร้อนต่ำ (LHV) อยู่ที่ <span class="highlight-val orange">5,149.61 cal/g</span></p>
-        <p>ปัจจัยสนับสนุนสำคัญ ได้แก่ ปริมาณความชื้นต่ำเพียง <span class="highlight-val">4.95%</span> ช่วยให้เผาไหม้สมบูรณ์ และปริมาณเถ้า (Ash) ต่ำเพียง <span class="highlight-val">5.32%</span> ลดปัญหาการเกิดตะกรัน (Slagging) และการกัดกร่อนในเตาเผา</p>
+        <p>เมล็ดงา (<em>Sesamum indicum</em>)
+          เป็นวัสดุชีวมวลที่มีศักยภาพสูงในการพัฒนาเป็นเชื้อเพลิงทางเลือกสำหรับอุตสาหกรรมพลังงานสะอาด
+          จากการศึกษาพบว่าองค์ประกอบทางเคมีของเมล็ดงามีไขมันพืช (Lipids) สูงถึงร้อยละ <span
+            class="highlight-val">45–55</span> ส่งผลให้ค่าพลังงานความร้อนสูงกว่าวัสดุเหลือทิ้งทางการเกษตรทั่วไปถึงร้อยละ
+          <span class="highlight-val orange">30–40</span></p>
+        <p>จากการทดลองด้วยระเบิดแคลอรีมิเตอร์ (Bomb Calorimeter) พบว่าเมล็ดงามีค่าความร้อนสูง (HHV) เฉลี่ยอยู่ที่ <span
+            class="highlight-val">6,699.28 cal/g</span> ซึ่งใกล้เคียงกับถ่านหินคุณภาพปานกลาง และมีค่าความร้อนต่ำ (LHV)
+          อยู่ที่ <span class="highlight-val orange">5,149.61 cal/g</span></p>
+        <p>ปัจจัยสนับสนุนสำคัญ ได้แก่ ปริมาณความชื้นต่ำเพียง <span class="highlight-val">4น้าหก รายงานพลังงานชีวมวล
+            (Biomass Energy Report)
+            คำอธิบายภาพ: หน้านี้ใช้พื้นหลังอวกาศที่พิเศษสุดๆ คือมีเนบิวลาสีเขียวมรกตและทองผสมอยู่
+            เพื่อสื่อถึงพลังงานที่ยั่งยืนและธรรมชาติ หัวข้อคือ "รายงานผลงานวิจัยพลังงาน" (Energy Research Report)
+            แสดงผลด้วยอินโฟกราฟิกแบบลอยตัว มีไอคอนรูปโลกที่มีใบไม้และโครงสร้างโมเลกุลเรืองแสง
+            แสดงสรุปกระบวนการผลิตพลังงานชีวมวล (Biomass to Energy) พร้อมเนื้อหาจางๆ ด้านข้าง
+            และมีปุ่มสีเขียวเรืองแสงสำหรับ "ดาวน์โหลดรายงานฉบับเต็ม" ครับ
+
+            สร้างโดย AI
+
+            นี่คือ หน้ารายงานพลังงานชีวมวล (Biomass Energy Report) ครับ มาในโทนอวกาศสีเขียว-ทอง
+            สื่อถึงพลังงานสะอาดและการพัฒนาที่ยั่งยืน.95%</span> ช่วยให้เผาไหม้สมบูรณ์ และปริมาณเถ้า (Ash) ต่ำเพียง <span
+            class="highlight-val">5.32%</span> ลดปัญหาการเกิดตะกรัน (Slagging) และการกัดกร่อนในเตาเผา</p>
       </div>
 
       <div class="conclusion-block">
         <h4>✅ สรุปผลการวิจัย</h4>
-        <p>แนวทางที่คุ้มค่าที่สุดคือการนำ <strong>"กากเมล็ดงา"</strong> ที่เหลือจากอุตสาหกรรมสกัดน้ำมันมาใช้เป็นเชื้อเพลิง Co-firing ร่วมกับโรงไฟฟ้าชีวมวล เพื่อใช้ทรัพยากรอย่างคุ้มค่าและลดการพึ่งพาเชื้อเพลิงฟอสซิล</p>
+        <p>แนวทางที่คุ้มค่าที่สุดคือการนำ <strong>"กากเมล็ดงา"</strong>
+          ที่เหลือจากอุตสาหกรรมสกัดน้ำมันมาใช้เป็นเชื้อเพลิง Co-firing ร่วมกับโรงไฟฟ้าชีวมวล
+          เพื่อใช้ทรัพยากรอย่างคุ้มค่าและลดการพึ่งพาเชื้อเพลิงฟอสซิล</p>
       </div>
 
       <!-- PDF BUTTON -->
       <div class="btn-row">
-        <a href="รายงาน เรื่อง การหาค่าความร้อนของเมล็ดงาด้วยระเบิดแคลอรีมิเตอร์00.pdf"
-           target="_blank"
-           download
-           class="btn-sci btn-pdf">
+        <a href="รายงาน เรื่อง การหาค่าความร้อนของเมล็ดงาด้วยระเบิดแคลอรีมิเตอร์00.pdf" target="_blank" download
+          class="btn-sci btn-pdf">
           <span>📄</span> ดาวน์โหลดรายงานฉบับเต็ม (PDF)
         </a>
         <a href="https://github.com/dreamdm5438-blip" target="_blank" class="btn-sci btn-github">
@@ -677,30 +890,29 @@
       </div>
 
       <div class="card-body" style="margin: 16px 0;">
-        <p>เอกสารแผนการจัดการเรียนรู้ฉบับนี้ออกแบบมาเพื่อประกอบการเรียนการสอนเกี่ยวกับ <span class="highlight-val purple" style="background:rgba(168,85,247,0.08);border-color:rgba(168,85,247,0.2);color:var(--purple);">ชีวมวลและพลังงานทดแทน</span> โดยใช้เมล็ดงาเป็นกรณีศึกษา พร้อมแบบทดสอบวัดความเข้าใจของผู้เรียน</p>
+        <p>เอกสารแผนการจัดการเรียนรู้ฉบับนี้ออกแบบมาเพื่อประกอบการเรียนการสอนเกี่ยวกับ <span
+            class="highlight-val purple"
+            style="background:rgba(168,85,247,0.08);border-color:rgba(168,85,247,0.2);color:var(--purple);">ชีวมวลและพลังงานทดแทน</span>
+          โดยใช้เมล็ดงาเป็นกรณีศึกษา พร้อมแบบทดสอบวัดความเข้าใจของผู้เรียน</p>
       </div>
 
       <!-- EMBEDDED PDF VIEWER -->
-      <div style="margin: 18px 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(168,85,247,0.25); box-shadow: 0 0 30px rgba(168,85,247,0.08);">
-        <div style="background: rgba(168,85,247,0.08); padding: 10px 16px; font-family:'Share Tech Mono',monospace; font-size:0.75rem; color: rgba(168,85,247,0.8); border-bottom: 1px solid rgba(168,85,247,0.15);">
+      <div
+        style="margin: 18px 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(168,85,247,0.25); box-shadow: 0 0 30px rgba(168,85,247,0.08);">
+        <div
+          style="background: rgba(168,85,247,0.08); padding: 10px 16px; font-family:'Share Tech Mono',monospace; font-size:0.75rem; color: rgba(168,85,247,0.8); border-bottom: 1px solid rgba(168,85,247,0.15);">
           📄 แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf
         </div>
-        <iframe
-          src="แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf"
-          width="100%"
-          height="600px"
-          style="display:block; background:#fff;"
-          title="แผนการจัดการเรียนรู้และแบบทดสอบ เมล็ด">
-          <p style="color:#fff; padding:20px;">เบราว์เซอร์ของคุณไม่รองรับการแสดง PDF — <a href="แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf" style="color:#a855f7;">คลิกที่นี่เพื่อดาวน์โหลด</a></p>
+        <iframe src="แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf" width="100%" height="600px"
+          style="display:block; background:#fff;" title="แผนการจัดการเรียนรู้และแบบทดสอบ เมล็ด">
+          <p style="color:#fff; padding:20px;">เบราว์เซอร์ของคุณไม่รองรับการแสดง PDF — <a
+              href="แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf" style="color:#a855f7;">คลิกที่นี่เพื่อดาวน์โหลด</a></p>
         </iframe>
       </div>
 
       <div class="btn-row">
-        <a href="แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf"
-           target="_blank"
-           download
-           class="btn-sci btn-pdf"
-           style="background: linear-gradient(135deg, #6d28d9, #a855f7); box-shadow: 0 4px 20px rgba(168,85,247,0.35);">
+        <a href="แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf" target="_blank" download class="btn-sci btn-pdf"
+          style="background: linear-gradient(135deg, #6d28d9, #a855f7); box-shadow: 0 4px 20px rgba(168,85,247,0.35);">
           <span>📄</span> ดาวน์โหลดแผนการจัดการเรียนรู้ (PDF)
         </a>
       </div>
@@ -711,7 +923,7 @@
   <script>
     /* ===== SPACE BACKGROUND ===== */
     const bgCanvas = document.getElementById('bg-canvas');
-    const bgCtx    = bgCanvas.getContext('2d');
+    const bgCtx = bgCanvas.getContext('2d');
     let stars = [], meteors = [], gridNodes = [];
 
     function resizeBg() { bgCanvas.width = innerWidth; bgCanvas.height = innerHeight; }
@@ -765,27 +977,27 @@
 
       // nebula
       [
-        { x: W*0.2, y: H*0.3, r: 280, c: '0,100,200' },
-        { x: W*0.8, y: H*0.6, r: 240, c: '80,0,160' },
-        { x: W*0.5, y: H*0.85, r: 200, c: '0,180,180' },
+        { x: W * 0.2, y: H * 0.3, r: 280, c: '0,100,200' },
+        { x: W * 0.8, y: H * 0.6, r: 240, c: '80,0,160' },
+        { x: W * 0.5, y: H * 0.85, r: 200, c: '0,180,180' },
       ].forEach(n => {
-        const ng = bgCtx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r);
+        const ng = bgCtx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
         ng.addColorStop(0, `rgba(${n.c},0.09)`);
         ng.addColorStop(1, `rgba(${n.c},0)`);
-        bgCtx.fillStyle = ng; bgCtx.beginPath(); bgCtx.arc(n.x,n.y,n.r,0,Math.PI*2); bgCtx.fill();
+        bgCtx.fillStyle = ng; bgCtx.beginPath(); bgCtx.arc(n.x, n.y, n.r, 0, Math.PI * 2); bgCtx.fill();
       });
 
       // grid network
       for (let i = 0; i < gridNodes.length; i++) {
-        for (let j = i+1; j < gridNodes.length; j++) {
+        for (let j = i + 1; j < gridNodes.length; j++) {
           const a = gridNodes[i], b = gridNodes[j];
-          const dx = a.x-b.x, dy = a.y-b.y;
-          const d = Math.sqrt(dx*dx+dy*dy);
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d = Math.sqrt(dx * dx + dy * dy);
           if (d < 120) {
             bgCtx.beginPath();
             bgCtx.moveTo(a.x, a.y);
             bgCtx.lineTo(b.x, b.y);
-            bgCtx.strokeStyle = `rgba(0,229,255,${0.05 * (1 - d/120)})`;
+            bgCtx.strokeStyle = `rgba(0,229,255,${0.05 * (1 - d / 120)})`;
             bgCtx.lineWidth = 0.5;
             bgCtx.stroke();
           }
@@ -797,21 +1009,21 @@
         s.a += s.da;
         if (s.a > 0.95 || s.a < 0.15) s.da *= -1;
         bgCtx.beginPath();
-        bgCtx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+        bgCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         bgCtx.fillStyle = s.cyan ? `rgba(0,229,255,${s.a})` : `rgba(255,255,255,${s.a})`;
         bgCtx.fill();
       });
 
       // meteors
       meteors.forEach((m, i) => {
-        const mg = bgCtx.createLinearGradient(m.x, m.y, m.x+m.len, m.y+m.len*0.45);
+        const mg = bgCtx.createLinearGradient(m.x, m.y, m.x + m.len, m.y + m.len * 0.45);
         mg.addColorStop(0, `rgba(0,229,255,0)`);
         mg.addColorStop(1, `rgba(0,229,255,${m.a})`);
         bgCtx.strokeStyle = mg;
         bgCtx.lineWidth = m.w;
         bgCtx.beginPath();
         bgCtx.moveTo(m.x, m.y);
-        bgCtx.lineTo(m.x+m.len, m.y+m.len*0.45);
+        bgCtx.lineTo(m.x + m.len, m.y + m.len * 0.45);
         bgCtx.stroke();
         m.x += m.spd * 1.8; m.y += m.spd * 0.8;
         m.a -= 0.02;
@@ -837,15 +1049,15 @@
       el.className = 'eq';
       el.textContent = eq;
       const left = 5 + Math.random() * 85;
-      const dur  = 18 + Math.random() * 20;
-      const del  = Math.random() * -20;
+      const dur = 18 + Math.random() * 20;
+      const del = Math.random() * -20;
       el.style.cssText = `left:${left}%;animation-duration:${dur}s;animation-delay:${del}s`;
       eqLayer.appendChild(el);
     });
 
     /* ===== SPRING OSCILLATION GRAPH ===== */
     const sc = document.getElementById('spring-canvas');
-    sc.width  = sc.offsetWidth;
+    sc.width = sc.offsetWidth;
     sc.height = 160;
     const sCtx = sc.getContext('2d');
     window.addEventListener('resize', () => { sc.width = sc.offsetWidth; drawSpring(Date.now()); });
@@ -858,30 +1070,30 @@
       sCtx.strokeStyle = 'rgba(255,255,255,0.1)';
       sCtx.lineWidth = 1;
       sCtx.beginPath();
-      sCtx.moveTo(40, 10); sCtx.lineTo(40, H-20);
-      sCtx.moveTo(40, H/2); sCtx.lineTo(W-10, H/2);
+      sCtx.moveTo(40, 10); sCtx.lineTo(40, H - 20);
+      sCtx.moveTo(40, H / 2); sCtx.lineTo(W - 10, H / 2);
       sCtx.stroke();
 
       // axis labels
       sCtx.fillStyle = 'rgba(255,255,255,0.25)';
       sCtx.font = '10px Share Tech Mono, monospace';
       sCtx.fillText('x(t)', 44, 18);
-      sCtx.fillText('0', 28, H/2+4);
+      sCtx.fillText('0', 28, H / 2 + 4);
 
       // draw damped oscillation
       const t0 = now / 1000;
-      const A = (H/2 - 24), b = 0.2, omega = 2.1, phi = 0;
+      const A = (H / 2 - 24), b = 0.2, omega = 2.1, phi = 0;
 
       // cyan filled area
       sCtx.beginPath();
-      sCtx.moveTo(40, H/2);
+      sCtx.moveTo(40, H / 2);
       for (let px = 0; px <= W - 50; px++) {
-        const t = (px / (W-50)) * 14;
-        const val = A * Math.exp(-b*t) * Math.cos(omega*t + phi + t0*0.3);
-        const cx = 40 + px, cy = H/2 - val;
+        const t = (px / (W - 50)) * 14;
+        const val = A * Math.exp(-b * t) * Math.cos(omega * t + phi + t0 * 0.3);
+        const cx = 40 + px, cy = H / 2 - val;
         if (px === 0) sCtx.moveTo(cx, cy); else sCtx.lineTo(cx, cy);
       }
-      sCtx.lineTo(W-10, H/2);
+      sCtx.lineTo(W - 10, H / 2);
       sCtx.closePath();
       const fillGrad = sCtx.createLinearGradient(0, 0, 0, H);
       fillGrad.addColorStop(0, 'rgba(0,229,255,0.15)');
@@ -892,9 +1104,9 @@
       // cyan line
       sCtx.beginPath();
       for (let px = 0; px <= W - 50; px++) {
-        const t = (px / (W-50)) * 14;
-        const val = A * Math.exp(-b*t) * Math.cos(omega*t + phi + t0*0.3);
-        const cx = 40 + px, cy = H/2 - val;
+        const t = (px / (W - 50)) * 14;
+        const val = A * Math.exp(-b * t) * Math.cos(omega * t + phi + t0 * 0.3);
+        const cx = 40 + px, cy = H / 2 - val;
         if (px === 0) sCtx.moveTo(cx, cy); else sCtx.lineTo(cx, cy);
       }
       sCtx.strokeStyle = '#00e5ff';
@@ -908,20 +1120,20 @@
       sCtx.setLineDash([4, 4]);
       sCtx.beginPath();
       for (let px = 0; px <= W - 50; px++) {
-        const t = (px / (W-50)) * 14;
-        const env = A * Math.exp(-b*t);
-        const cx = 40+px, cy = H/2 - env;
-        if (px===0) sCtx.moveTo(cx,cy); else sCtx.lineTo(cx,cy);
+        const t = (px / (W - 50)) * 14;
+        const env = A * Math.exp(-b * t);
+        const cx = 40 + px, cy = H / 2 - env;
+        if (px === 0) sCtx.moveTo(cx, cy); else sCtx.lineTo(cx, cy);
       }
       sCtx.strokeStyle = 'rgba(168,85,247,0.4)';
       sCtx.lineWidth = 1; sCtx.stroke();
 
       sCtx.beginPath();
       for (let px = 0; px <= W - 50; px++) {
-        const t = (px / (W-50)) * 14;
-        const env = A * Math.exp(-b*t);
-        const cx = 40+px, cy = H/2 + env;
-        if (px===0) sCtx.moveTo(cx,cy); else sCtx.lineTo(cx,cy);
+        const t = (px / (W - 50)) * 14;
+        const env = A * Math.exp(-b * t);
+        const cx = 40 + px, cy = H / 2 + env;
+        if (px === 0) sCtx.moveTo(cx, cy); else sCtx.lineTo(cx, cy);
       }
       sCtx.stroke();
       sCtx.setLineDash([]);
