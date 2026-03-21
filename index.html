@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ขจรศักดิ์ สิทธิวงศ์ | Portfolio</title>
+  <title>หน้าแรก | ขจรศักดิ์ สิทธิวงศ์</title>
   <link
-    href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&family=Kanit:wght@400;600;700&display=swap"
     rel="stylesheet" />
   <style>
-    /* ธีมจักรวาลภาษาไทยที่คุณชอบ (ดึงรูปพื้นหลังกลับมา) */
+    /* ===== RESET & BASE ===== */
     *,
     *::before,
     *::after {
@@ -19,138 +19,144 @@
     }
 
     body {
-      margin: 0;
-      /* ส่วนที่เรียกใช้รูปภาพพื้นหลัง (ต้องมีไฟล์ชื่อ background_photo.jpg อยู่ในโฟลเดอร์เดียวกัน) */
-      background: #03020a url('background_photo.jpg') no-repeat center center fixed;
-      background-size: cover;
-      /* บังคับให้รูปเต็มหน้าจอพอดี */
+      background-color: #03020a;
       color: white;
       font-family: 'Sarabun', sans-serif;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
       overflow-x: hidden;
     }
 
+    /* ===== NAVBAR (แถบเมนูจักรวาล) ===== */
     .navbar {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
-      padding: 20px 40px;
-      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 40px;
+      background: rgba(0, 0, 0, 0.8);
+      /* พื้นหลังดำโปร่งแสง */
       backdrop-filter: blur(10px);
       z-index: 1000;
       display: flex;
       justify-content: center;
-      border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
     }
 
     .nav-brand {
-      position: absolute;
-      left: 40px;
-      color: #ffd700;
       font-family: 'Kanit', sans-serif;
-      font-weight: 600;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
+      font-size: 1.5rem;
+      color: #ffd700;
+      font-weight: 700;
+      display: none;
+      /* ซ่อนชื่อแบรนด์ถ้าหน้าจอเล็ก */
     }
 
     .nav-menu {
       list-style: none;
       display: flex;
-      gap: 20px;
-      align-items: center;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
     }
 
     .nav-menu a {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
+      font-family: 'Kanit', sans-serif;
+      font-size: 0.95rem;
       padding: 8px 15px;
       border-radius: 5px;
       transition: 0.3s;
     }
 
-    .nav-menu a:hover {
-      color: white;
-      background: rgba(255, 255, 255, 0.05);
-    }
-
+    .nav-menu a:hover,
     .nav-menu a.active {
-      color: white;
+      color: #ffd700;
+      /* สีทอง */
       background: rgba(255, 215, 0, 0.1);
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      font-weight: 600;
     }
 
+    /* ===== HERO SECTION (ส่วนหัวหน้าแรกใหม่) ===== */
     .hero {
+      height: 100vh;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      gap: 10px;
-      margin-top: 80px;
-      position: relative;
-      z-index: 10;
+      text-align: center;
+      background-image: radial-gradient(circle at center, rgba(30, 10, 60, 0.5) 0%, rgba(3, 2, 10, 1) 70%);
+      /* กราเดียนท์วงกลม */
+      padding: 0 20px;
     }
 
-    .profile-img-wrap {
-      width: 180px;
-      height: 180px;
+    /* ใส่รูปพื้นหลังที่นี่ */
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* แก้ชื่อไฟล์รูปพื้นหลังตรงนี้ */
+      background-image: url('bg-space-new.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+      opacity: 0.5;
+      /* ความโปร่งแสงของรูป */
+    }
+
+    .hero h1 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 4rem;
+      color: #ffd700;
+      text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+      margin-bottom: 15px;
+    }
+
+    .hero h2 {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background: linear-gradient(45deg, #ffd700, #ff8c00);
+      color: #03020a;
+      text-decoration: none;
+      font-family: 'Kanit', sans-serif;
+      font-weight: 700;
+      border-radius: 50px;
+      transition: 0.3s;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+    }
+
+    /* สไตล์สำหรับรูปภาพโปรไฟล์ (ถ้ามี) */
+    .profile-img {
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      padding: 5px;
-      background: linear-gradient(135deg, #ffd700, #ffaa00);
+      border: 5px solid #ffd700;
+      object-fit: cover;
+      margin-bottom: 30px;
       box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
     }
 
-    .profile-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #03020a;
-    }
-
-    h1 {
-      font-family: 'Kanit', sans-serif;
-      font-size: 3rem;
-      color: white;
-      margin: 15px 0 5px;
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.9);
-      max-width: 600px;
-      line-height: 1.6;
-    }
-
-    .btn {
-      margin-top: 25px;
-      padding: 12px 40px;
-      background: #ffaa00;
-      color: #03020a;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: 0.3s;
-      text-decoration: none;
-      font-family: 'Kanit', sans-serif;
-      font-weight: 600;
-      font-size: 1rem;
-      border: none;
-      box-shadow: 0 5px 15px rgba(255, 170, 0, 0.4);
-      display: inline-block;
-    }
-
-    .btn:hover {
-      background: #ffd700;
-      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
-      transform: translateY(-2px);
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 30px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255, 215, 0, 0.1);
     }
   </style>
 </head>
@@ -160,7 +166,7 @@
   <nav class="navbar">
     <div class="nav-brand">✦ KS</div>
     <ul class="nav-menu">
-      <li><a href="index.html">หน้าแรก</a></li>
+      <li><a href="index.html" class="active">หน้าแรก</a></li>
       <li><a href="about.html">ประวัติ</a></li>
       <li><a href="education.html">การศึกษา</a></li>
       <li><a href="skills.html">ทักษะ</a></li>
@@ -169,16 +175,18 @@
       <li><a href="contact.html">ติดต่อ</a></li>
     </ul>
   </nav>
-  <main class="hero">
-    <div class="profile-img-wrap">
-      <img src="profile_photo.jpg" alt="ขจรศักดิ์ สิทธิวงศ์" class="profile-img" />
-    </div>
 
+  <header class="hero">
+    <div class="hero-bg"></div>
     <h1>ขจรศักดิ์ สิทธิวงศ์</h1>
-    <p class="subtitle">นักศึกษาคณะครุศาสตร์ สาขาวิชาเอกฟิสิกส์ ชั้นปีที่ 4 มหาวิทยาลัยราชภัฏอุตรดิตถ์</p>
+    <h2>ผู้นำด้านนวัตกรรมการสอนฟิสิกส์และพลังงานทางเลือก</h2>
 
-    <a href="about.html" class="btn">สำรวจผลงาน</a>
-  </main>
+    <a href="about.html" class="cta-btn">ทำความรู้จัก</a>
+  </header>
+
+  <footer>
+    &copy; 2026 Kajornsak Sittiwong. All rights reserved.
+  </footer>
 
 </body>
 
