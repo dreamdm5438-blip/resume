@@ -650,498 +650,498 @@
   <div class="eq-layer" id="eq-layer"></div>
 
   <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-brand">✦ KS</div>
-    <ul class="nav-menu">
-      <li><a href="index.html">หน้าแรก</a></li>
-      <li><a href="about.html">ประวัติ</a></li>
-      <li><a href="education.html">การศึกษา</a></li>
-      <li><a href="skills.html">ทักษะ</a></li>
-      <li><a href="simulations.html" class="active">Simulations</a></li>
-      <li><a href="biomass.html">Biomass</a></li>
-      <li><a href="#">ติดต่อ</a></li>
+  <<ul class="nav-menu">
+    <li><a href="index.html">หน้าแรก</a></li>
+    <li><a href="about.html">ประวัติ</a></li>
+    <li><a href="education.html">การศึกษา</a></li>
+    <li><a href="skills.html">ทักษะ</a></li>
+    <li><a href="simulations.html">Simulations</a></li>
+    <li><a href="biomass.html">Biomass</a></li>
+    <li><a href="#">ติดต่อ</a></li>
     </ul>
-  </nav>
 
-  <main>
+    <main>
 
-    <!-- PAGE HEADER -->
-    <div class="page-header">
-      <div class="header-icon">🔬</div>
-      <h1>การจำลองผลทางฟิสิกส์</h1>
-      <p class="sub">Physics Simulations &amp; Research</p>
-      <div class="divider-sci"></div>
-    </div>
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <div class="header-icon">🔬</div>
+        <h1>การจำลองผลทางฟิสิกส์</h1>
+        <p class="sub">Physics Simulations &amp; Research</p>
+        <div class="divider-sci"></div>
+      </div>
 
-    <!-- ===== FEATURED PROJECT: SPRING SIMULATION ===== -->
-    <div class="sec-label">
-      <span style="font-size:1.4rem">⚙️</span>
-      <h2>โปรเจกต์หลัก — Numerical Methods</h2>
-    </div>
+      <!-- ===== FEATURED PROJECT: SPRING SIMULATION ===== -->
+      <div class="sec-label">
+        <span style="font-size:1.4rem">⚙️</span>
+        <h2>โปรเจกต์หลัก — Numerical Methods</h2>
+      </div>
 
-    <div class="featured-card" style="margin-bottom: 40px;">
-      <div class="card-top">
-        <div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
-            <span class="card-tag">🐍 Python</span>
-            <span class="card-tag orange">📈 Numerical Methods</span>
-            <span class="card-tag purple">🌀 ODE Solver</span>
+      <div class="featured-card" style="margin-bottom: 40px;">
+        <div class="card-top">
+          <div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+              <span class="card-tag">🐍 Python</span>
+              <span class="card-tag orange">📈 Numerical Methods</span>
+              <span class="card-tag purple">🌀 ODE Solver</span>
+            </div>
+            <div class="card-title">Spring-Mass System Simulation</div>
+            <div class="card-sub">x''(t) + (b/m)x'(t) + (k/m)x(t) = F(t)/m</div>
           </div>
-          <div class="card-title">Spring-Mass System Simulation</div>
-          <div class="card-sub">x''(t) + (b/m)x'(t) + (k/m)x(t) = F(t)/m</div>
-        </div>
-        <div style="text-align:right;">
-          <span class="card-tag green">✅ Completed</span>
-        </div>
-      </div>
-
-      <!-- SPRING GRAPH CANVAS -->
-      <div class="spring-demo">
-        <div class="spring-demo-label">📊 กราฟการแกว่งของมวลบนสปริง — Spring Oscillation (Damped)</div>
-        <canvas id="spring-canvas"></canvas>
-        <div class="axis-label-x">เวลา t (s) →</div>
-      </div>
-
-      <div class="card-body" style="margin-top:16px;">
-        <p>โปรเจกต์นี้พัฒนาโปรแกรม Python เพื่อจำลองการแกว่งของมวลบนสปริง (Spring-Mass System)
-          โดยใช้ระเบียบวิธีเชิงตัวเลข <span class="highlight-val">Runge-Kutta 4th Order (RK4)</span>
-          สำหรับแก้สมการเชิงอนุพันธ์</p>
-        <p>พารามิเตอร์ที่ใช้ในการจำลอง: มวล <span class="highlight-val">m = 1.0 kg</span> ค่าคงตัวสปริง <span
-            class="highlight-val">k = 10.0 N/m</span> สัมประสิทธิ์หน่วง <span class="highlight-val orange">b = 0.5
-            N·s/m</span></p>
-      </div>
-
-      <div class="btn-row">
-        <a href="https://github.com/dreamdm5438-blip" target="_blank" class="btn-sci btn-github">
-          <span>💻</span> ดูโค้ดบน GitHub
-        </a>
-        <a href="#" class="btn-sci btn-outline">
-          <span>📄</span> อ่านรายงานฉบับเต็ม
-        </a>
-      </div>
-    </div>
-
-    <!-- ===== FEATURED PROJECT: BIOMASS REPORT ===== -->
-    <div class="sec-label">
-      <span style="font-size:1.4rem">🌱</span>
-      <h2>รายงานวิจัย — พลังงานชีวมวล</h2>
-    </div>
-
-    <div class="featured-card">
-      <div class="card-top">
-        <div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
-            <span class="card-tag orange">🔥 Biomass Energy</span>
-            <span class="card-tag">⚗️ Calorimetry</span>
-            <span class="card-tag purple">📊 Experimental Physics</span>
+          <div style="text-align:right;">
+            <span class="card-tag green">✅ Completed</span>
           </div>
-          <div class="card-title">ศักยภาพของเมล็ดงาในฐานะเชื้อเพลิงชีวมวลประสิทธิภาพสูง</div>
-          <div class="card-sub">Sesame Seed (Sesamum indicum) — Bomb Calorimeter Experiment</div>
         </div>
-        <div style="text-align:right;">
-          <span class="card-tag green">✅ Published</span>
+
+        <!-- SPRING GRAPH CANVAS -->
+        <div class="spring-demo">
+          <div class="spring-demo-label">📊 กราฟการแกว่งของมวลบนสปริง — Spring Oscillation (Damped)</div>
+          <canvas id="spring-canvas"></canvas>
+          <div class="axis-label-x">เวลา t (s) →</div>
+        </div>
+
+        <div class="card-body" style="margin-top:16px;">
+          <p>โปรเจกต์นี้พัฒนาโปรแกรม Python เพื่อจำลองการแกว่งของมวลบนสปริง (Spring-Mass System)
+            โดยใช้ระเบียบวิธีเชิงตัวเลข <span class="highlight-val">Runge-Kutta 4th Order (RK4)</span>
+            สำหรับแก้สมการเชิงอนุพันธ์</p>
+          <p>พารามิเตอร์ที่ใช้ในการจำลอง: มวล <span class="highlight-val">m = 1.0 kg</span> ค่าคงตัวสปริง <span
+              class="highlight-val">k = 10.0 N/m</span> สัมประสิทธิ์หน่วง <span class="highlight-val orange">b = 0.5
+              N·s/m</span></p>
+        </div>
+
+        <div class="btn-row">
+          <a href="https://github.com/dreamdm5438-blip" target="_blank" class="btn-sci btn-github">
+            <span>💻</span> ดูโค้ดบน GitHub
+          </a>
+          <a href="#" class="btn-sci btn-outline">
+            <span>📄</span> อ่านรายงานฉบับเต็ม
+          </a>
         </div>
       </div>
 
-      <!-- RESULT STRIP -->
-      <div class="result-strip">
-        <div class="res-box">
-          <div class="res-val">6,699.28</div>
-          <div class="res-lbl">ค่าความร้อนสูง (HHV)<br />cal/g</div>
-        </div>
-        <div class="res-box orange">
-          <div class="res-val" style="color:var(--orange);">5,149.61</div>
-          <div class="res-lbl">ค่าความร้อนต่ำ (LHV)<br />cal/g</div>
-        </div>
-        <div class="res-box">
-          <div class="res-val">4.95%</div>
-          <div class="res-lbl">ปริมาณความชื้น<br />(Moisture Content)</div>
-        </div>
+      <!-- ===== FEATURED PROJECT: BIOMASS REPORT ===== -->
+      <div class="sec-label">
+        <span style="font-size:1.4rem">🌱</span>
+        <h2>รายงานวิจัย — พลังงานชีวมวล</h2>
       </div>
 
-      <!-- DATA TABLE -->
-      <div class="data-table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>พารามิเตอร์</th>
-              <th>ค่าที่วัดได้</th>
-              <th>หน่วย</th>
-              <th>หมายเหตุ</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>ค่าความร้อนสูง (HHV)</td>
-              <td class="val">6,699.28</td>
-              <td>cal/g</td>
-              <td>≈ 6.70 kcal/g</td>
-            </tr>
-            <tr>
-              <td>ค่าความร้อนต่ำ (LHV)</td>
-              <td class="val-orange">5,149.61</td>
-              <td>cal/g</td>
-              <td>พลังงานสุทธิที่ใช้ได้จริง</td>
-            </tr>
-            <tr>
-              <td>ปริมาณความชื้น</td>
-              <td class="val">4.95</td>
-              <td>%</td>
-              <td>ต่ำ → เผาไหม้สมบูรณ์</td>
-            </tr>
-            <tr>
-              <td>ปริมาณเถ้า (Ash)</td>
-              <td class="val">5.32</td>
-              <td>%</td>
-              <td>ต่ำ → ลด Slagging</td>
-            </tr>
-            <tr>
-              <td>ปริมาณไขมันพืช (Lipids)</td>
-              <td class="val">45–55</td>
-              <td>%</td>
-              <td>ให้พลังงานสูงสุด</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- REPORT SUMMARY -->
-      <div class="card-body">
-        <p>เมล็ดงา (<em>Sesamum indicum</em>)
-          เป็นวัสดุชีวมวลที่มีศักยภาพสูงในการพัฒนาเป็นเชื้อเพลิงทางเลือกสำหรับอุตสาหกรรมพลังงานสะอาด
-          จากการศึกษาพบว่าองค์ประกอบทางเคมีของเมล็ดงามีไขมันพืช (Lipids) สูงถึงร้อยละ <span
-            class="highlight-val">45–55</span> ส่งผลให้ค่าพลังงานความร้อนสูงกว่าวัสดุเหลือทิ้งทางการเกษตรทั่วไปถึงร้อยละ
-          <span class="highlight-val orange">30–40</span></p>
-        <p>จากการทดลองด้วยระเบิดแคลอรีมิเตอร์ (Bomb Calorimeter) พบว่าเมล็ดงามีค่าความร้อนสูง (HHV) เฉลี่ยอยู่ที่ <span
-            class="highlight-val">6,699.28 cal/g</span> ซึ่งใกล้เคียงกับถ่านหินคุณภาพปานกลาง และมีค่าความร้อนต่ำ (LHV)
-          อยู่ที่ <span class="highlight-val orange">5,149.61 cal/g</span></p>
-        <p>ปัจจัยสนับสนุนสำคัญ ได้แก่ ปริมาณความชื้นต่ำเพียง <span class="highlight-val">4น้าหก รายงานพลังงานชีวมวล
-            (Biomass Energy Report)
-            คำอธิบายภาพ: หน้านี้ใช้พื้นหลังอวกาศที่พิเศษสุดๆ คือมีเนบิวลาสีเขียวมรกตและทองผสมอยู่
-            เพื่อสื่อถึงพลังงานที่ยั่งยืนและธรรมชาติ หัวข้อคือ "รายงานผลงานวิจัยพลังงาน" (Energy Research Report)
-            แสดงผลด้วยอินโฟกราฟิกแบบลอยตัว มีไอคอนรูปโลกที่มีใบไม้และโครงสร้างโมเลกุลเรืองแสง
-            แสดงสรุปกระบวนการผลิตพลังงานชีวมวล (Biomass to Energy) พร้อมเนื้อหาจางๆ ด้านข้าง
-            และมีปุ่มสีเขียวเรืองแสงสำหรับ "ดาวน์โหลดรายงานฉบับเต็ม" ครับ
-
-            สร้างโดย AI
-
-            นี่คือ หน้ารายงานพลังงานชีวมวล (Biomass Energy Report) ครับ มาในโทนอวกาศสีเขียว-ทอง
-            สื่อถึงพลังงานสะอาดและการพัฒนาที่ยั่งยืน.95%</span> ช่วยให้เผาไหม้สมบูรณ์ และปริมาณเถ้า (Ash) ต่ำเพียง <span
-            class="highlight-val">5.32%</span> ลดปัญหาการเกิดตะกรัน (Slagging) และการกัดกร่อนในเตาเผา</p>
-      </div>
-
-      <div class="conclusion-block">
-        <h4>✅ สรุปผลการวิจัย</h4>
-        <p>แนวทางที่คุ้มค่าที่สุดคือการนำ <strong>"กากเมล็ดงา"</strong>
-          ที่เหลือจากอุตสาหกรรมสกัดน้ำมันมาใช้เป็นเชื้อเพลิง Co-firing ร่วมกับโรงไฟฟ้าชีวมวล
-          เพื่อใช้ทรัพยากรอย่างคุ้มค่าและลดการพึ่งพาเชื้อเพลิงฟอสซิล</p>
-      </div>
-
-      <!-- PDF BUTTON -->
-      <div class="btn-row">
-        <a href="รายงาน เรื่อง การหาค่าความร้อนของเมล็ดงาด้วยระเบิดแคลอรีมิเตอร์00.pdf" target="_blank" download
-          class="btn-sci btn-pdf">
-          <span>📄</span> ดาวน์โหลดรายงานฉบับเต็ม (PDF)
-        </a>
-        <a href="https://github.com/dreamdm5438-blip" target="_blank" class="btn-sci btn-github">
-          <span>💻</span> ดูโค้ดบน GitHub
-        </a>
-      </div>
-    </div>
-
-    <!-- ===== OTHER PROJECTS ===== -->
-    <div class="sec-label" style="margin-top:50px;">
-      <span style="font-size:1.4rem">🚀</span>
-      <h2>โปรเจกต์อื่นๆ</h2>
-    </div>
-    <div class="projects-grid">
-      <div class="mini-card c1">
-        <div class="mc-icon">📡</div>
-        <h3>Wave Interference Simulation</h3>
-        <p>จำลองการแทรกสอดของคลื่น (Double-Slit) ด้วย Python และ Matplotlib แสดงรูปแบบ Interference Pattern</p>
-      </div>
-      <div class="mini-card c2">
-        <div class="mc-icon">🌍</div>
-        <h3>Projectile Motion Calculator</h3>
-        <p>โปรแกรมคำนวณและแสดงวิถีกระสุนแบบ 2D รวมถึงผลของแรงต้านอากาศเชิงตัวเลข</p>
-      </div>
-    </div>
-
-    <!-- ===== LESSON PLAN SECTION ===== -->
-    <div class="sec-label" style="margin-top:50px;">
-      <span style="font-size:1.4rem">📚</span>
-      <h2>แผนการจัดการเรียนรู้และแบบทดสอบ</h2>
-    </div>
-
-    <div class="featured-card" style="border-top-color: var(--purple);">
-      <div class="card-top">
-        <div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
-            <span class="card-tag purple">📝 แผนการสอน</span>
-            <span class="card-tag">🎓 การศึกษา</span>
-            <span class="card-tag orange">🌱 เมล็ดงา</span>
+      <div class="featured-card">
+        <div class="card-top">
+          <div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+              <span class="card-tag orange">🔥 Biomass Energy</span>
+              <span class="card-tag">⚗️ Calorimetry</span>
+              <span class="card-tag purple">📊 Experimental Physics</span>
+            </div>
+            <div class="card-title">ศักยภาพของเมล็ดงาในฐานะเชื้อเพลิงชีวมวลประสิทธิภาพสูง</div>
+            <div class="card-sub">Sesame Seed (Sesamum indicum) — Bomb Calorimeter Experiment</div>
           </div>
-          <div class="card-title">แผนการจัดการเรียนรู้และแบบทดสอบ เมล็ด</div>
-          <div class="card-sub">Lesson Plan &amp; Assessment — Biomass &amp; Sesame Seed</div>
+          <div style="text-align:right;">
+            <span class="card-tag green">✅ Published</span>
+          </div>
         </div>
-        <div style="text-align:right;">
-          <span class="card-tag green">✅ พร้อมใช้งาน</span>
+
+        <!-- RESULT STRIP -->
+        <div class="result-strip">
+          <div class="res-box">
+            <div class="res-val">6,699.28</div>
+            <div class="res-lbl">ค่าความร้อนสูง (HHV)<br />cal/g</div>
+          </div>
+          <div class="res-box orange">
+            <div class="res-val" style="color:var(--orange);">5,149.61</div>
+            <div class="res-lbl">ค่าความร้อนต่ำ (LHV)<br />cal/g</div>
+          </div>
+          <div class="res-box">
+            <div class="res-val">4.95%</div>
+            <div class="res-lbl">ปริมาณความชื้น<br />(Moisture Content)</div>
+          </div>
+        </div>
+
+        <!-- DATA TABLE -->
+        <div class="data-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>พารามิเตอร์</th>
+                <th>ค่าที่วัดได้</th>
+                <th>หน่วย</th>
+                <th>หมายเหตุ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ค่าความร้อนสูง (HHV)</td>
+                <td class="val">6,699.28</td>
+                <td>cal/g</td>
+                <td>≈ 6.70 kcal/g</td>
+              </tr>
+              <tr>
+                <td>ค่าความร้อนต่ำ (LHV)</td>
+                <td class="val-orange">5,149.61</td>
+                <td>cal/g</td>
+                <td>พลังงานสุทธิที่ใช้ได้จริง</td>
+              </tr>
+              <tr>
+                <td>ปริมาณความชื้น</td>
+                <td class="val">4.95</td>
+                <td>%</td>
+                <td>ต่ำ → เผาไหม้สมบูรณ์</td>
+              </tr>
+              <tr>
+                <td>ปริมาณเถ้า (Ash)</td>
+                <td class="val">5.32</td>
+                <td>%</td>
+                <td>ต่ำ → ลด Slagging</td>
+              </tr>
+              <tr>
+                <td>ปริมาณไขมันพืช (Lipids)</td>
+                <td class="val">45–55</td>
+                <td>%</td>
+                <td>ให้พลังงานสูงสุด</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- REPORT SUMMARY -->
+        <div class="card-body">
+          <p>เมล็ดงา (<em>Sesamum indicum</em>)
+            เป็นวัสดุชีวมวลที่มีศักยภาพสูงในการพัฒนาเป็นเชื้อเพลิงทางเลือกสำหรับอุตสาหกรรมพลังงานสะอาด
+            จากการศึกษาพบว่าองค์ประกอบทางเคมีของเมล็ดงามีไขมันพืช (Lipids) สูงถึงร้อยละ <span
+              class="highlight-val">45–55</span>
+            ส่งผลให้ค่าพลังงานความร้อนสูงกว่าวัสดุเหลือทิ้งทางการเกษตรทั่วไปถึงร้อยละ
+            <span class="highlight-val orange">30–40</span>
+          </p>
+          <p>จากการทดลองด้วยระเบิดแคลอรีมิเตอร์ (Bomb Calorimeter) พบว่าเมล็ดงามีค่าความร้อนสูง (HHV) เฉลี่ยอยู่ที่
+            <span class="highlight-val">6,699.28 cal/g</span> ซึ่งใกล้เคียงกับถ่านหินคุณภาพปานกลาง และมีค่าความร้อนต่ำ
+            (LHV)
+            อยู่ที่ <span class="highlight-val orange">5,149.61 cal/g</span></p>
+          <p>ปัจจัยสนับสนุนสำคัญ ได้แก่ ปริมาณความชื้นต่ำเพียง <span class="highlight-val">4น้าหก รายงานพลังงานชีวมวล
+              (Biomass Energy Report)
+              คำอธิบายภาพ: หน้านี้ใช้พื้นหลังอวกาศที่พิเศษสุดๆ คือมีเนบิวลาสีเขียวมรกตและทองผสมอยู่
+              เพื่อสื่อถึงพลังงานที่ยั่งยืนและธรรมชาติ หัวข้อคือ "รายงานผลงานวิจัยพลังงาน" (Energy Research Report)
+              แสดงผลด้วยอินโฟกราฟิกแบบลอยตัว มีไอคอนรูปโลกที่มีใบไม้และโครงสร้างโมเลกุลเรืองแสง
+              แสดงสรุปกระบวนการผลิตพลังงานชีวมวล (Biomass to Energy) พร้อมเนื้อหาจางๆ ด้านข้าง
+              และมีปุ่มสีเขียวเรืองแสงสำหรับ "ดาวน์โหลดรายงานฉบับเต็ม" ครับ
+
+              สร้างโดย AI
+
+              นี่คือ หน้ารายงานพลังงานชีวมวล (Biomass Energy Report) ครับ มาในโทนอวกาศสีเขียว-ทอง
+              สื่อถึงพลังงานสะอาดและการพัฒนาที่ยั่งยืน.95%</span> ช่วยให้เผาไหม้สมบูรณ์ และปริมาณเถ้า (Ash) ต่ำเพียง
+            <span class="highlight-val">5.32%</span> ลดปัญหาการเกิดตะกรัน (Slagging) และการกัดกร่อนในเตาเผา</p>
+        </div>
+
+        <div class="conclusion-block">
+          <h4>✅ สรุปผลการวิจัย</h4>
+          <p>แนวทางที่คุ้มค่าที่สุดคือการนำ <strong>"กากเมล็ดงา"</strong>
+            ที่เหลือจากอุตสาหกรรมสกัดน้ำมันมาใช้เป็นเชื้อเพลิง Co-firing ร่วมกับโรงไฟฟ้าชีวมวล
+            เพื่อใช้ทรัพยากรอย่างคุ้มค่าและลดการพึ่งพาเชื้อเพลิงฟอสซิล</p>
+        </div>
+
+        <!-- PDF BUTTON -->
+        <div class="btn-row">
+          <a href="รายงาน เรื่อง การหาค่าความร้อนของเมล็ดงาด้วยระเบิดแคลอรีมิเตอร์00.pdf" target="_blank" download
+            class="btn-sci btn-pdf">
+            <span>📄</span> ดาวน์โหลดรายงานฉบับเต็ม (PDF)
+          </a>
+          <a href="https://github.com/dreamdm5438-blip" target="_blank" class="btn-sci btn-github">
+            <span>💻</span> ดูโค้ดบน GitHub
+          </a>
         </div>
       </div>
 
-      <div class="card-body" style="margin: 16px 0;">
-        <p>เอกสารแผนการจัดการเรียนรู้ฉบับนี้ออกแบบมาเพื่อประกอบการเรียนการสอนเกี่ยวกับ <span
-            class="highlight-val purple"
-            style="background:rgba(168,85,247,0.08);border-color:rgba(168,85,247,0.2);color:var(--purple);">ชีวมวลและพลังงานทดแทน</span>
-          โดยใช้เมล็ดงาเป็นกรณีศึกษา พร้อมแบบทดสอบวัดความเข้าใจของผู้เรียน</p>
+      <!-- ===== OTHER PROJECTS ===== -->
+      <div class="sec-label" style="margin-top:50px;">
+        <span style="font-size:1.4rem">🚀</span>
+        <h2>โปรเจกต์อื่นๆ</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="mini-card c1">
+          <div class="mc-icon">📡</div>
+          <h3>Wave Interference Simulation</h3>
+          <p>จำลองการแทรกสอดของคลื่น (Double-Slit) ด้วย Python และ Matplotlib แสดงรูปแบบ Interference Pattern</p>
+        </div>
+        <div class="mini-card c2">
+          <div class="mc-icon">🌍</div>
+          <h3>Projectile Motion Calculator</h3>
+          <p>โปรแกรมคำนวณและแสดงวิถีกระสุนแบบ 2D รวมถึงผลของแรงต้านอากาศเชิงตัวเลข</p>
+        </div>
       </div>
 
-      <!-- EMBEDDED PDF VIEWER -->
-      <div
-        style="margin: 18px 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(168,85,247,0.25); box-shadow: 0 0 30px rgba(168,85,247,0.08);">
+      <!-- ===== LESSON PLAN SECTION ===== -->
+      <div class="sec-label" style="margin-top:50px;">
+        <span style="font-size:1.4rem">📚</span>
+        <h2>แผนการจัดการเรียนรู้และแบบทดสอบ</h2>
+      </div>
+
+      <div class="featured-card" style="border-top-color: var(--purple);">
+        <div class="card-top">
+          <div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+              <span class="card-tag purple">📝 แผนการสอน</span>
+              <span class="card-tag">🎓 การศึกษา</span>
+              <span class="card-tag orange">🌱 เมล็ดงา</span>
+            </div>
+            <div class="card-title">แผนการจัดการเรียนรู้และแบบทดสอบ เมล็ด</div>
+            <div class="card-sub">Lesson Plan &amp; Assessment — Biomass &amp; Sesame Seed</div>
+          </div>
+          <div style="text-align:right;">
+            <span class="card-tag green">✅ พร้อมใช้งาน</span>
+          </div>
+        </div>
+
+        <div class="card-body" style="margin: 16px 0;">
+          <p>เอกสารแผนการจัดการเรียนรู้ฉบับนี้ออกแบบมาเพื่อประกอบการเรียนการสอนเกี่ยวกับ <span
+              class="highlight-val purple"
+              style="background:rgba(168,85,247,0.08);border-color:rgba(168,85,247,0.2);color:var(--purple);">ชีวมวลและพลังงานทดแทน</span>
+            โดยใช้เมล็ดงาเป็นกรณีศึกษา พร้อมแบบทดสอบวัดความเข้าใจของผู้เรียน</p>
+        </div>
+
+        <!-- EMBEDDED PDF VIEWER -->
         <div
-          style="background: rgba(168,85,247,0.08); padding: 10px 16px; font-family:'Share Tech Mono',monospace; font-size:0.75rem; color: rgba(168,85,247,0.8); border-bottom: 1px solid rgba(168,85,247,0.15);">
-          📄 แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf
+          style="margin: 18px 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(168,85,247,0.25); box-shadow: 0 0 30px rgba(168,85,247,0.08);">
+          <div
+            style="background: rgba(168,85,247,0.08); padding: 10px 16px; font-family:'Share Tech Mono',monospace; font-size:0.75rem; color: rgba(168,85,247,0.8); border-bottom: 1px solid rgba(168,85,247,0.15);">
+            📄 แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf
+          </div>
+          <iframe src="แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf" width="100%" height="600px"
+            style="display:block; background:#fff;" title="แผนการจัดการเรียนรู้และแบบทดสอบ เมล็ด">
+            <p style="color:#fff; padding:20px;">เบราว์เซอร์ของคุณไม่รองรับการแสดง PDF — <a
+                href="แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf" style="color:#a855f7;">คลิกที่นี่เพื่อดาวน์โหลด</a></p>
+          </iframe>
         </div>
-        <iframe src="แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf" width="100%" height="600px"
-          style="display:block; background:#fff;" title="แผนการจัดการเรียนรู้และแบบทดสอบ เมล็ด">
-          <p style="color:#fff; padding:20px;">เบราว์เซอร์ของคุณไม่รองรับการแสดง PDF — <a
-              href="แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf" style="color:#a855f7;">คลิกที่นี่เพื่อดาวน์โหลด</a></p>
-        </iframe>
+
+        <div class="btn-row">
+          <a href="แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf" target="_blank" download class="btn-sci btn-pdf"
+            style="background: linear-gradient(135deg, #6d28d9, #a855f7); box-shadow: 0 4px 20px rgba(168,85,247,0.35);">
+            <span>📄</span> ดาวน์โหลดแผนการจัดการเรียนรู้ (PDF)
+          </a>
+        </div>
       </div>
 
-      <div class="btn-row">
-        <a href="แผนการจัดการเรียนรู้และบททดสอบ เมล็ด.pdf" target="_blank" download class="btn-sci btn-pdf"
-          style="background: linear-gradient(135deg, #6d28d9, #a855f7); box-shadow: 0 4px 20px rgba(168,85,247,0.35);">
-          <span>📄</span> ดาวน์โหลดแผนการจัดการเรียนรู้ (PDF)
-        </a>
-      </div>
-    </div>
+    </main>
 
-  </main>
+    <script>
+      /* ===== SPACE BACKGROUND ===== */
+      const bgCanvas = document.getElementById('bg-canvas');
+      const bgCtx = bgCanvas.getContext('2d');
+      let stars = [], meteors = [], gridNodes = [];
 
-  <script>
-    /* ===== SPACE BACKGROUND ===== */
-    const bgCanvas = document.getElementById('bg-canvas');
-    const bgCtx = bgCanvas.getContext('2d');
-    let stars = [], meteors = [], gridNodes = [];
+      function resizeBg() { bgCanvas.width = innerWidth; bgCanvas.height = innerHeight; }
+      resizeBg();
+      window.addEventListener('resize', () => { resizeBg(); initBg(); });
 
-    function resizeBg() { bgCanvas.width = innerWidth; bgCanvas.height = innerHeight; }
-    resizeBg();
-    window.addEventListener('resize', () => { resizeBg(); initBg(); });
+      function initBg() {
+        const W = bgCanvas.width, H = bgCanvas.height;
+        const count = Math.floor(W * H / 3500);
+        stars = Array.from({ length: count }, () => ({
+          x: Math.random() * W, y: Math.random() * H,
+          r: Math.random() * 1.5 + 0.3,
+          a: Math.random() * 0.7 + 0.2,
+          da: (Math.random() * 0.006 + 0.002) * (Math.random() > 0.5 ? 1 : -1),
+          cyan: Math.random() < 0.1,
+        }));
 
-    function initBg() {
-      const W = bgCanvas.width, H = bgCanvas.height;
-      const count = Math.floor(W * H / 3500);
-      stars = Array.from({ length: count }, () => ({
-        x: Math.random() * W, y: Math.random() * H,
-        r: Math.random() * 1.5 + 0.3,
-        a: Math.random() * 0.7 + 0.2,
-        da: (Math.random() * 0.006 + 0.002) * (Math.random() > 0.5 ? 1 : -1),
-        cyan: Math.random() < 0.1,
-      }));
-
-      // grid nodes for network effect
-      gridNodes = [];
-      const cols = Math.floor(W / 90), rows = Math.floor(H / 90);
-      for (let r = 0; r <= rows; r++) for (let c = 0; c <= cols; c++) {
-        gridNodes.push({
-          x: c * 90 + (Math.random() - 0.5) * 40,
-          y: r * 90 + (Math.random() - 0.5) * 40,
-          a: Math.random() * 0.5 + 0.1,
-        });
-      }
-    }
-    initBg();
-
-    function spawnMeteor() {
-      meteors.push({
-        x: Math.random() * bgCanvas.width * 0.8,
-        y: Math.random() * bgCanvas.height * 0.3,
-        len: Math.random() * 150 + 60,
-        spd: Math.random() * 7 + 5,
-        a: 1,
-        w: Math.random() * 1.2 + 0.4,
-      });
-    }
-    setInterval(spawnMeteor, 2200);
-
-    function drawBg() {
-      const W = bgCanvas.width, H = bgCanvas.height;
-      const g = bgCtx.createLinearGradient(0, 0, W, H);
-      g.addColorStop(0, '#010812');
-      g.addColorStop(0.5, '#020a1e');
-      g.addColorStop(1, '#010510');
-      bgCtx.fillStyle = g;
-      bgCtx.fillRect(0, 0, W, H);
-
-      // nebula
-      [
-        { x: W * 0.2, y: H * 0.3, r: 280, c: '0,100,200' },
-        { x: W * 0.8, y: H * 0.6, r: 240, c: '80,0,160' },
-        { x: W * 0.5, y: H * 0.85, r: 200, c: '0,180,180' },
-      ].forEach(n => {
-        const ng = bgCtx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
-        ng.addColorStop(0, `rgba(${n.c},0.09)`);
-        ng.addColorStop(1, `rgba(${n.c},0)`);
-        bgCtx.fillStyle = ng; bgCtx.beginPath(); bgCtx.arc(n.x, n.y, n.r, 0, Math.PI * 2); bgCtx.fill();
-      });
-
-      // grid network
-      for (let i = 0; i < gridNodes.length; i++) {
-        for (let j = i + 1; j < gridNodes.length; j++) {
-          const a = gridNodes[i], b = gridNodes[j];
-          const dx = a.x - b.x, dy = a.y - b.y;
-          const d = Math.sqrt(dx * dx + dy * dy);
-          if (d < 120) {
-            bgCtx.beginPath();
-            bgCtx.moveTo(a.x, a.y);
-            bgCtx.lineTo(b.x, b.y);
-            bgCtx.strokeStyle = `rgba(0,229,255,${0.05 * (1 - d / 120)})`;
-            bgCtx.lineWidth = 0.5;
-            bgCtx.stroke();
-          }
+        // grid nodes for network effect
+        gridNodes = [];
+        const cols = Math.floor(W / 90), rows = Math.floor(H / 90);
+        for (let r = 0; r <= rows; r++) for (let c = 0; c <= cols; c++) {
+          gridNodes.push({
+            x: c * 90 + (Math.random() - 0.5) * 40,
+            y: r * 90 + (Math.random() - 0.5) * 40,
+            a: Math.random() * 0.5 + 0.1,
+          });
         }
       }
+      initBg();
 
-      // stars
-      stars.forEach(s => {
-        s.a += s.da;
-        if (s.a > 0.95 || s.a < 0.15) s.da *= -1;
-        bgCtx.beginPath();
-        bgCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        bgCtx.fillStyle = s.cyan ? `rgba(0,229,255,${s.a})` : `rgba(255,255,255,${s.a})`;
-        bgCtx.fill();
+      function spawnMeteor() {
+        meteors.push({
+          x: Math.random() * bgCanvas.width * 0.8,
+          y: Math.random() * bgCanvas.height * 0.3,
+          len: Math.random() * 150 + 60,
+          spd: Math.random() * 7 + 5,
+          a: 1,
+          w: Math.random() * 1.2 + 0.4,
+        });
+      }
+      setInterval(spawnMeteor, 2200);
+
+      function drawBg() {
+        const W = bgCanvas.width, H = bgCanvas.height;
+        const g = bgCtx.createLinearGradient(0, 0, W, H);
+        g.addColorStop(0, '#010812');
+        g.addColorStop(0.5, '#020a1e');
+        g.addColorStop(1, '#010510');
+        bgCtx.fillStyle = g;
+        bgCtx.fillRect(0, 0, W, H);
+
+        // nebula
+        [
+          { x: W * 0.2, y: H * 0.3, r: 280, c: '0,100,200' },
+          { x: W * 0.8, y: H * 0.6, r: 240, c: '80,0,160' },
+          { x: W * 0.5, y: H * 0.85, r: 200, c: '0,180,180' },
+        ].forEach(n => {
+          const ng = bgCtx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
+          ng.addColorStop(0, `rgba(${n.c},0.09)`);
+          ng.addColorStop(1, `rgba(${n.c},0)`);
+          bgCtx.fillStyle = ng; bgCtx.beginPath(); bgCtx.arc(n.x, n.y, n.r, 0, Math.PI * 2); bgCtx.fill();
+        });
+
+        // grid network
+        for (let i = 0; i < gridNodes.length; i++) {
+          for (let j = i + 1; j < gridNodes.length; j++) {
+            const a = gridNodes[i], b = gridNodes[j];
+            const dx = a.x - b.x, dy = a.y - b.y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 120) {
+              bgCtx.beginPath();
+              bgCtx.moveTo(a.x, a.y);
+              bgCtx.lineTo(b.x, b.y);
+              bgCtx.strokeStyle = `rgba(0,229,255,${0.05 * (1 - d / 120)})`;
+              bgCtx.lineWidth = 0.5;
+              bgCtx.stroke();
+            }
+          }
+        }
+
+        // stars
+        stars.forEach(s => {
+          s.a += s.da;
+          if (s.a > 0.95 || s.a < 0.15) s.da *= -1;
+          bgCtx.beginPath();
+          bgCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          bgCtx.fillStyle = s.cyan ? `rgba(0,229,255,${s.a})` : `rgba(255,255,255,${s.a})`;
+          bgCtx.fill();
+        });
+
+        // meteors
+        meteors.forEach((m, i) => {
+          const mg = bgCtx.createLinearGradient(m.x, m.y, m.x + m.len, m.y + m.len * 0.45);
+          mg.addColorStop(0, `rgba(0,229,255,0)`);
+          mg.addColorStop(1, `rgba(0,229,255,${m.a})`);
+          bgCtx.strokeStyle = mg;
+          bgCtx.lineWidth = m.w;
+          bgCtx.beginPath();
+          bgCtx.moveTo(m.x, m.y);
+          bgCtx.lineTo(m.x + m.len, m.y + m.len * 0.45);
+          bgCtx.stroke();
+          m.x += m.spd * 1.8; m.y += m.spd * 0.8;
+          m.a -= 0.02;
+          if (m.a <= 0) meteors.splice(i, 1);
+        });
+
+        requestAnimationFrame(drawBg);
+      }
+      drawBg();
+
+      /* ===== FLOATING EQUATIONS ===== */
+      const equations = [
+        'F = ma', 'E = mc²', 'ΔU = Q - W', 'PV = nRT',
+        'F = -kx', 'ω = √(k/m)', 'x(t) = Ae⁻ᵞᵗcos(ωt+φ)',
+        'HHV = Q_gross', 'LHV = HHV - 2442·w',
+        'ΔH_comb = -Q_cal', '∇²φ = 0',
+        'd²x/dt² + (b/m)dx/dt + (k/m)x = 0',
+        'Q = mcΔT', 'η = W_out/Q_in',
+      ];
+      const eqLayer = document.getElementById('eq-layer');
+      equations.forEach((eq, i) => {
+        const el = document.createElement('div');
+        el.className = 'eq';
+        el.textContent = eq;
+        const left = 5 + Math.random() * 85;
+        const dur = 18 + Math.random() * 20;
+        const del = Math.random() * -20;
+        el.style.cssText = `left:${left}%;animation-duration:${dur}s;animation-delay:${del}s`;
+        eqLayer.appendChild(el);
       });
 
-      // meteors
-      meteors.forEach((m, i) => {
-        const mg = bgCtx.createLinearGradient(m.x, m.y, m.x + m.len, m.y + m.len * 0.45);
-        mg.addColorStop(0, `rgba(0,229,255,0)`);
-        mg.addColorStop(1, `rgba(0,229,255,${m.a})`);
-        bgCtx.strokeStyle = mg;
-        bgCtx.lineWidth = m.w;
-        bgCtx.beginPath();
-        bgCtx.moveTo(m.x, m.y);
-        bgCtx.lineTo(m.x + m.len, m.y + m.len * 0.45);
-        bgCtx.stroke();
-        m.x += m.spd * 1.8; m.y += m.spd * 0.8;
-        m.a -= 0.02;
-        if (m.a <= 0) meteors.splice(i, 1);
-      });
+      /* ===== SPRING OSCILLATION GRAPH ===== */
+      const sc = document.getElementById('spring-canvas');
+      sc.width = sc.offsetWidth;
+      sc.height = 160;
+      const sCtx = sc.getContext('2d');
+      window.addEventListener('resize', () => { sc.width = sc.offsetWidth; drawSpring(Date.now()); });
 
-      requestAnimationFrame(drawBg);
-    }
-    drawBg();
+      function drawSpring(now) {
+        const W = sc.width, H = sc.height;
+        sCtx.clearRect(0, 0, W, H);
 
-    /* ===== FLOATING EQUATIONS ===== */
-    const equations = [
-      'F = ma', 'E = mc²', 'ΔU = Q - W', 'PV = nRT',
-      'F = -kx', 'ω = √(k/m)', 'x(t) = Ae⁻ᵞᵗcos(ωt+φ)',
-      'HHV = Q_gross', 'LHV = HHV - 2442·w',
-      'ΔH_comb = -Q_cal', '∇²φ = 0',
-      'd²x/dt² + (b/m)dx/dt + (k/m)x = 0',
-      'Q = mcΔT', 'η = W_out/Q_in',
-    ];
-    const eqLayer = document.getElementById('eq-layer');
-    equations.forEach((eq, i) => {
-      const el = document.createElement('div');
-      el.className = 'eq';
-      el.textContent = eq;
-      const left = 5 + Math.random() * 85;
-      const dur = 18 + Math.random() * 20;
-      const del = Math.random() * -20;
-      el.style.cssText = `left:${left}%;animation-duration:${dur}s;animation-delay:${del}s`;
-      eqLayer.appendChild(el);
-    });
+        // axes
+        sCtx.strokeStyle = 'rgba(255,255,255,0.1)';
+        sCtx.lineWidth = 1;
+        sCtx.beginPath();
+        sCtx.moveTo(40, 10); sCtx.lineTo(40, H - 20);
+        sCtx.moveTo(40, H / 2); sCtx.lineTo(W - 10, H / 2);
+        sCtx.stroke();
 
-    /* ===== SPRING OSCILLATION GRAPH ===== */
-    const sc = document.getElementById('spring-canvas');
-    sc.width = sc.offsetWidth;
-    sc.height = 160;
-    const sCtx = sc.getContext('2d');
-    window.addEventListener('resize', () => { sc.width = sc.offsetWidth; drawSpring(Date.now()); });
+        // axis labels
+        sCtx.fillStyle = 'rgba(255,255,255,0.25)';
+        sCtx.font = '10px Share Tech Mono, monospace';
+        sCtx.fillText('x(t)', 44, 18);
+        sCtx.fillText('0', 28, H / 2 + 4);
 
-    function drawSpring(now) {
-      const W = sc.width, H = sc.height;
-      sCtx.clearRect(0, 0, W, H);
+        // draw damped oscillation
+        const t0 = now / 1000;
+        const A = (H / 2 - 24), b = 0.2, omega = 2.1, phi = 0;
 
-      // axes
-      sCtx.strokeStyle = 'rgba(255,255,255,0.1)';
-      sCtx.lineWidth = 1;
-      sCtx.beginPath();
-      sCtx.moveTo(40, 10); sCtx.lineTo(40, H - 20);
-      sCtx.moveTo(40, H / 2); sCtx.lineTo(W - 10, H / 2);
-      sCtx.stroke();
+        // cyan filled area
+        sCtx.beginPath();
+        sCtx.moveTo(40, H / 2);
+        for (let px = 0; px <= W - 50; px++) {
+          const t = (px / (W - 50)) * 14;
+          const val = A * Math.exp(-b * t) * Math.cos(omega * t + phi + t0 * 0.3);
+          const cx = 40 + px, cy = H / 2 - val;
+          if (px === 0) sCtx.moveTo(cx, cy); else sCtx.lineTo(cx, cy);
+        }
+        sCtx.lineTo(W - 10, H / 2);
+        sCtx.closePath();
+        const fillGrad = sCtx.createLinearGradient(0, 0, 0, H);
+        fillGrad.addColorStop(0, 'rgba(0,229,255,0.15)');
+        fillGrad.addColorStop(1, 'rgba(0,229,255,0.02)');
+        sCtx.fillStyle = fillGrad;
+        sCtx.fill();
 
-      // axis labels
-      sCtx.fillStyle = 'rgba(255,255,255,0.25)';
-      sCtx.font = '10px Share Tech Mono, monospace';
-      sCtx.fillText('x(t)', 44, 18);
-      sCtx.fillText('0', 28, H / 2 + 4);
+        // cyan line
+        sCtx.beginPath();
+        for (let px = 0; px <= W - 50; px++) {
+          const t = (px / (W - 50)) * 14;
+          const val = A * Math.exp(-b * t) * Math.cos(omega * t + phi + t0 * 0.3);
+          const cx = 40 + px, cy = H / 2 - val;
+          if (px === 0) sCtx.moveTo(cx, cy); else sCtx.lineTo(cx, cy);
+        }
+        sCtx.strokeStyle = '#00e5ff';
+        sCtx.lineWidth = 2;
+        sCtx.shadowColor = '#00e5ff';
+        sCtx.shadowBlur = 8;
+        sCtx.stroke();
+        sCtx.shadowBlur = 0;
 
-      // draw damped oscillation
-      const t0 = now / 1000;
-      const A = (H / 2 - 24), b = 0.2, omega = 2.1, phi = 0;
+        // envelope (dashed)
+        sCtx.setLineDash([4, 4]);
+        sCtx.beginPath();
+        for (let px = 0; px <= W - 50; px++) {
+          const t = (px / (W - 50)) * 14;
+          const env = A * Math.exp(-b * t);
+          const cx = 40 + px, cy = H / 2 - env;
+          if (px === 0) sCtx.moveTo(cx, cy); else sCtx.lineTo(cx, cy);
+        }
+        sCtx.strokeStyle = 'rgba(168,85,247,0.4)';
+        sCtx.lineWidth = 1; sCtx.stroke();
 
-      // cyan filled area
-      sCtx.beginPath();
-      sCtx.moveTo(40, H / 2);
-      for (let px = 0; px <= W - 50; px++) {
-        const t = (px / (W - 50)) * 14;
-        const val = A * Math.exp(-b * t) * Math.cos(omega * t + phi + t0 * 0.3);
-        const cx = 40 + px, cy = H / 2 - val;
-        if (px === 0) sCtx.moveTo(cx, cy); else sCtx.lineTo(cx, cy);
+        sCtx.beginPath();
+        for (let px = 0; px <= W - 50; px++) {
+          const t = (px / (W - 50)) * 14;
+          const env = A * Math.exp(-b * t);
+          const cx = 40 + px, cy = H / 2 + env;
+          if (px === 0) sCtx.moveTo(cx, cy); else sCtx.lineTo(cx, cy);
+        }
+        sCtx.stroke();
+        sCtx.setLineDash([]);
+
+        requestAnimationFrame(() => drawSpring(Date.now()));
       }
-      sCtx.lineTo(W - 10, H / 2);
-      sCtx.closePath();
-      const fillGrad = sCtx.createLinearGradient(0, 0, 0, H);
-      fillGrad.addColorStop(0, 'rgba(0,229,255,0.15)');
-      fillGrad.addColorStop(1, 'rgba(0,229,255,0.02)');
-      sCtx.fillStyle = fillGrad;
-      sCtx.fill();
-
-      // cyan line
-      sCtx.beginPath();
-      for (let px = 0; px <= W - 50; px++) {
-        const t = (px / (W - 50)) * 14;
-        const val = A * Math.exp(-b * t) * Math.cos(omega * t + phi + t0 * 0.3);
-        const cx = 40 + px, cy = H / 2 - val;
-        if (px === 0) sCtx.moveTo(cx, cy); else sCtx.lineTo(cx, cy);
-      }
-      sCtx.strokeStyle = '#00e5ff';
-      sCtx.lineWidth = 2;
-      sCtx.shadowColor = '#00e5ff';
-      sCtx.shadowBlur = 8;
-      sCtx.stroke();
-      sCtx.shadowBlur = 0;
-
-      // envelope (dashed)
-      sCtx.setLineDash([4, 4]);
-      sCtx.beginPath();
-      for (let px = 0; px <= W - 50; px++) {
-        const t = (px / (W - 50)) * 14;
-        const env = A * Math.exp(-b * t);
-        const cx = 40 + px, cy = H / 2 - env;
-        if (px === 0) sCtx.moveTo(cx, cy); else sCtx.lineTo(cx, cy);
-      }
-      sCtx.strokeStyle = 'rgba(168,85,247,0.4)';
-      sCtx.lineWidth = 1; sCtx.stroke();
-
-      sCtx.beginPath();
-      for (let px = 0; px <= W - 50; px++) {
-        const t = (px / (W - 50)) * 14;
-        const env = A * Math.exp(-b * t);
-        const cx = 40 + px, cy = H / 2 + env;
-        if (px === 0) sCtx.moveTo(cx, cy); else sCtx.lineTo(cx, cy);
-      }
-      sCtx.stroke();
-      sCtx.setLineDash([]);
-
-      requestAnimationFrame(() => drawSpring(Date.now()));
-    }
-    drawSpring(Date.now());
-  </script>
+      drawSpring(Date.now());
+    </script>
 </body>
 
 </html>
