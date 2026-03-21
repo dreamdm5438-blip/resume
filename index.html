@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,282 +7,181 @@
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     /* ===== RESET & BASE ===== */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: #050510;
-      color: white;
-      font-family: 'Kanit', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
+      background-color: #02010a; color: white;
+      font-family: 'Kanit', sans-serif; min-height: 100vh; overflow-x: hidden;
     }
 
-    /* ===== BACKGROUND: DEEP SPACE & NEBULA ===== */
-    .space-bg {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 50% 50%, #1a0b2e 0%, #050510 100%);
-      z-index: -3;
+    /* ===== PARALLAX MOVING BACKGROUND ===== */
+    .bg-container {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: -5; background: radial-gradient(ellipse at bottom, #100a26 0%, #02010a 100%);
+      overflow: hidden; pointer-events: none;
     }
-
+    
     .nebula {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      z-index: -2;
-      opacity: 0.6;
+      position: absolute; border-radius: 50%; filter: blur(140px); z-index: -4; opacity: 0.7; mix-blend-mode: screen;
     }
+    .nebula-1 { top: -20%; left: -20%; width: 60vw; height: 60vw; background: rgba(138, 43, 226, 0.4); animation: driftBg 20s infinite alternate; }
+    .nebula-2 { bottom: -10%; right: -20%; width: 70vw; height: 70vw; background: rgba(30, 144, 255, 0.3); animation: driftBg 25s infinite alternate-reverse; }
+    .nebula-3 { top: 30%; left: 20%; width: 50vw; height: 50vw; background: rgba(255, 20, 147, 0.2); animation: driftBg 30s infinite alternate; }
 
-    .nebula-1 { top: -20%; left: -10%; width: 50vw; height: 50vw; background: rgba(80, 20, 150, 0.4); animation: drift 20s infinite alternate; }
-    .nebula-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: rgba(20, 80, 200, 0.3); animation: drift 25s infinite alternate-reverse; }
-    .nebula-3 { top: 30%; left: 40%; width: 40vw; height: 40vw; background: rgba(200, 40, 100, 0.2); animation: drift 30s infinite alternate; }
+    @keyframes driftBg { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(10vw, -10vh) scale(1.2); } }
 
-    @keyframes drift {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(50px, -50px) scale(1.1); }
-    }
+    .star { position: absolute; border-radius: 50%; background: white; z-index: -3; }
+    @keyframes flyUp { 0% { transform: translateY(110vh); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
 
     /* ===== SOLAR SYSTEM ===== */
     .solar-system {
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%) rotateX(65deg);
-      transform-style: preserve-3d;
-      width: 100vw; height: 100vw;
-      max-width: 1300px; max-height: 1300px;
-      z-index: -1;
-      opacity: 0.85;
-      pointer-events: none;
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotateX(65deg);
+      transform-style: preserve-3d; width: 100vw; height: 100vw; max-width: 1400px; max-height: 1400px;
+      z-index: -2; opacity: 0.8; pointer-events: none;
     }
 
     .sun {
-      position: absolute;
-      top: 50%; left: 50%;
-      width: 80px; height: 80px;
-      margin-top: -40px; margin-left: -40px;
-      background: radial-gradient(circle, #fffdf2 0%, #ffcc00 40%, #ff6600 80%, transparent 100%);
-      border-radius: 50%;
-      box-shadow: 0 0 60px 20px rgba(255, 150, 0, 0.6), 0 0 120px 40px rgba(255, 100, 0, 0.4);
+      position: absolute; top: 50%; left: 50%; width: 90px; height: 90px; margin: -45px;
+      background: radial-gradient(circle, #ffffff 0%, #ffdf00 30%, #ff8c00 70%, transparent 100%);
+      border-radius: 50%; box-shadow: 0 0 80px 30px rgba(255, 140, 0, 0.7), 0 0 150px 70px rgba(255, 69, 0, 0.5);
       transform: rotateX(-65deg);
     }
 
     .orbit {
-      position: absolute;
-      top: 50%; left: 50%;
-      border: 1px dashed rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
-      transform-style: preserve-3d;
-      animation: spin linear infinite;
+      position: absolute; top: 50%; left: 50%; border: 1px dashed rgba(255, 255, 255, 0.25); border-radius: 50%;
+      transform-style: preserve-3d; animation: spin linear infinite;
     }
+    .planet-wrap { position: absolute; top: 0; left: 50%; transform-style: preserve-3d; }
+    .planet { position: absolute; border-radius: 50%; transform: translate(-50%, -50%) rotateX(-65deg); }
 
-    .planet-wrap {
-      position: absolute;
-      top: 0; left: 50%;
-      transform-style: preserve-3d;
-    }
-
-    .planet {
-      position: absolute;
-      border-radius: 50%;
-      transform: translate(-50%, -50%) rotateX(-65deg);
-    }
-
-    /* Planet sizes & distances */
-    .orbit-mercury { width: 140px; height: 140px; margin: -70px; animation-duration: 8s; }
-    .p-mercury { width: 6px; height: 6px; background: #c2c2c2; box-shadow: 0 0 5px #c2c2c2; }
-
-    .orbit-venus { width: 220px; height: 220px; margin: -110px; animation-duration: 12s; }
-    .p-venus { width: 12px; height: 12px; background: #e3bb76; box-shadow: 0 0 10px #e3bb76; }
-
-    .orbit-earth { width: 320px; height: 320px; margin: -160px; animation-duration: 16s; }
-    .p-earth { width: 14px; height: 14px; background: #4b9fff; box-shadow: 0 0 15px #4b9fff; }
-    .orbit-moon { width: 30px; height: 30px; margin: -15px; border: 0.5px solid rgba(255,255,255,0.1); animation: spin 2s linear infinite; }
-    .p-moon { width: 4px; height: 4px; background: #fff; box-shadow: 0 0 3px #fff; }
-
-    .orbit-mars { width: 420px; height: 420px; margin: -210px; animation-duration: 20s; }
-    .p-mars { width: 10px; height: 10px; background: #df5c36; box-shadow: 0 0 12px #df5c36; }
-
-    .orbit-jupiter { width: 600px; height: 600px; margin: -300px; animation-duration: 35s; }
-    .p-jupiter { width: 28px; height: 28px; background: #c88b3a; box-shadow: 0 0 20px #c88b3a; }
-
-    .orbit-saturn { width: 800px; height: 800px; margin: -400px; animation-duration: 60s; }
-    .p-saturn { width: 24px; height: 24px; background: #e3cd93; box-shadow: 0 0 18px #e3cd93; }
-    .saturn-rings { 
-      position: absolute; top: 50%; left: 50%; width: 50px; height: 50px; margin: -25px; 
-      border: 6px double rgba(227, 205, 147, 0.5); border-radius: 50%; transform: rotateX(75deg); 
-    }
-
-    .orbit-uranus { width: 980px; height: 980px; margin: -490px; animation-duration: 85s; }
-    .p-uranus { width: 18px; height: 18px; background: #82b3d1; box-shadow: 0 0 16px #82b3d1; }
-
-    .orbit-neptune { width: 1160px; height: 1160px; margin: -580px; animation-duration: 120s; }
-    .p-neptune { width: 16px; height: 16px; background: #3e54e8; box-shadow: 0 0 14px #3e54e8; }
+    .orbit-mercury { width: 160px; height: 160px; margin: -80px; animation-duration: 10s; }
+    .p-mercury { width: 8px; height: 8px; background: #c2c2c2; box-shadow: 0 0 8px #c2c2c2; }
+    .orbit-venus { width: 240px; height: 240px; margin: -120px; animation-duration: 15s; }
+    .p-venus { width: 14px; height: 14px; background: #e3bb76; box-shadow: 0 0 12px #e3bb76; }
+    .orbit-earth { width: 340px; height: 340px; margin: -170px; animation-duration: 20s; }
+    .p-earth { width: 16px; height: 16px; background: #00ffff; box-shadow: 0 0 18px #00ffff; }
+    .orbit-moon { width: 36px; height: 36px; margin: -18px; border: 0.5px solid rgba(255,255,255,0.2); animation: spin 3s linear infinite; }
+    .p-moon { width: 5px; height: 5px; background: #fff; box-shadow: 0 0 5px #fff; }
+    .orbit-mars { width: 440px; height: 440px; margin: -220px; animation-duration: 25s; }
+    .p-mars { width: 12px; height: 12px; background: #ff4500; box-shadow: 0 0 15px #ff4500; }
+    .orbit-jupiter { width: 640px; height: 640px; margin: -320px; animation-duration: 45s; }
+    .p-jupiter { width: 32px; height: 32px; background: #f4a460; box-shadow: 0 0 25px #f4a460; }
+    .orbit-saturn { width: 840px; height: 840px; margin: -420px; animation-duration: 75s; }
+    .p-saturn { width: 28px; height: 28px; background: #eee8aa; box-shadow: 0 0 20px #eee8aa; }
+    .saturn-rings { position: absolute; top: 50%; left: 50%; width: 56px; height: 56px; margin: -28px; border: 8px double rgba(238, 232, 170, 0.7); border-radius: 50%; transform: rotateX(75deg); }
+    .orbit-uranus { width: 1020px; height: 1020px; margin: -510px; animation-duration: 100s; }
+    .p-uranus { width: 20px; height: 20px; background: #00ced1; box-shadow: 0 0 18px #00ced1; }
+    .orbit-neptune { width: 1200px; height: 1200px; margin: -600px; animation-duration: 140s; }
+    .p-neptune { width: 18px; height: 18px; background: #4169e1; box-shadow: 0 0 16px #4169e1; }
 
     @keyframes spin { 100% { transform: rotate(360deg); } }
 
     /* ===== NAVBAR ===== */
     .navbar {
-      position: fixed; top: 0; left: 0; width: 100%;
-      padding: 15px 40px;
-      background: rgba(10, 5, 25, 0.5);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      z-index: 1000;
-      display: flex; justify-content: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: fixed; top: 0; left: 0; width: 100%; padding: 15px 40px;
+      background: rgba(10, 5, 25, 0.5); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      z-index: 1000; display: flex; justify-content: center; border-bottom: 1px solid rgba(0, 255, 255, 0.2);
     }
-
-    .nav-brand {
-      font-size: 1.5rem; color: #ffd700; font-weight: 700;
-      display: none;
-    }
-
-    .nav-menu {
-      list-style: none; display: flex; gap: 15px; margin: 0; padding: 0;
-    }
-
+    .nav-brand { font-size: 1.5rem; color: #00ffff; font-weight: 700; display: none; }
+    .nav-menu { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; }
     .nav-menu a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none; font-size: 0.95rem; font-weight: 500;
-      padding: 8px 15px; border-radius: 5px; transition: 0.3s;
+      color: rgba(255, 255, 255, 0.85); text-decoration: none; font-size: 1.05rem; font-weight: 500;
+      padding: 10px 18px; border-radius: 8px; transition: 0.4s;
     }
-
     .nav-menu a:hover, .nav-menu a.active {
-      color: #ffd700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-      background: rgba(255, 215, 0, 0.1);
+      color: #ffd700; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+      background: rgba(255, 215, 0, 0.15); box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.2);
     }
 
     /* ===== HERO SECTION ===== */
     .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      text-align: center; padding: 100px 20px 40px;
-      position: relative; z-index: 10;
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 120px 20px 60px; position: relative; z-index: 10;
     }
 
     .glass-container {
-      background: rgba(12, 8, 30, 0.4);
-      backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 30px;
-      padding: 60px 50px;
-      display: flex; flex-direction: column; align-items: center;
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(255, 215, 0, 0.08);
-      animation: floatContainer 6s ease-in-out infinite;
-      max-width: 850px;
-      width: 100%;
+      background: rgba(15, 10, 40, 0.45); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.25); border-top: 1px solid rgba(255, 255, 255, 0.4); border-left: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 40px; padding: 60px 50px; display: flex; flex-direction: column; align-items: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), inset 0 0 50px rgba(0, 255, 255, 0.1);
+      animation: floatContainer 6s ease-in-out infinite; max-width: 900px; width: 100%;
     }
 
-    @keyframes floatContainer {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
+    @keyframes floatContainer { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
     .profile-img {
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      border: 4px solid #fff;
-      object-fit: cover;
-      margin-bottom: 25px;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 215, 0, 0.4);
-      animation: floatImg 4s ease-in-out infinite;
-      z-index: 20;
+      width: 220px; height: 220px; border-radius: 50%; border: 4px solid #fff;
+      object-fit: cover; margin-bottom: 30px;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.7), 0 0 80px rgba(255, 215, 0, 0.4);
+      animation: floatImg 4s ease-in-out infinite; z-index: 20;
     }
-
     @keyframes floatImg {
-      0%, 100% { transform: translateY(0px); box-shadow: 0 0 25px rgba(255,255,255,0.7), 0 0 50px rgba(255,215,0,0.4); }
-      50% { transform: translateY(-12px); box-shadow: 0 0 35px rgba(255,255,255,0.9), 0 0 70px rgba(255,215,0,0.6); }
+      0%, 100% { transform: translateY(0px); box-shadow: 0 0 30px rgba(0,255,255,0.8), 0 0 60px rgba(255,215,0,0.5); }
+      50% { transform: translateY(-15px); box-shadow: 0 0 45px rgba(0,255,255,1), 0 0 90px rgba(255,215,0,0.8); }
     }
 
     .hero h1 {
-      font-size: 3.5rem; font-weight: 700;
-      color: #fff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 30px #ffd700;
-      margin-bottom: 12px; letter-spacing: 1.5px;
+      font-size: 3.8rem; font-weight: 700;
+      background: linear-gradient(90deg, #ffffff, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(0, 255, 255, 0.6); margin-bottom: 12px; letter-spacing: 1.5px;
     }
 
     .hero-subtitle {
-      font-size: 1.35rem; font-weight: 400;
-      color: #ffd700; text-shadow: 0 0 12px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.4);
-      max-width: 650px; line-height: 1.6; margin-bottom: 25px;
+      font-size: 1.4rem; font-weight: 400; color: #ffd700;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.9), 0 0 25px rgba(255, 215, 0, 0.5);
+      max-width: 700px; line-height: 1.6; margin-bottom: 25px;
     }
 
     .hero-slogan {
-      font-size: 1.15rem; font-weight: 300;
-      color: rgba(255, 255, 255, 0.85); text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-      max-width: 700px; line-height: 1.6; margin-bottom: 40px; font-style: italic;
+      font-size: 1.25rem; font-weight: 300; color: #f0f0f0;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+      max-width: 780px; line-height: 1.8; margin-bottom: 45px; font-style: italic;
+      border-left: 4px solid #00ffff; padding-left: 20px; text-align: left;
     }
 
+    /* Vibrant Glowing Button */
     .cta-btn {
-      display: inline-block; padding: 18px 50px;
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 140, 0, 0.25));
-      border: 1px solid rgba(255, 215, 0, 0.7);
-      color: #ffd700; text-decoration: none; font-size: 1.25rem; font-weight: 600;
-      border-radius: 50px; backdrop-filter: blur(10px);
-      transition: all 0.4s ease;
-      box-shadow: 0 0 20px rgba(255, 140, 0, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.3);
-      position: relative; overflow: hidden;
-      letter-spacing: 1px;
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 18px 55px;
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.25), rgba(255, 0, 255, 0.25));
+      border: 1px solid #00ffff; color: #fff; text-decoration: none;
+      font-size: 1.35rem; font-weight: 600; border-radius: 50px; backdrop-filter: blur(15px);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.7), inset 0 0 20px rgba(255, 0, 255, 0.4);
+      position: relative; overflow: hidden; letter-spacing: 1px;
     }
 
     .cta-btn::before {
       content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-      transform: skewX(-20deg); animation: shine 3s infinite;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+      transform: skewX(-25deg); animation: shine 4s infinite;
     }
 
-    @keyframes shine {
-      100% { left: 200%; }
-    }
+    @keyframes shine { 0%, 20% { left: 200%; } 100% { left: 200%; } }
 
     .cta-btn:hover {
-      transform: scale(1.05) translateY(-5px);
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.8), rgba(255, 140, 0, 0.8));
-      color: #000; box-shadow: 0 10px 40px rgba(255, 215, 0, 0.8);
-      border-color: #ffd700;
+      transform: scale(1.08) translateY(-6px);
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.9), rgba(255, 0, 255, 0.9));
+      color: #000; box-shadow: 0 15px 50px rgba(0, 255, 255, 0.9), 0 0 35px rgba(255, 0, 255, 0.7);
+      border-color: #fff;
     }
 
     footer {
-      padding: 30px; text-align: center; color: rgba(255, 255, 255, 0.4);
-      font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.05); position: relative; z-index: 10;
+      padding: 30px; text-align: center; color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.1); position: relative; z-index: 10;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-      .hero-subtitle { font-size: 1.1rem; }
-      .glass-container { padding: 40px 20px; }
-      .nav-menu { flex-wrap: wrap; justify-content: center; }
+      .hero h1 { font-size: 2.5rem; } .hero-subtitle { font-size: 1.15rem; }
+      .glass-container { padding: 40px 25px; } .nav-menu { flex-wrap: wrap; justify-content: center; }
       .solar-system { transform: translate(-50%, -50%) rotateX(65deg) scale(0.6); }
+      .hero-slogan { text-align: center; border-left: none; padding-left: 0; border-top: 2px solid #00ffff; padding-top: 15px; }
     }
   </style>
-  <script>
-    // Starfield generator for extra immersion
-    document.addEventListener("DOMContentLoaded", () => {
-      const container = document.body;
-      for (let i = 0; i < 200; i++) {
-        const star = document.createElement("div");
-        star.style.position = "fixed";
-        star.style.width = star.style.height = Math.random() * 2.5 + "px";
-        star.style.background = ["#fff", "#ffd700", "#aaa", "#8ad2ff"][Math.floor(Math.random() * 4)];
-        star.style.borderRadius = "50%";
-        star.style.top = Math.random() * 100 + "vh";
-        star.style.left = Math.random() * 100 + "vw";
-        star.style.opacity = Math.random();
-        star.style.zIndex = "-4";
-        star.style.animation = `drift ${Math.random() * 5 + 3}s infinite alternate`;
-        container.appendChild(star);
-      }
-    });
-  </script>
 </head>
-
 <body>
 
-  <!-- Background Layer -->
-  <div class="space-bg"></div>
+  <!-- Parallax Moving Background -->
+  <div class="bg-container" id="bg-container"></div>
   <div class="nebula nebula-1"></div>
   <div class="nebula nebula-2"></div>
   <div class="nebula nebula-3"></div>
@@ -327,9 +225,9 @@
       <img src="profile_photo.jpg" alt="ขจรศักดิ์ สิทธิวงศ์" class="profile-img" />
       <h1>ขจรศักดิ์ สิทธิวงศ์</h1>
       <p class="hero-subtitle">นักศึกษาคณะครุศาสตร์ สาขาวิชาเอกฟิสิกส์ ชั้นปีที่ 4 มหาวิทยาลัยราชภัฏอุตรดิตถ์</p>
-      <p class="hero-slogan">"สร้างสรรค์การเรียนรู้คู่จินตนาการ สู่การเป็นครูฟิสิกส์แห่งอนาคต นำพานวัตกรรมวิทยาศาสตร์ให้เข้าถึงได้สำหรับทุกคน"</p>
+      <p class="hero-slogan">"มุ่งมั่นสร้างสรรค์การเรียนรู้คู่จินตนาการ สู่การเป็นครูฟิสิกส์แห่งอนาคต นำพานวัตกรรมวิทยาศาสตร์ให้ก้าวล้ำและเข้าถึงได้สำหรับทุกคนในจักรวาล!"</p>
       
-      <a href="about.html" class="cta-btn">สำรวจผลงานของฉัน</a>
+      <a href="about.html" class="cta-btn">สำรวจผลงานของฉัน 🚀</a>
     </div>
   </header>
 
@@ -337,6 +235,37 @@
     &copy; 2026 ขจรศักดิ์ สิทธิวงศ์. All rights reserved.
   </footer>
 
-</body>
+  <script>
+    // Create Parallax Flying Stars
+    function generateStarfield() {
+      const container = document.getElementById('bg-container');
+      const starColors = ["#ffffff", "#00ffff", "#ffd700", "#ff00ff", "#4b9fff"];
+      const totalStars = window.innerWidth > 768 ? 350 : 150;
+      
+      for (let i = 0; i < totalStars; i++) {
+        const star = document.createElement("div");
+        const size = Math.random() * 3 + 1.5;
+        
+        star.classList.add('star');
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+        star.style.background = starColors[Math.floor(Math.random() * starColors.length)];
+        star.style.boxShadow = `0 0 ${Math.random() * 8 + 3}px ${star.style.background}`;
+        
+        star.style.left = Math.random() * 100 + "vw";
+        // To randomize start time smoothly across the height
+        star.style.animation = `flyUp ${Math.random() * 6 + 4}s linear infinite`;
+        star.style.animationDelay = `-${Math.random() * 10}s`;
+        
+        container.appendChild(star);
+      }
+    }
 
+    document.addEventListener("DOMContentLoaded", generateStarfield);
+    window.addEventListener("resize", () => {
+      document.getElementById('bg-container').innerHTML = '';
+      generateStarfield();
+    });
+  </script>
+</body>
 </html>
