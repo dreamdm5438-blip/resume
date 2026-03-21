@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ติดต่อฉัน | ขจรศักดิ์ สิทธิวงศ์</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      /* Peaceful Space Background: Deep blue to dark night */
+      background: linear-gradient(135deg, #020111, #0a0b1f, #04010a);
+      color: white;
+      font-family: 'Sarabun', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Soft Nebula Effects */
+    .nebula {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+      opacity: 0.5;
+    }
+    
+    .nebula-1 {
+      top: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: rgba(80, 0, 255, 0.3);
+      animation: pulse 12s ease-in-out infinite alternate;
+    }
+
+    .nebula-2 {
+      bottom: -150px;
+      right: -50px;
+      width: 500px;
+      height: 500px;
+      background: rgba(0, 200, 255, 0.2);
+      animation: pulse 15s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.3; }
+      100% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    /* Animated Faint Canvas Starfield / Meteors is implemented via JS below */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 40px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    .nav-brand {
+      position: absolute;
+      left: 40px;
+      color: #ffd700;
+      font-family: 'Kanit', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-menu a.active {
+      color: white;
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      font-weight: 600;
+    }
+
+    main {
+      position: relative;
+      z-index: 10;
+      margin-top: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 900px;
+      padding: 0 20px 60px;
+    }
+
+    .header-section {
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeInDown 1s ease forwards;
+    }
+
+    .header-section h1 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 3rem;
+      color: white;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+
+    .header-section .sub {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 5px;
+      letter-spacing: 1px;
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      width: 100%;
+      justify-content: space-between;
+      animation: fadeInUp 1s ease forwards 0.3s;
+      opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Contact Info Cards */
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+    }
+
+    .info-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 215, 0, 0.3);
+    }
+
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: 0.3s;
+    }
+
+    /* Glowing Icons Effects */
+    .info-card:nth-child(1):hover .info-icon {
+      background: rgba(225, 48, 108, 0.2);
+      color: #e1306c;
+      box-shadow: 0 0 15px #e1306c;
+      text-shadow: 0 0 10px #e1306c;
+    }
+    .info-card:nth-child(2):hover .info-icon {
+      background: rgba(24, 119, 242, 0.2);
+      color: #1877f2;
+      box-shadow: 0 0 15px #1877f2;
+      text-shadow: 0 0 10px #1877f2;
+    }
+    .info-card:nth-child(3):hover .info-icon {
+      background: rgba(0, 185, 0, 0.2);
+      color: #00b900;
+      box-shadow: 0 0 15px #00b900;
+      text-shadow: 0 0 10px #00b900;
+    }
+    .info-card:nth-child(4):hover .info-icon {
+      background: rgba(255, 170, 0, 0.2);
+      color: #ffaa00;
+      box-shadow: 0 0 15px #ffaa00;
+      text-shadow: 0 0 10px #ffaa00;
+    }
+
+    .info-text h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 3px;
+    }
+
+    .info-text p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'Kanit', sans-serif;
+    }
+
+    /* Compact Contact Form */
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+      background: rgba(10, 10, 30, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .contact-form h2 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #ffaa00;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 5px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: white;
+      font-family: 'Sarabun', sans-serif;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .form-control:focus {
+      border-color: #ffaa00;
+      background: rgba(255, 170, 0, 0.05);
+      box-shadow: 0 0 10px rgba(255, 170, 0, 0.2);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: #ffaa00;
+      color: #03020a;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Kanit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 0 15px rgba(255, 170, 0, 0.4);
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover {
+      background: #ffd700;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    /* Canvas space background */
+    #space-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="nebula nebula-1"></div>
+  <div class="nebula nebula-2"></div>
+  <canvas id="space-canvas"></canvas>
+
+  <nav class="navbar">
+    <div class="nav-brand">✦ KS</div>
+    <ul class="nav-menu">
+      <li><a href="index.html">หน้าแรก</a></li>
+      <li><a href="about.html">ประวัติ</a></li>
+      <li><a href="education.html">การศึกษา</a></li>
+      <li><a href="skills.html">ทักษะ</a></li>
+      <li><a href="simulations.html">Simulations</a></li>
+      <li><a href="biomass.html">Biomass</a></li>
+      <li><a href="contact.html" class="active">ติดต่อ</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="header-section">
+      <h1>ติดต่อฉัน</h1>
+      <p class="sub">Contact Me</p>
+    </div>
+
+    <div class="contact-container">
+      
+      <!-- Contact Info Links -->
+      <div class="contact-info">
+        
+        <a href="https://www.instagram.com/ks_dream_love" target="_blank" class="info-card">
+          <div class="info-icon">📷</div>
+          <div class="info-text">
+            <h3>Instagram</h3>
+            <p>@ks_dream_love</p>
+          </div>
+        </a>
+
+        <a href="https://www.facebook.com/khajonsaksittiwong" target="_blank" class="info-card">
+          <div class="info-icon">📘</div>
+          <div class="info-text">
+            <h3>Facebook</h3>
+            <p>khajonsaksittiwong</p>
+          </div>
+        </a>
+
+        <a href="https://line.me/ti/p/~khajonsak007" target="_blank" class="info-card">
+          <div class="info-icon">💬</div>
+          <div class="info-text">
+            <h3>LINE</h3>
+            <p>khajonsak007</p>
+          </div>
+        </a>
+
+        <a href="tel:0955494036" class="info-card">
+          <div class="info-icon">📞</div>
+          <div class="info-text">
+            <h3>Phone</h3>
+            <p>0955494036</p>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <h2>ส่งข้อความถึงฉัน</h2>
+        <form onsubmit="event.preventDefault(); alert('ระบบกำลังอยู่ระหว่างการพัฒนา ขอขอบคุณสำหรับข้อความครับ!');">
+          <div class="form-group">
+            <label for="name">ชื่อของคุณ (Name)</label>
+            <input type="text" id="name" class="form-control" placeholder="ระบุชื่อของคุณ" required>
+          </div>
+          <div class="form-group">
+            <label for="email">อีเมล (Email)</label>
+            <input type="email" id="email" class="form-control" placeholder="example@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">ข้อความ (Message)</label>
+            <textarea id="message" class="form-control" placeholder="พิมพ์ข้อความที่คุณต้องการส่งถึงฉัน..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <span>ส่งข้อความ</span> ✉️
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Peaceful space canvas logic
+    const canvas = document.getElementById('space-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    let stars = [];
+    let meteors = [];
+
+    function init() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+
+      // Generate static stars
+      stars = [];
+      const numStars = Math.floor((width * height) / 4000);
+      for (let i = 0; i < numStars; i++) {
+        stars.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.5,
+          alpha: Math.random(),
+          speed: (Math.random() * 0.005) + 0.001
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw faint twinkling stars
+      stars.forEach(star => {
+        star.alpha += star.speed;
+        if (star.alpha > 1 || star.alpha < 0) {
+          star.speed = -star.speed;
+        }
+        
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0, star.alpha * 0.5)})`;
+        ctx.fill();
+      });
+
+      // Draw shooting stars / faint meteors
+      meteors.forEach((meteor, index) => {
+        ctx.beginPath();
+        ctx.moveTo(meteor.x, meteor.y);
+        ctx.lineTo(meteor.x - meteor.length, meteor.y - meteor.length); // Moving towards bottom-left
+        
+        let gradient = ctx.createLinearGradient(
+          meteor.x, meteor.y, 
+          meteor.x - meteor.length, meteor.y - meteor.length
+        );
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${meteor.opacity})`);
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // Move meteor
+        meteor.x -= meteor.speed;
+        meteor.y += meteor.speed;
+        meteor.opacity -= 0.01;
+
+        if (meteor.opacity <= 0) {
+          meteors.splice(index, 1);
+        }
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    function createMeteor() {
+      if (Math.random() < 0.3) {
+        meteors.push({
+          x: Math.random() * width * 1.5,
+          y: Math.random() * height * 0.5 - height * 0.5,
+          length: Math.random() * 50 + 20,
+          speed: Math.random() * 2 + 1,
+          opacity: 0.8
+        });
+      }
+      // Faint gentle meteors every 2-6 seconds
+      setTimeout(createMeteor, Math.random() * 4000 + 2000);
+    }
+
+    window.addEventListener('resize', init);
+    init();
+    draw();
+    createMeteor();
+  </script>
+</body>
+
+</html>
